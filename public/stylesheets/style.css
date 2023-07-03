@@ -1,8 +1,58 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+/* documentacion https: //getbootstrap.com/docs/5.2/layout/breakpoints/ */
+
+/* ======================= Custom Properties==============================*/
+:root{
+    --first-color : rgb(217,0,98);
+    --first-alpha-color : rgba(217,0,98,0.75);
+    --second-color : rgb(20,25,45);
+    --second-alpha-color : rgba(20,25,45,0.75);
+    --third-color : rgb(80,20,100);
+    --third-alpha-color : rgba(80,20,100,0.75);
+
+    --link-color:rgb(80,158,227);
+    --link-alpha-color:rgba(80,158,227,0.75);
+
+    --bg-color:rgb(245,245,245);
+    --bg-alpha-color:rgba(245,245,245,0.75);
+
 }
 
-a {
-  color: #00B7FF;
+.border-primary{
+    
+}
+
+/* ======================= Reset Styles ==============================*/
+body{
+    font-family: "Raleway", sans-serif;
+}
+/* ======================= Bootstrap Styles ==============================*/
+/* ======================= My Styles ==============================*/
+/* ===================================================== */
+
+/* // X-Small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap */
+
+/* // Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    
+}
+
+/* // Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    
+}
+
+/* // Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    
+}
+
+/* // X-Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    
+}
+
+/* // XX-Large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+    
 }

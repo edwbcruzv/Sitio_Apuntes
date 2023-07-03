@@ -5,7 +5,13 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var iaRouter = require('./routes/ia');
+var dlRouter = require('./routes/dl');
+var mlRouter = require('./routes/ml');
+var toolsRouter = require('./routes/tools');
+var acerca_deRouter = require('./routes/acerca_de');
+var referenciasRouter = require('./routes/referencias');
+// var Router = require('./routes/');
 
 var app = express();
 
@@ -20,7 +26,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/ia', iaRouter);
+app.use('/dl', dlRouter);
+app.use('/ml', mlRouter);
+app.use('/tools', toolsRouter);
+app.use('/acerca_de', acerca_deRouter);
+app.use('/referencias', referenciasRouter);
+// app.use('/', indexRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
