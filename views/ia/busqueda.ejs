@@ -1,8 +1,2973 @@
 <%- include ../layouts/cabecera.ejs %>
 
-<main>
-  <h2>Busqueda</h2>
-</main>
+  <main>
+
+    <font face="Bahnschrift, serif">
+      <font size="5" style="font-size: 18pt">Inteligencia
+        Artificial</font>
+    </font>
+    </p>
+    <p>Búsqueda</p>
+    <h1>Agentes resolventes de problemas</h1>
+    <p>Un agente
+      resolvente de problemas es un tipo de agente basado en objetivos que
+      usa representaciones atómicas. Los que usan estructuras más
+      complejas se utilizan en algoritmos de planificación más complejas.</p>
+    <p >
+      <font>Formulación del objetivo</font>
+    </p>
+    <p>Simplifican los
+      problemas, ya que organizan el comportamiento del agente, limitando
+      sus metas. El agente deberá descubrir la secuencia de acciones que
+      permita alcanzarlos. El primer paso para resolver un problema es
+      formular sus objetivos.</p>
+    <p >
+      <font>Formulación del problema</font>
+    </p>
+    <p>Proceso para
+      decidir qué acciones y estados se deben considerar dado un objetivo
+      (modelización).</p>
+    <p><b>Abstracción
+        del modelo:</b> proceso de eliminar detalles de una representación y
+      dejar solo lo justo para poder solucionar un problema.</p>
+    <p><i>Un agente que
+        tiene distintas opciones inmediatas, pero con valores desconocidas
+        puede decidir que hacer evaluando las posibles diferentes acciones
+        futuras que al final le lleven a estados de valores conocidos y así
+        escoger la mejor secuencia.</i></p>
+    <p><b>Búsqueda:
+      </b>Proceso de hallar una mejor secuencia.</p>
+    <p><b>Solución: </b>Lo
+      que regresa un algoritmo de búsqueda.</p>
+    <p><b>Ejecución:
+      </b>Acciones a realizar según las recomendaciones de la solución.</p>
+    <p><img src="/images/2_Busqueda/image001.png" name="Imagen 12" align="bottom" width="589"
+        height="296" border="0" />
+    </p>
+    <p>Primero se
+      formula un objetivo y un problema, se busca una secuencia de acciones
+      que deberían resolver el problema y entonces se ejecutan las
+      acciones una a la vez. Cuando se ha completado se formula otro
+      objetivo y se empieza de nuevo, aquí se ignoran las percepciones ya
+      que suponemos que la solución encontrada estará bien.</p>
+    <p>Este agente
+      supone un entorno estático, observable, discreto y determinístico.</p>
+    <p><b>Lazo Abierto:
+      </b>Estos agentes realizan planes a ojos cerrados porque ignoran las
+      percepciones rompiendo el lazo entre el agente y el entorno.</p>
+    <p><br />
+      <br />
+
+    </p>
+    <h1>Problemas y soluciones bien definidas</h1>
+    <p>Un problema puede
+      definirse por 4 componentes:</p>
+    <ol>
+      <li>
+        <p><b>Estado
+            inicial:</b> es en donde empieza el agente.</p>
+      <li>
+        <p><b>Función
+            sucesora: </b>Una descripción de las posibles acciones disponibles
+          para el agente.</p>
+    </ol>
+    <p style="line-height: 108%; margin-left: 0.5in; margin-bottom: 0.11in">
+      <b>SUCESOR-FN(x)={&lt;acción, sucesor&gt;,…},</b> Donde:
+    </p>
+    <ul>
+      <li>
+        <p><b>SUCESOR-FN(x):
+          </b>devuelve un conjunto de pares ordenados &lt;acción, sucesor&gt;.</p>
+      <li>
+        <p><b>Sucesor:</b>
+          es un estado que se puede alcanzar desde x.</p>
+      <li>
+        <p><b>Acción:</b>
+          es una de las acciones legales en el estado x.</p>
+      <li>
+        <p>Ejemplo:
+          {<i>Ir</i>(<i>Sibiu</i>)<i>, En</i>(<i>Sibiu</i>)<i>, Ir</i>(<i>Timisoara</i>)<i>,
+            En</i>(<i>Timisoara</i>)<i>, Ir</i>(<i>Zerind</i>)<i>, En</i>(<i>Zerind</i>)}</p>
+    </ul>
+    <ol>
+      <ul>
+        <li>
+          <p><b>Espacio
+              de estados</b>: forma un grafo en el cual los nodos son estados y
+            los arcos entre los nodos las acciones. Implícitamente el estado
+            inicial y la función sucesor definen el espacio de estados del
+            problema.</p>
+        <li>
+          <p>Un <b>camino</b>
+            es el espacio de estados en una secuencia de estados conectados por
+            una secuencia de acciones.</p>
+      </ul>
+      <li>
+        <p><b>Test
+            objetivo:</b> determina si un estado es el estado objetivo. A veces
+          el conjunto esta explicito, pero el test es simplemente prueba si el
+          estado es uno de ellos.</p>
+      <li>
+        <p><b>Costo del
+            camino:</b> g(n) es una función que asigna un coste numérico a
+          cada camino en el grafo. El agente resolvente de problemas elige la
+          función que refleje nuestra medida de rendimiento. Puede
+          describirse como la suma de los costos de las acciones individuales
+          a lo largo del camino.</p>
+      <li>
+        <p>El costro
+          individual de una acción <i>a </i>que va desde un estado <i>x</i>
+          al estado <i>y</i> se denota como <i>c(x,a,y).</i></p>
+    </ol>
+    <p><br />
+      <br />
+
+    </p>
+    <p>Los elementos
+      anteriores definen un problema y pueden unirse a una estructura de
+      datos que se dará como entrada al algoritmo resolvente de problema.</p>
+    <p>La <b>solución
+      </b>de un problema es un camino desde el estado inicial a un estado
+      objetivo.</p>
+    <p>La <b>solución
+        óptima </b>tiene el costo más pequeño del camino entre todas las
+      soluciones.</p>
+    <p>La <b>Frontera </b>es
+      la colección de nodos que se han generado pero que todavía no se
+      han expandido.</p>
+    <p >
+      <font>8-puzle</font>
+    </p>
+    <p>Consiste en un
+      tablero de 3x3 con 8 fichas numeradas y un espacio en blanco</p>
+    <ul>
+      <li>
+        <p><b>Estados:
+          </b>posición inicial de todo el tablero (8 fichas y los 9 huecos).</p>
+      <li>
+        <p><b>Estado
+            inicial:</b> puede ser cualquier.</p>
+      <li>
+        <p><b>Función
+            sucesor:</b> este genera los estados legales que resultan de aplicar
+          las 4 acciones (mover el blanco a la <i>izquierda, derecha arriba y
+            abajo</i>).</p>
+      <li>
+        <p><b>Test
+            objetivo</b>: comprueba si el estado coincide con la configuración
+          objetivo.</p>
+      <li>
+        <p><b>Costo del
+            camino:</b> es el costo de cada paso del camino tiene valor 1, así
+          que el costo del camino es el número de pasos.</p>
+    </ul>
+    <p><img src="/images/2_Busqueda/image002.png" name="Imagen 1"
+        align="bottom" width="589" height="194" border="0" />
+    </p>
+    <p><br />
+      <br />
+
+    </p>
+    <p >
+      <font>8-reinas</font>
+    </p>
+    <p>Consiste en
+      colocar las 8 reinas en un tablero de ajedrez de manera que cada
+      reina no ataque a ninguna otra. Una reina ataca alguna otra pieza si
+      está en la misma fila, columna o diagonal.</p>
+    <p><img src="/images/2_Busqueda/image003.png" name="Imagen 2"
+        align="bottom" width="589" height="305" border="0" />
+    </p>
+    <p>2 principales
+      formulaciones:</p>
+    <ul>
+      <li>
+        <p><b>Incremental:
+          </b>operadores que incrementen el estado, empezando desde el vacío
+          y agregando a cada estado una reina.</p>
+        <ul>
+          <li>
+            <p><b>Estados:</b>
+              cualquier combinación de 0 a 8 reinas en el tablero es un estado.</p>
+          <li>
+            <p><b>Estado
+                inicial: </b>ninguna reina sobre el tablero.</p>
+          <li>
+            <p><b>Función
+                sucesora:</b> añadir una reina a cualquier cuadrado vacío.</p>
+          <li>
+            <p><b>Test
+                objetivo:</b> 8 reinas sobre el tablero, ninguna atacándose.</p>
+        </ul>
+      <li>
+        <p><b>Completa:</b>
+          comienza con las 8 reinas en el tablero y solo se irán moviendo.</p>
+    </ul>
+    <p><br />
+      <br />
+
+    </p>
+    <h1>Búsqueda de soluciones</h1>
+    <p>La resolución
+      automática de problemas utilizando búsqueda es el tema central en
+      IA. Para la gran variedad de situaciones, la resolución de un
+      problema se puede transformar en la tarea de encontrar un camino en
+      un grafo. A este tipo de problemas se les denomina <b>Problemas de
+        búsqueda.</b></p>
+    <p>Ya tenido algunos
+      problemas formulados, ahora sigue resolverlos mediante búsqueda a
+      través del espacio de estados. Para ello se usan <b>árboles de
+        búsqueda</b> o <b>grafo de búsqueda</b>, estas son generadas por el
+      <b>estado inicial </b>y la <b>función sucesor, </b>definiendo el<b>
+        espacio de estados. </b>La raíz del árbol es el <b>nodo de búsqueda</b>
+      que corresponde al <b>estado inicial</b>.
+    </p>
+    <p><br />
+      <br />
+
+    </p>
+    <p >
+      <font>Nodo</font>
+    </p>
+    <p><b>Nodo:</b> es
+      una estructura de datos usado para representar el árbol de búsqueda,
+      consta de 5 atributos:</p>
+    <ul>
+      <li>
+        <p><b>Estado: </b>
+          es el estado que le corresponde a ese nodo, (a cada nodo le
+          corresponde un estado). Un estado corresponde a una configuración
+          del mundo.</p>
+        <ul>
+          <li>
+            <p><b>Nodo.Estado()-&gt;Estado:
+              </b>devuelve el estado del nodo.</p>
+        </ul>
+      <li>
+        <p><b>Nodo
+            padre:</b> el nodo en el árbol de búsqueda que ha generado este
+          nodo.</p>
+        <ul>
+          <li>
+            <p><b>Nodo.Padre()-&gt;Nodo:
+              </b>devolverá el padre del nodo.</p>
+        </ul>
+      <li>
+        <p><b>Acción:</b>
+          la acción que se aplicara al padre para generar el nodo.</p>
+        <ul>
+          <li>
+            <p><b>Nodo.Accion()-&gt;Acción:</b>
+              devolverá la acción del nodo.</p>
+        </ul>
+      <li>
+        <p><b>Lista de
+            acciones:</b> son las acciones que se van guardando cuando se va
+          expandiendo el árbol, es una Pila.</p>
+        <ul>
+          <li>
+            <p><b>Nodo.Acciones()-&gt;Lista-Acciones:</b>
+              devolverá una lista de acciones del nodo.</p>
+        </ul>
+      <li>
+        <p><b>Costo del
+            camino:</b> el costo, denotado por <i>g(n)</i>, de un camino desde
+          el estado inicial al nodo, indicado por los punteros a los padres.</p>
+        <ul>
+          <li>
+            <p><b>Nodo.Costo()-&gt;Costo-Camino:</b>
+              devolverá el costo del camino desde la raíz hasta ese nodo.</p>
+        </ul>
+      <li>
+        <p><b>Profundidad:</b>
+          el número de pasos a lo largo del camino desde el estado inicial.</p>
+    </ul>
+    <p><b>Nodo hoja: </b>
+      es el nodo que es parte de la frontera o también un nodo sin sucesor
+      en el árbol.</p>
+    <p><br />
+      <br />
+
+    </p>
+    <p><img src="/images/2_Busqueda/image004.png" name="Imagen 5" align="left" hspace="12"
+        width="275" height="144">
+      <br clear="left" />
+      </img>
+    </p>
+    <p >
+      <font>Estrategia de búsqueda </font>
+    </p>
+    <p>Es la una función
+      que seleccione de este conjunto el siguiente nodo a expandir, pero
+      esta forma puede ser computacionalmente costosa porque tendría que
+      pasar por todos los nodos del árbol para escoger el mejor. Por eso
+      mejor se opta por implementar una <b>cola</b>.</p>
+    <ul>
+      <li>
+        <p><b>New
+            Cola(colección de nodos)</b>: se crea la cola.</p>
+      <li>
+        <p><b>Cola.Vacia()-&gt;boolean</b>:
+          si existen elementos en la cola devolverá verdadero, de lo
+          contrario devolverá falso.</p>
+      <li>
+        <p><b>Cola.Primero()-&gt;Nodo:</b>
+          devuelve el primer elemento en salir de la cola.</p>
+      <li>
+        <p><b>Cola.BorraPrimero()-&gt;Nodo:
+          </b>devuelve el primer elemento en salir de la cola y lo sacara.</p>
+      <li>
+        <p><b>Cola.Insertar(Nodos)-&gt;boolean:</b>
+          agregara el o los nuevos nodos.</p>
+    </ul>
+    <h1><img src="/images/2_Busqueda/image005.png" name="Imagen 4" align="bottom" width="589"
+        height="153" border="0" />
+    </h1>
+    <p >
+      <font>Rendimiento de la solución del problema</font>
+    </p>
+    <p>Lo que
+      obtendremos de un algoritmo de resolución de problemas será un
+      fallo o una solución. También puede caer en un bucle infinito o
+      simplemente no devolver nada.</p>
+    <ul>
+      <li>
+        <p><b>Completitud:
+          </b>cuando un algoritmo devuelve una solución cuando esta si
+          existe.</p>
+      <li>
+        <p><b>Optimización:</b>
+          que la estrategia sea la más optima.</p>
+      <li>
+        <p><b>Complejidad
+            en tiempo:</b> cuanto se tarda el algoritmo en encontrar la
+          solución.</p>
+      <li>
+        <p><b>Complejidad
+            en el espacio:</b> la memoria que utilizara para correr el
+          algoritmo.</p>
+    </ul>
+    <p><b>C<img src="/images/2_Busqueda/image006.png" name="Imagen 8" align="left"
+          hspace="12" width="589" height="165">
+        <br clear="left" />
+        </img>
+        osto
+        de la búsqueda:</b> Complejidad en tiempo.</p>
+    <p><b>C<img src="/images/2_Busqueda/image007.png" name="Imagen 9" align="left" hspace="12"
+          width="589" height="215">
+        <br clear="left" />
+        </img>
+        osto
+        total: </b>Combinación del Costo de la búsqueda y el costo del
+      camino de la solución.</p>
+    <p><br />
+      <br />
+
+    </p>
+    <p><br />
+      <br />
+
+    </p>
+    <p>El factor de
+      ramificación <b>b</b> y <b>m</b> a profundidad de la meta.</p>
+    <p><br />
+      <br />
+
+    </p>
+    <table width="589" cellpadding="7" cellspacing="0">
+      <col width="181" />
+
+      <col width="84" />
+
+      <col width="84" />
+
+      <col width="181" />
+
+      <tr valign="top">
+        <td width="181" height="5" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Propiedad</b></font>
+            </font>
+          </p>
+        </td>
+        <td colspan="2" width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>BFS</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>DPS</b></font>
+            </font>
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Completo</font>
+            </font>
+          </p>
+        </td>
+        <td colspan="2" width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">si</font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">no</font>
+            </font>
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Optimalidad</font>
+            </font>
+          </p>
+        </td>
+        <td colspan="2" width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">si</font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">no</font>
+            </font>
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Complejidad
+                temporal</font>
+            </font>
+          </p>
+        </td>
+        <td colspan="2" width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Exp
+                b^m</font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Exp
+                b^m</font>
+            </font>
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Complejidad
+                espacial</font>
+            </font>
+          </p>
+        </td>
+        <td colspan="2" width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Exp
+                b^m</font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Lineal
+                n*m</font>
+            </font>
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td colspan="2" width="280" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>DFS</b></font>
+            </font>
+          </p>
+        </td>
+        <td colspan="2" width="280" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>BFS</b></font>
+            </font>
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td colspan="2" width="280" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2; margin-bottom: 0in">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Apropiado
+                cuando:</font>
+            </font>
+          </p>
+          <ul>
+            <li>
+              <p align="left" style="orphans: 2; widows: 2; margin-bottom: 0in">
+                <font face="Calibri, serif">
+                  <font size="2" style="font-size: 11pt">Almacenamiento
+                    restringido.</font>
+                </font>
+              </p>
+            <li>
+              <p align="left" style="orphans: 2; widows: 2">
+                <font face="Calibri, serif">
+                  <font size="2" style="font-size: 11pt">Hay
+                    muchas soluciones</font>
+                </font>
+              </p>
+          </ul>
+        </td>
+        <td colspan="2" width="280" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2; margin-bottom: 0in">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Apropiado
+                cuando:</font>
+            </font>
+          </p>
+          <ul>
+            <li>
+              <p align="left" style="orphans: 2; widows: 2; margin-bottom: 0in">
+                <font face="Calibri, serif">
+                  <font size="2" style="font-size: 11pt">El
+                    almacenamiento no es el problema.</font>
+                </font>
+              </p>
+            <li>
+              <p align="left" style="orphans: 2; widows: 2">
+                <font face="Calibri, serif">
+                  <font size="2" style="font-size: 11pt">Se
+                    requiere solución de menor profundidad.</font>
+                </font>
+              </p>
+          </ul>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td colspan="2" width="280" height="5" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2; margin-bottom: 0in">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">No
+                apropiado cuando:</font>
+            </font>
+          </p>
+          <ul>
+            <li>
+              <p align="left" style="orphans: 2; widows: 2; margin-bottom: 0in">
+                <font face="Calibri, serif">
+                  <font size="2" style="font-size: 11pt">Es
+                    posible caer en caminos infinitos.</font>
+                </font>
+              </p>
+            <li>
+              <p align="left" style="orphans: 2; widows: 2">
+                <font face="Calibri, serif">
+                  <font size="2" style="font-size: 11pt">Hay
+                    soluciones a poca profundidad.</font>
+                </font>
+              </p>
+          </ul>
+        </td>
+        <td colspan="2" width="280" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2; margin-bottom: 0in">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">No
+                apropiado cuando:</font>
+            </font>
+          </p>
+          <ul>
+            <li>
+              <p align="left" style="orphans: 2; widows: 2; margin-bottom: 0in">
+                <font face="Calibri, serif">
+                  <font size="2" style="font-size: 11pt">El
+                    espacio de almacenamiento es una restricción.</font>
+                </font>
+              </p>
+            <li>
+              <p align="left" style="orphans: 2; widows: 2">
+                <font face="Calibri, serif">
+                  <font size="2" style="font-size: 11pt">El
+                    costo de operadores no es el mismo para todos.</font>
+                </font>
+              </p>
+          </ul>
+        </td>
+      </tr>
+    </table>
+    <h1>Búsqueda No Informada (Ciego)</h1>
+    <p>Mantienen una
+      frontera y luego eligen a ciegas un nodo de la frontera, algunos
+      métodos son:</p>
+    <ul>
+      <li>
+        <p>Búsqueda a
+          lo ancho (BFS).</p>
+      <li>
+        <p>Búsqueda a
+          profundidad (DFS).</p>
+      <li>
+        <p>Profundización
+          iterativa. (ID).</p>
+      <li>
+        <p>Low
+          cost-first (LCFS).</p>
+    </ul>
+    <p>También llamada
+      búsqueda a ciegas, son las estrategias que no tienen información
+      adicional acerca de los estados más allá de la que proporciona la
+      definición del problema. Pueden generar sucesores y distinguir entre
+      un estado objetivo de uno que no lo es.</p>
+    <p>Las estrategias
+      que saben si un esto no objetivo es más prometedor que otro se
+      llaman<b> búsqueda informada</b> o <b>búsqueda heurística</b>.</p>
+    <p>Todas las
+      estrategias se distinguen por el orden de expansión de los nodos.</p>
+    <p >
+      <font>Búsqueda primero en anchura (Breadth-First
+        Search)</font>
+    </p>
+    <p>Es una de las
+      estrategias más sencillas en la que se expande primero el nodo raíz,
+      después se expanden todos los nodos sucesores del nodo raíz,
+      después los sucesores, etc.</p>
+    <p>Se expanden todos
+      los nodos a una profundidad en el árbol de búsqueda antes de
+      expandir cualquier nodo del próximo nivel.</p>
+    <p>Frontera FIFO:
+      Primero en entrar es el primero en salir, Cola. Lo subrayado es el
+      que se expande y se forman los nodos expandidos.</p>
+    <p>
+      <font ><b>-&gt;
+          [] -&gt; </b></font>
+      <font >se agrega
+        el nodo padre a la lista.</font>
+    </p>
+    <p>
+      <font ><b>-&gt;
+          [</b></font>
+      <font ><u><b>A</b></u></font>
+      <font ><b>]
+          -&gt; </b></font>
+      <font >se expande A.</font>
+    </p>
+    <p><br />
+      <br />
+
+    </p>
+    <p><img src="/images/2_Busqueda/image008.png" name="Imagen 463944532" align="bottom"
+        width="146" height="98" border="0" />
+    </p>
+    <p>
+      <font ><b>-&gt;
+          [C ,</b></font>
+      <font ><u><b>B] </b></u></font>
+      <font ><b>-&gt;
+        </b></font>
+      <font >se expande B.</font>
+    </p>
+    <p><img src="/images/2_Busqueda/image008.png" name="Imagen 1521950414" align="bottom"
+        width="144" height="98" border="0" />
+    </p>
+    <p>
+      <font ><b>-&gt;</b></font>
+      <font ><u><b>[</b></u></font>
+      <font ><b>E,D</b></font>
+      <font ><u><b>,C</b></u></font>
+      <font ><b>]
+          -&gt;</b></font>
+      <font > se expande C.</font>
+    </p>
+    <p><img src="/images/2_Busqueda/image008.png" name="Imagen 1947700358" align="bottom"
+        width="142" height="98" border="0" />
+    </p>
+    <p>
+      <font ><b>-&gt;</b></font>
+      <font ><u><b>[</b></u></font>
+      <font ><b>G,F,E</b></font>
+      <font ><u><b>,D</b></u></font>
+      <font ><b>]-&gt;
+        </b></font>
+      <font >En este momento nos
+        encontremos en la frontera del árbol.</font>
+    </p>
+    <p><img src="/images/2_Busqueda/image008.png" name="Imagen 10" align="bottom" width="153"
+        height="98" border="0" />
+    </p>
+    <p>Se puede
+      implementar usando <i><b>Búsqueda-Arboles(</b></i><b>problema, New
+        Cola()</b><i><b>)</b></i>, esto resultará en una búsqueda por
+      anchura, la <b>cola</b> pondrá todos los nuevos sucesores generados
+      hasta el final de la cola mientras que los nodos más superficiales
+      se expanden antes que los nodos más profundos. El nodo objetivo más
+      superficial no es necesariamente el óptimo, la búsqueda primero en
+      anchura es óptima si el costo del camino es una función no
+      decreciente de la profundidad del nodo.</p>
+    <p>Cada nodo
+      generado debe permanecer en la memoria, porque o es parte de la
+      frontera o es un antepasado de un nodo de la frontera.</p>
+    <table width="589" cellpadding="7" cellspacing="0">
+      <col width="181" />
+
+      <col width="182" />
+
+      <col width="181" />
+
+      <tr valign="top">
+        <td width="181" height="5" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <br />
+
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">si</font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">no</font>
+            </font>
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Completo</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2; margin-bottom: 0in">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Si,
+                si existe solución, la encuentra .</font>
+            </font>
+          </p>
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Nota:
+                Comprueba si un nodo es la solución cuando se genera y no cuando
+                se expande.</font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <br />
+
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Optimo</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Si,
+                porque la solución encontrada es la más superficial (condición:
+                costo de acciones igual y no negativos)</font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <br />
+
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Complejidad</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Tiempo</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Espacio</b></font>
+            </font>
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="5" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <br />
+
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Exp
+                O(b^d)</font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2; margin-bottom: 0in">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Exp
+                O(b*d) en frontera.</font>
+            </font>
+          </p>
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Exp
+                O(b^(d-1))</font>
+            </font>
+          </p>
+        </td>
+      </tr>
+    </table>
+    <p><br />
+      <br />
+
+    </p>
+    <p><b>Ventajas</b>:
+      si hay solución, la encuentra, encuentra la solución óptima.</p>
+    <p><b>Desventajas:</b>
+      Expande muchos nodos inútiles, Orden exponencial en espacio. Costo
+      constante y no negativo. Solo para problemas muy simples.</p>
+    <p >
+      <font>Búsqueda de costo uniforme (Uniform-Cost
+        Search)</font>
+    </p>
+    <p>La búsqueda
+      primero en anchura es óptimo cuando todos los costos son iguales
+      porque siempre se expande el nodo no expandido más superficial. La
+      búsqueda de costo uniforme expande el nodo<i> n </i>con el camino de
+      costo más pequeño.</p>
+    <ul>
+      <li>
+        <p>Basado en
+          Primero en Anchura</p>
+      <li>
+        <p>Costos de
+          acciones varían.</p>
+      <li>
+        <p>Costos no
+          negativos</p>
+    </ul>
+    <p>Expande el nodo
+      con menor costo asociado (no el más superficial)</p>
+    <p>Implementa las
+      listas con prioridades: La que tenga menor costo se va a extraer. (se
+      puede ordenar la lista).</p>
+    <p>Al final la
+      solución tendrá el camino con el menor costo.</p>
+    <table width="589" cellpadding="7" cellspacing="0">
+      <col width="181" />
+
+      <col width="182" />
+
+      <col width="181" />
+
+      <tr valign="top">
+        <td width="181" height="5" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <br />
+
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">si</font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">no</font>
+            </font>
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Completo</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2; margin-bottom: 0in">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Si,
+                si existe solución, la encuentra .</font>
+            </font>
+          </p>
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Nota:
+                Comprueba al expandir y no al generar.</font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <br />
+
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Optimo</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Si,
+                porque lo tiene el camino con el menor costo.</font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <br />
+
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Complejidad</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Tiempo</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Espacio</b></font>
+            </font>
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="5" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <br />
+
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Exp
+                O(b^(1+costo del camino optimo/costo mínimo en acción))</font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Exp
+                O(b^(1+[costo del camino optimo/costo mínimo en acción]))</font>
+            </font>
+          </p>
+        </td>
+      </tr>
+    </table>
+    <p><b>Ventajas:</b>
+      Completo y optimo. Admite costos variables.</p>
+    <p><b>Desventajas:</b>
+      Orden exponencial en espacio. Costos no negativos. Solo para
+      problemas muy simples.</p>
+    <p >
+      <font>Búsqueda primero en profundidad (Dipth-Fisrt
+        Search)</font>
+    </p>
+    <p>Consiste en
+      siempre expandir el nodo más profundo en la frontera actual del
+      árbol de búsqueda.</p>
+    <p>La búsqueda
+      procede inmediatamente al nivel más profundo del árbol de búsqueda,
+      donde los nodos no tienen ningún sucesor. Cuando esos nodos se
+      expanden son quitados de la frontera, así entonces la búsqueda
+      retrocede al siguiente nodo más superficial que todavía tenga
+      sucesores inexplorados.</p>
+    <p>Implementación
+      LIFO (o recursión): Ultimo en entrar es el primero en salir, Pila.
+      El subrayado es el que se expande y se forman los nodos expandidos.</p>
+    <p>
+      <font ><b>[]
+          &lt;-&gt; </b></font>
+      <font >se agrega
+        el nodo raíz a la pila.</font>
+    </p>
+    <p>
+      <font ><b>[A]
+          &lt;-&gt; </b></font>
+      <font >se
+        expande A.</font>
+    </p>
+    <p><img src="/images/2_Busqueda/image009.png" name="Imagen 861521369" align="bottom"
+        width="203" height="121" border="0" />
+    </p>
+    <p>
+      <font ><b>[C,B]
+          &lt;-&gt; </b></font>
+      <font >se
+        expande B.</font>
+    </p>
+    <p><img src="/images/2_Busqueda/image009.png" name="Imagen 258637278" align="bottom"
+        width="187" height="121" border="0" />
+    </p>
+    <p>
+      <font ><b>[C,E,D]
+          &lt;-&gt; </b></font>
+      <font >se
+        expande D.</font>
+    </p>
+    <p><img src="/images/2_Busqueda/image009.png" name="Imagen 11" align="bottom" width="197"
+        height="121" border="0" />
+    </p>
+    <p>
+      <font ><b>[C,E,I,H]
+          &lt;-&gt; </b></font>
+      <font >se
+        expande H.</font>
+    </p>
+    <p><img src="/images/2_Busqueda/image009.png" name="Imagen 1906184324" align="bottom"
+        width="201" height="126" border="0" />
+    </p>
+    <p>
+      <font ><b>[C,E,I]
+          &lt;-&gt; </b></font>
+      <font >se
+        expande I.</font>
+    </p>
+    <p><img src="/images/2_Busqueda/image009.png" name="Imagen 57746001" align="bottom"
+        width="191" height="126" border="0" />
+    </p>
+    <p>
+      <font ><b>[C,E]
+          &lt;-&gt; </b></font>
+      <font >se
+        expande E.</font>
+    </p>
+    <p><img src="/images/2_Busqueda/image009.png" name="Image2" align="bottom" width="193"
+        height="126" border="0" />
+    </p>
+    <p>
+      <font ><b>[C,K,J]
+          &lt;-&gt; </b></font>
+      <font >se
+        expande J.</font>
+    </p>
+    <p><img src="/images/2_Busqueda/image009.png" name="Imagen 669116597" align="bottom"
+        width="202" height="122" border="0" />
+    </p>
+    <p>
+      <font ><b>[C,K]
+          &lt;-&gt; </b></font>
+      <font >se
+        expande K.</font>
+    </p>
+    <p><img src="/images/2_Busqueda/image009.png" name="Imagen 880959327" align="bottom"
+        width="191" height="122" border="0" />
+    </p>
+    <p>
+      <font ><b>[C]
+          &lt;-&gt; </b></font>
+      <font >se
+        expande C.</font>
+    </p>
+    <p><img src="/images/2_Busqueda/image009.png" name="Image3" align="bottom" width="197"
+        height="122" border="0" />
+    </p>
+    <p>
+      <font ><b>[G,F]
+          &lt;-&gt; </b></font>
+      <font >se
+        expande F.</font>
+    </p>
+    <p><img src="/images/2_Busqueda/image009.png" name="Imagen 2138945967" align="bottom"
+        width="203" height="117" border="0" />
+    </p>
+    <p>
+      <font ><b>[G,M,L]
+          &lt;-&gt; </b></font>
+      <font >se
+        expande L.</font>
+    </p>
+    <p><img src="/images/2_Busqueda/image009.png" name="Imagen 1979444810" align="bottom"
+        width="196" height="117" border="0" />
+    </p>
+    <p>
+      <font ><b>[G,M]
+          &lt;-&gt; </b></font>
+      <font >se
+        expande M.</font>
+    </p>
+    <p><img src="/images/2_Busqueda/image009.png" name="Image4" align="bottom" width="201"
+        height="117" border="0" />
+    </p>
+    <p>Se da por hecho
+      que se ha encontrado la solución y esa es M.</p>
+    <p><br />
+      <br />
+
+    </p>
+    <p>Se detiene el
+      proceso</p>
+    <p>Puede
+      implementarse usando <i><b>Búsqueda-Arboles(</b></i><b>problema, New
+        Pila()</b><i><b>)</b></i>, y al ser recursivo requerirá más memoria</p>
+    <p><img src="/images/2_Busqueda/image010.png" name="Imagen 13" align="bottom" width="589"
+        height="252" border="0" />
+    </p>
+    <p>Una variante de
+      la búsqueda primero en profundidad es la<b> búsqueda hacia atrás</b>,
+      la cual utiliza menos memoria.</p>
+    <table width="589" cellpadding="7" cellspacing="0">
+      <col width="181" />
+
+      <col width="182" />
+
+      <col width="181" />
+
+      <tr valign="top">
+        <td width="181" height="5" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <br />
+
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">si</font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">no</font>
+            </font>
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Completo</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <br />
+
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2; margin-bottom: 0in">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Si
+                evita caminos redundantes y el espacio de estados es finito</font>
+            </font>
+          </p>
+          <p align="left" style="orphans: 2; widows: 2; margin-bottom: 0in">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Nota:
+                comprobar estados repetidos no evita los caminos redundantes.</font>
+            </font>
+          </p>
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Es
+                un espacio de estados finitos no es completo porque puede no
+                encontrar nunca la solución.</font>
+            </font>
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Optimo</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <br />
+
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">No,
+                puede encontrar otras soluciones antes de la optima</font>
+            </font>
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Complejidad</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Tiempo</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Espacio</b></font>
+            </font>
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="5" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <br />
+
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Exp
+                O(b^m)</font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2; margin-bottom: 0in">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Exp
+                O(b*m).</font>
+            </font>
+          </p>
+          <p align="left" style="orphans: 2; widows: 2; margin-bottom: 0in">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">En
+                caso de no haber frontera:</font>
+            </font>
+          </p>
+          <p align="left" style="orphans: 2; widows: 2; margin-bottom: 0in">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Si
+                solo se expande un nodo hijo O(m).</font>
+            </font>
+          </p>
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Si
+                no hace falta guardar el camino O(1)</font>
+            </font>
+          </p>
+        </td>
+      </tr>
+    </table>
+    <p><br />
+      <br />
+
+    </p>
+    <p><b>Ventaja:</b>
+      ocupa muy poco espacio.</p>
+    <p>Desventajas: No
+      es completo ni optima. Puede probar muchos caminos inútiles. Puede
+      quedar atrapado en bucles infinitos. Costo constante y no negativo.
+      Solo para problemas simples.</p>
+    <p >
+      <font>Búsqueda Primero en Profundidad Limitada
+        (Limited-Depth-First Search)</font>
+    </p>
+    <ul>
+      <li>
+        <p>Se basa en
+          Primero en profundidad.</p>
+      <li>
+        <p>Se establece
+          una profundidad máxima (p) como diámetro del espacio de estados
+          (camino máximo).</p>
+      <li>
+        <p>Cuando se
+          llega a la profundidad máxima p, si no hay solución, se retrocede.</p>
+    </ul>
+    <p>Se expande el
+      nodo más profundo de la frontera hasta un límite.</p>
+    <table width="589" cellpadding="7" cellspacing="0">
+      <col width="181" />
+
+      <col width="182" />
+
+      <col width="181" />
+
+      <tr valign="top">
+        <td width="181" height="5" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <br />
+
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">si</font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">no</font>
+            </font>
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Completo</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <br />
+
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Las
+                soluciones pueden estar más allá del límite p</font>
+            </font>
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Optimo</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <br />
+
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Puede
+                encontrar otras soluciones antes de la óptima, que podrían
+                quedar además por debajo del límite p.</font>
+            </font>
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Complejidad</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Tiempo</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Espacio</b></font>
+            </font>
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="5" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <br />
+
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Exp
+                O(b^p)</font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Lineal
+                O(p), O(b*p), O(1)</font>
+            </font>
+          </p>
+        </td>
+      </tr>
+    </table>
+    <p >
+      <br />
+      <br />
+
+    </p>
+    <p>Ventajas: ocupa
+      muy poco espacio, no cae en bucles infinitos.</p>
+    <p>Desventajas: no
+      es completa ni optima, puede probar muchos caminos inútiles, coste
+      constante y no negativo, solo para problemas simples.</p>
+    <p><br />
+      <br />
+
+    </p>
+    <p >
+      <br />
+      <br />
+
+    </p>
+    <p >
+      <font>Búsqueda en profundidad iterativa
+        (Depth-Iterative Search)</font>
+    </p>
+    <ul>
+      <li>
+        <p>Ampliación
+          de Profundidad Limitada.</p>
+      <li>
+        <p>De forma
+          gradual, se va ampliando el límite máximo de p.</p>
+    </ul>
+    <p>Se va ampliando
+      el límite hasta alcanzar una solución, que además será la óptima.</p>
+    <table width="589" cellpadding="7" cellspacing="0">
+      <col width="181" />
+
+      <col width="182" />
+
+      <col width="181" />
+
+      <tr valign="top">
+        <td width="181" height="5" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <br />
+
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>si</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>no</b></font>
+            </font>
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Completo</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Si,
+                si hay solución, la encuentra.</font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <br />
+
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Optimo</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Si,
+                porque cuando encuentra una solución, es la más superficial</font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <br />
+
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Complejidad</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Tiempo</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Espacio</b></font>
+            </font>
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="5" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <br />
+
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Exp
+                O(b^d)</font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Lineal
+                O(d), O(b*d), O(1)</font>
+            </font>
+          </p>
+        </td>
+      </tr>
+    </table>
+    <p><br />
+      <br />
+
+    </p>
+    <p><b>Ventajas:</b>
+      ocupa muy poco espacio, no cae en bucles infinitos, es completo y
+      optimo.</p>
+    <p><b>Desventajas:</b>
+      puede probar muchos caminos inútiles, visita muchas veces los nodos
+      superficiales, conto constante y no negativo.</p>
+    <p>Es el mejor
+      algoritmo de búsqueda no informada, sobre todo si el espacio de
+      búsqueda es muy grande y no se conoce a que profundidad esta la
+      solución.</p>
+    <p>Mejora: usar
+      primero en anchura hasta agotar la memoria y luego usar búsqueda a
+      profundidad iterativa desde cada uno de los nodos frontera (evita
+      visitar los nodos superficiales de nuevo)</p>
+    <p><img src="/images/2_Busqueda/image011.png" name="Imagen 14" align="bottom" width="589"
+        height="123" border="0" />
+    </p>
+    <p><img src="/images/2_Busqueda/image012.png" name="Imagen 15" align="bottom" width="578"
+        height="556" border="0" />
+    </p>
+    <p >
+      <font>Búsqueda Costo Iterativo</font>
+    </p>
+    <p>Si los costos de
+      las acciones son variables (pero no negativos).</p>
+    <p>Ventajas: ocupa
+      muy poco espacio, no cae en bucles infinitos, es completo y optimo (
+      o muy cerca).</p>
+    <p>Desventajas:
+      Puede probar muchos caminos inútiles, costos no negativos.</p>
+    <p >
+      <font>Búsqueda bidireccional</font>
+    </p>
+    <p>Ejecuta las dos
+      búsquedas simultáneamente, hacia adelante desde el estado inicial y
+      la otra hacia atrás desde el objetivo, parando cuando las dos
+      búsquedas se encuentren en el centro.</p>
+    <ul>
+      <li>
+        <p>Basada en
+          Primero en Anchura.</p>
+      <li>
+        <p>Dos
+          búsquedas: una desde el estado inicial u otra desde el estado
+          final.</p>
+      <li>
+        <p>Se busca el
+          estado intermedio común.</p>
+      <li>
+        <p>Una de las
+          búsquedas puede ser en profundidad iterativa.</p>
+    </ul>
+    <p>Cuando se conoce
+      la solución óptima las acciones son reversibles y se busca el
+      camino más corto.</p>
+    <p><br />
+      <br />
+
+    </p>
+    <p><img src="/images/2_Busqueda/image013.png" name="Imagen 16" align="bottom" width="565"
+        height="293" border="0" />
+    </p>
+    <table width="589" cellpadding="7" cellspacing="0">
+      <col width="181" />
+
+      <col width="182" />
+
+      <col width="181" />
+
+      <tr valign="top">
+        <td width="181" height="5" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <br />
+
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>si</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>no</b></font>
+            </font>
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Completo</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Si,
+                si hay solución, la encuentra.</font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <br />
+
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Optimo</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <br />
+
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">No,
+                no se puede garantizar que la solución encontrada sea la mejor</font>
+            </font>
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Complejidad</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Tiempo</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Espacio</b></font>
+            </font>
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="5" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <br />
+
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Exp
+                O(b^(d/2))</font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Lineal
+                O(b*(d/2))</font>
+            </font>
+          </p>
+        </td>
+      </tr>
+    </table>
+    <p>Ventajas: Mucho
+      mejor complejidad en tiempo que el resto de algoritmos.</p>
+    <p>Desventajas:
+      Complejidad espacial exponencial. No garantiza que la solución sea
+      optima. Requiere que se Conozca la solución. Requiere de acciones
+      reversibles.
+    </p>
+    <p >
+      <font>Búsqueda en grafo</font>
+    </p>
+    <p><img src="/images/2_Busqueda/image014.png" name="Imagen 17" align="bottom" width="589"
+        height="234" border="0" />
+    </p>
+    <p><br />
+      <br />
+
+    </p>
+    <h1>Búsqueda Informada (Heurísticas)</h1>
+    <p>Mantienen una
+      frontera y luego eligen en base a una heurística el nodo más
+      promisorio de la frontera, algunos métodos son:</p>
+    <ul>
+      <li>
+        <p>El mejor
+          primero (Best-FS) o voraz.</p>
+      <li>
+        <p>A
+          profundidad heurística (HDFS).</p>
+      <li>
+        <p>A*.</p>
+    </ul>
+    <p>Esta estrategia
+      utiliza el conocimiento específico del problema más allá de la
+      definición del problema en sí mismo. Puede llegar a encontrar
+      soluciones de una manera más eficiente que una estrategia no
+      informada.</p>
+    <p><br />
+      <br />
+
+    </p>
+    <p >
+      <font>Búsqueda primero el mejor (Best-First Search)</font>
+    </p>
+    <p>Selecciona un
+      nodo para la expansión basada en una<b> función de evaluación</b>
+      <i>f(n)</i>. normalmente se selecciona el nodo con la evaluación más
+      baja, porque la evaluación mide la distancia al objetivo.
+    </p>
+    <p>Se Basa en
+      Búsqueda de Costo uniforme, selecciona el siguiente nodo a expandir
+      mediante una función f(n) que se implementa dentro de la lista
+      (colas) con prioridades.</p>
+    <p><br />
+      <br />
+
+    </p>
+    <p><i>Función
+        Heurística h(n)</i></p>
+    <p>Denotada como
+      <i>h(n): costo estimado del camino más barato desde el nodo n a un
+        nodo objetivo.</i>
+    </p>
+    <p>Debe de cumplir 2
+      condiciones:</p>
+    <ul>
+      <li>
+        <p>Ser
+          admisible: La función heurística no debe sobreestimar el costo
+          real, es decir, siempre debe dar un valor inferior al real.</p>
+        <ul>
+          <li>
+            <p>distancia
+              de línea recta (euclidiana)</p>
+          <li>
+            <p>distancia
+              de manhattan.</p>
+        </ul>
+      <li>
+        <p>Se
+          consistente (monótona):
+        </p>
+        <ul>
+          <li>
+            <p>No
+              decreciente. h(n) &lt;= c(n,a,n´) +h(n´)</p>
+            <ul>
+              <li>
+                <p>c(): costo
+                  de una acción.</p>
+              <li>
+                <p>n: nodo
+                  actual.</p>
+              <li>
+                <p>a: acción.</p>
+              <li>
+                <p>n': nodo
+                  resultado de acción</p>
+            </ul>
+        </ul>
+    </ul>
+    <p>Toda heurística
+      consistente es admisible, pero puede ser admisible y no consistente.</p>
+    <p><i>Función de
+        evaluación f(n)</i></p>
+    <ul>
+      <li>
+        <p>Calcula un
+          costo estimado.</p>
+      <li>
+        <p>Selecciona
+          el nodo con el menor costo</p>
+      <li>
+        <p>Si hay
+          empate elige el más nuevo</p>
+    </ul>
+    <p>Compuesto de una
+      combinación de:</p>
+    <ul>
+      <li>
+        <p>Función
+          costo: g(n), no negativo.</p>
+      <li>
+        <p>Función
+          Heurística: h(n)</p>
+      <li>
+        <p>Normalmente
+          es la suma f(n)= g(n)+h(n)</p>
+      <li>
+        <p>Suma
+          ponderada: f(n)= wg*g(n)+wh*h(n)</p>
+    </ul>
+    <p>Contorno
+    </p>
+    <p>Línea cerrada
+      sobre el grafo que define un costo estimado y que agrupa nodos, de
+      forma que el costo estimado de los nodos que queden dentro sea
+      inferior al establecido por el entorno, y el costo estimado de los
+      nodos que queden fuera sea superior al del entorno</p>
+    <p><br />
+      <br />
+
+    </p>
+    <p >
+      <font>Búsqueda voraz primero el mejor (Greedy
+        Search)</font>
+    </p>
+    <p>Se trata de
+      expandir el nodo más cercano al objetivo, alegando que probablemente
+      conduzca rápidamente a una solución, evaluando los nodos con la
+      función heurística <i>f(n)=h(n).</i></p>
+    <p>Algunos nombres
+      con el que también se le conoce son</p>
+    <ul>
+      <li>
+        <p>Búsqueda
+          Escalonada</p>
+      <li>
+        <p>Búsqueda de
+          la Máxima Pendiente</p>
+      <li>
+        <p>Búsqueda
+          del Gradiente</p>
+    </ul>
+    <p>No tiene en
+      cuenta el costo del camino recorrido, expande el nodo más cercano a
+      la solución.</p>
+    <p><br />
+      <br />
+
+    </p>
+    <p><img src="/images/2_Busqueda/image015.png" name="Imagen 18" align="bottom" width="578"
+        height="566" border="0" />
+    </p>
+    <table width="589" cellpadding="7" cellspacing="0">
+      <col width="181" />
+
+      <col width="182" />
+
+      <col width="181" />
+
+      <tr valign="top">
+        <td width="181" height="5" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <br />
+
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>si</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>no</b></font>
+            </font>
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Completo</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <br />
+
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">No,
+                puede caer en callejones sin salida y no aportar solución</font>
+            </font>
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Optimo</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <br />
+
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">No,
+                aunque encuentre la solución puede no ser la óptima ya que no
+                tiene en cuenta los costos de las acciones.</font>
+            </font>
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Complejidad</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Tiempo</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Espacio</b></font>
+            </font>
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="5" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <br />
+
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Exp
+                O(b^m), m es el máximo nivel de espacio de búsqueda, aunque va a
+                depender de la heurística</font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <br />
+
+          </p>
+        </td>
+      </tr>
+    </table>
+    <p>Ventajas: Admite
+      costos variables de acciones. Reduce complejidad con buena
+      heurística. Evita demasiados caminos inútiles.</p>
+    <p> Desventajas: No
+      es completo ni optimo. No tiene en cuenta costos de acciones.</p>
+    <p >
+      <font>Búsqueda A*</font>
+    </p>
+    <p>Consta en
+      minimizar el costo estimado total de la solución.</p>
+    <p>Evalúa los nodos
+      combinados <i>g(n),</i> el costo para alcanzar el nodo y <i>h(n),</i>
+      el costo de ir al nodo objetivo. El siguiente nodo por expandir es el
+      que tenga menor costo estimado por la función de evaluación.</p>
+    <p><i>f(n)=g(n)+h(n)</i></p>
+    <p><i>f(n): </i>costo
+      más barato estimado de la solución a través de <i>n. </i>
+    </p>
+    <p><i>g(n):</i>
+      costo del camino desde el nodo de inicio al nodo <i>n.</i></p>
+    <p><i>h(n): </i>costo
+      estimado del camino más barato desde <i>n</i> al objetivo.</p>
+    <p><br />
+      <br />
+
+    </p>
+    <p>Sea C* el costo
+      del camino optimo:</p>
+    <ul>
+      <li>
+        <p>Expande
+          todos los nodos con f(n) &lt; C*.</p>
+      <li>
+        <p>Puede
+          expandir algunos nodos con f(n) = C*.</p>
+      <li>
+        <p>No expande
+          ningún nodo con f(n) &gt; C*.</p>
+    </ul>
+    <p>A* es óptimamente
+      eficiente, es decir, ningún otro algoritmo expande menos nodos que
+      él.</p>
+    <p><br />
+      <br />
+
+    </p>
+    <p><img src="/images/2_Busqueda/image016.png" name="Imagen 19" align="bottom" width="556"
+        height="872" border="0" />
+    </p>
+    <table width="589" cellpadding="7" cellspacing="0">
+      <col width="181" />
+
+      <col width="182" />
+
+      <col width="181" />
+
+      <tr valign="top">
+        <td width="181" height="5" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <br />
+
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>si</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>no</b></font>
+            </font>
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Completo</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Si,
+                si existe solución, la encuentra</font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <br />
+
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Optimo</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Si,
+                en árboles, la heurística es admisible y, en grafos, si es
+                consistente.</font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <br />
+
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Complejidad</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Tiempo</b></font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt"><b>Espacio</b></font>
+            </font>
+          </p>
+        </td>
+      </tr>
+      <tr valign="top">
+        <td width="181" height="5" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <br />
+
+          </p>
+        </td>
+        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Exp
+                O(b^d)</font>
+            </font>
+          </p>
+        </td>
+        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+          <p align="left" style="orphans: 2; widows: 2">
+            <font face="Calibri, serif">
+              <font size="2" style="font-size: 11pt">Lineal
+                O(b*(d/2))</font>
+            </font>
+          </p>
+        </td>
+      </tr>
+    </table>
+    <p>Ventajas: admite
+      costos variables de acciones. Evita caminos inútiles (poda). Reduce
+      complejidad con buena heurística. Es completo y óptimamente
+      eficiente.</p>
+    <p>Desventajas: Aun
+      pueden darse complejidades exponenciales, sobre todo en espacio.</p>
+    <h1>Juegos (Búsqueda Adversaria)</h1>
+    <p>¿Qué hay en
+      común en el Ajedrez, Gato y Otelo?</p>
+    <ul>
+      <li>
+        <p>Hay dos
+          agentes adversarios.</p>
+      <li>
+        <p>Los agentes
+          alternan sus jugadas.</p>
+      <li>
+        <p>Tienen<b>
+            información perfecta</b> (Es accesible a ambos jugadores, uno puede
+          ver la jugada del otro).</p>
+    </ul>
+    <p>Son entornos
+      competitivos, en los cuales los objetivos del agente están en
+      conflicto, esto nos lleva a las <b>búsquedas entre adversarios</b>,
+      mejor conocido como <b>juegos</b>.</p>
+    <p>En IA los juegos
+      son generalmente una clase más especializada que algunos teóricos
+      de juegos llaman <b> juegos de suma cero,</b> de 2 jugadores, por
+      turnos, deterministas, de <b>información perfecta</b>. En nuestra
+      terminología, significan entornos deterministas, totalmente
+      observables en los cuales hay 2 agentes cuyas acciones deben alternar
+      y en los que los valores utilidad, al final de juego son siempre
+      iguales y opuestas.</p>
+    <p>La <b>Poda</b>
+      permite ignorar partes del árbol de búsqueda que no marcan ninguna
+      diferencia para obtener la opción final.</p>
+    <p>Las <b>funciones
+        de evaluación</b> heurísticas nos permiten aproximar la utilidad
+      verdadera de un estado sin hacer una búsqueda completa.</p>
+    <p >
+      <font>Teoría de juegos</font>
+    </p>
+    <p>La teoría de
+      juegos es una rama de la economía que modela entornos multi agente
+      como un juego donde el impacto de un agente sobre los demás es
+      significante, independientemente de si cooperan o compiten.</p>
+    <p>Ejemplo: juego de
+      gato.</p>
+    <p>Es un juego en un
+      tablero de 3x3 casilleros, donde 2 agentes alternan sus jugadas.</p>
+    <p>Reglas:</p>
+    <ul>
+      <li>
+        <p>Jugador 1
+          (J1) escribe X y el jugador 2 (J2) escribe O.</p>
+    </ul>
+    <center>
+      <table width="100" cellpadding="7" cellspacing="0">
+        <col width="18" />
+
+        <col width="20" />
+
+        <col width="18" />
+
+        <tr>
+          <td width="18" height="14" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">O</font>
+              </font>
+            </p>
+          </td>
+          <td width="20" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">X</font>
+              </font>
+            </p>
+          </td>
+          <td width="18" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">X</font>
+              </font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td width="18" height="12" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">X</font>
+              </font>
+            </p>
+          </td>
+          <td width="20" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">O</font>
+              </font>
+            </p>
+          </td>
+          <td width="18" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">X</font>
+              </font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td width="18" height="18" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">X</font>
+              </font>
+            </p>
+          </td>
+          <td width="20" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">O</font>
+              </font>
+            </p>
+          </td>
+          <td width="18" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">O</font>
+              </font>
+            </p>
+          </td>
+        </tr>
+      </table>
+    </center>
+    <ul>
+      <li>
+        <p>El primero
+          en completar una línea con 3 de sus marcas gana.</p>
+    </ul>
+    <center>
+      <table width="100" cellpadding="7" cellspacing="0">
+        <col width="18" />
+
+        <col width="20" />
+
+        <col width="18" />
+
+        <tr>
+          <td width="18" height="14" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">O</font>
+              </font>
+            </p>
+          </td>
+          <td width="20" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">X</font>
+              </font>
+            </p>
+          </td>
+          <td width="18" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">X</font>
+              </font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td width="18" height="12" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">X</font>
+              </font>
+            </p>
+          </td>
+          <td width="20" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">O</font>
+              </font>
+            </p>
+          </td>
+          <td width="18" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">X</font>
+              </font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td width="18" height="18" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <br />
+
+            </p>
+          </td>
+          <td width="20" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <br />
+
+            </p>
+          </td>
+          <td width="18" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">O</font>
+              </font>
+            </p>
+          </td>
+        </tr>
+      </table>
+    </center>
+    <ul>
+      <li>
+        <p>Si ninguno
+          logra completar una línea es empate.</p>
+    </ul>
+    <center>
+      <table width="100" cellpadding="7" cellspacing="0">
+        <col width="18" />
+
+        <col width="20" />
+
+        <col width="18" />
+
+        <tr>
+          <td width="18" height="14" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">O</font>
+              </font>
+            </p>
+          </td>
+          <td width="20" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">X</font>
+              </font>
+            </p>
+          </td>
+          <td width="18" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">O</font>
+              </font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td width="18" height="12" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">O</font>
+              </font>
+            </p>
+          </td>
+          <td width="20" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">O</font>
+              </font>
+            </p>
+          </td>
+          <td width="18" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">X</font>
+              </font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td width="18" height="18" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">X</font>
+              </font>
+            </p>
+          </td>
+          <td width="20" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">O</font>
+              </font>
+            </p>
+          </td>
+          <td width="18" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">X</font>
+              </font>
+            </p>
+          </td>
+        </tr>
+      </table>
+    </center>
+    <p>Escenario1: Es
+      turno del Agente con “X”, tiene que tomar la siguiente decisión:
+      ¿dónde poner la próxima “X”?</p>
+    <center>
+      <table width="100" cellpadding="7" cellspacing="0">
+        <col width="18" />
+
+        <col width="20" />
+
+        <col width="18" />
+
+        <tr>
+          <td width="18" height="14" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">X</font>
+              </font>
+            </p>
+          </td>
+          <td width="20" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <br />
+
+            </p>
+          </td>
+          <td width="18" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <br />
+
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td width="18" height="12" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <br />
+
+            </p>
+          </td>
+          <td width="20" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <br />
+
+            </p>
+          </td>
+          <td width="18" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">X</font>
+              </font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td width="18" height="18" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">O</font>
+              </font>
+            </p>
+          </td>
+          <td width="20" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <br />
+
+            </p>
+          </td>
+          <td width="18" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">O</font>
+              </font>
+            </p>
+          </td>
+        </tr>
+      </table>
+    </center>
+    <p>El agente podría
+      elegir:</p>
+    <ul>
+      <li>
+        <p>Poner la
+          marca al azar.</p>
+      <li>
+        <p>En un orden
+          determinado (de izq. a der).</p>
+      <li>
+        <p>Tener una
+          estrategia.</p>
+        <ul>
+          <li>
+            <p>Estrategia
+              básica: Tener en cuenta que no gane el adversario.</p>
+        </ul>
+    </ul>
+    <p>Escenario 2: Es
+      turno del Agente con “X”, tiene que tomar la siguiente decisión:
+      ¿dónde poner la próxima “X”?</p>
+    <center>
+      <table width="100" cellpadding="7" cellspacing="0">
+        <col width="18" />
+
+        <col width="20" />
+
+        <col width="18" />
+
+        <tr>
+          <td width="18" height="14" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">X</font>
+              </font>
+            </p>
+          </td>
+          <td width="20" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <br />
+
+            </p>
+          </td>
+          <td width="18" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">X</font>
+              </font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td width="18" height="12" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <br />
+
+            </p>
+          </td>
+          <td width="20" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <br />
+
+            </p>
+          </td>
+          <td width="18" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <br />
+
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td width="18" height="18" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">O</font>
+              </font>
+            </p>
+          </td>
+          <td width="20" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <br />
+
+            </p>
+          </td>
+          <td width="18" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">O</font>
+              </font>
+            </p>
+          </td>
+        </tr>
+      </table>
+    </center>
+    <p>Estrategia básica
+      mejorada: Tener en cuenta que no gane el adversario, pero también
+      elegir una jugada ganadora.</p>
+    <p>Escenario 3: Es
+      turno del Agente con “X”, tiene que tomar la siguiente decisión:
+      ¿dónde poner la próxima “X”?</p>
+    <center>
+      <table width="100" cellpadding="7" cellspacing="0">
+        <col width="18" />
+
+        <col width="20" />
+
+        <col width="18" />
+
+        <tr>
+          <td width="18" height="14" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <br />
+
+            </p>
+          </td>
+          <td width="20" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <br />
+
+            </p>
+          </td>
+          <td width="18" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">X</font>
+              </font>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td width="18" height="12" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <br />
+
+            </p>
+          </td>
+          <td width="20" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">O</font>
+              </font>
+            </p>
+          </td>
+          <td width="18" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <br />
+
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td width="18" height="18" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <br />
+
+            </p>
+          </td>
+          <td width="20" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <br />
+
+            </p>
+          </td>
+          <td width="18" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p style="orphans: 2; widows: 2">
+              <br />
+
+            </p>
+          </td>
+        </tr>
+      </table>
+    </center>
+    <p>El jugador “X”
+      tiene 7 opciones de dónde colocar su marca, pero:</p>
+    <ul>
+      <li>
+        <p>¿Es posible
+          anticipar que jugadas serán mejores?</p>
+      <li>
+        <p>¿Es posible
+          anticipar todas las jugadas?</p>
+      <li>
+        <p>¿Podré
+          representarlo como un problema de búsqueda y aplicar A* o algún
+          otro?</p>
+    </ul>
+    <p >
+      <font>Problemas de búsqueda adversaria</font>
+    </p>
+    <p>Un <b>problema de
+        búsqueda adversaria</b> de define como:</p>
+    <ul>
+      <li>
+        <p>La
+          descripción de un<b> estado inicial</b> desde donde comienza la
+          búsqueda y una indicación de quien debe realizar la movida.</p>
+      <li>
+        <p>Un <b>conjunto
+            de operadores</b> que definen las movidas legales a disposición de
+          los jugadores.</p>
+      <li>
+        <p>Un <b>test
+            de terminación</b> que establece cuando el juego ha terminado. Los
+          estados donde el juego ha terminado se denominan estados terminales.</p>
+      <li>
+        <p>Una <b>función
+            de utilidad o de beneficio</b> que asigna un valor numérico a un
+          estado final de juego. Por ejemplo, la utilidad podría ser 1 si el
+          agente gana en ese estado, 0 si empata y –1 si pierde. Dependerá
+          del juego que ese valor sea cualquier número real.</p>
+    </ul>
+    <p>Una <b>solución</b>
+      al <b>problema de búsqueda adversaria</b> es determinar cuál nodo
+      sucesor a la inicial corresponde a la mejor movida para el jugador.</p>
+    <p><br />
+      <br />
+
+    </p>
+    <p >
+      <font>Algoritmo minimax</font>
+    </p>
+    <p>El algoritmo
+      minimax está diseñado para determinar cuál es la elección óptima
+      para el agente Max. Las premisas fundamentales son:</p>
+    <ul>
+      <li>
+        <p>Max va a
+          realizar siempre su mejor jugada.</p>
+      <li>
+        <p>Min también
+          va a realizar siempre su mejor jugada que será la peor jugada para
+          Max.</p>
+      <li>
+        <p>Primero
+          juega Max.</p>
+    </ul>
+    <p>A los agentes
+      adversarios se les llama <b>Max</b> y <b>Min</b>, ya que el agente
+      que busca la mejor movida (Max) busca maximizar su beneficio en cada
+      jugada y su oponente (Min) busca minimizar el beneficio de Max, ya
+      que se asume que Min juega de la mejor manera posible para su
+      beneficio.</p>
+    <p>El algoritmo
+      propagara información de la utilidad desde las hojas hasta la raíz.
+      La recursión avanza hacia las hojas del árbol y entonces los
+      valores minimax retroceden por el árbol de la recursión cuando se
+      va deshaciendo.</p>
+    <p><br />
+      <br />
+
+    </p>
+    <p>El algoritmo
+      minimax realiza una exploración primero en profundidad completa del
+      árbol de juegos.</p>
+    <p><br />
+      <br />
+
+    </p>
+    <p >
+      <font>Poda alfa-beta</font>
+    </p>
+    <p><br />
+      <br />
+
+    </p>
+    <p><img src="/images/2_Busqueda/image017.png" name="Imagen 20" align="bottom" width="352"
+        height="331" border="0" />
+    </p>
+    <p><br />
+      <br />
+
+    </p>
+    <p><br />
+      <br />
+
+    </p>
+    <p><br />
+      <br />
+
+    </p>
+    <p>Búsqueda local,
+      simulated annealing, ascenso de la colina</p>
+  </main>
 
 
-<%- include ../layouts/pie.ejs %>
+  <%- include ../layouts/pie.ejs %>

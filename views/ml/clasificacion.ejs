@@ -1,7 +1,3006 @@
 <%- include ../layouts/cabecera.ejs %>
 
 <main>
-  <h2>Clasificacion</h2>
+    <h1>
+    Clasificación</h1>
+    <h3>Dataset</h3>
+    <p>El
+    siguiente dataset será el mismo en todos los ejemplos de
+    clasificación lo cual será más sencillo al final saber que modelo
+    se adapta mejor a nuestros datos y cual predice mucho mejor con ayuda
+    de la matriz de confusión.</p>
+    <p><img src="60340dff31f1e3cd3fe3078f40373d40_html_b92824696c02d628.png" name="Imagen 10" align="bottom" width="480" height="433" border="0"/>
+    </p>
+    <p>Descripción:
+    Datos de publicidad de una red social. Vemos el genero de una
+    persona, la edad, el salario y si la persona compro (1) o no compro
+    (0) un producto que se ofertaba en la red social.</p>
+    <p>Objetivo:
+    Una empresa quiere saber si le conviene publicar su producto en dicha
+    red social.</p>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h2>Regresion Logística</h2>
+    <h3>Python</h3>
+    <h4>Importación del dataset</h4>
+    <p>Tomamos
+    las columnas como lo son la <b>Age</b> y el <b>EstimatedSalary</b>
+    estimado como variables independientes y <b>Purchased </b>como la
+    dependiente. 
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          <span>import numpy as np</span></p>
+          <p>
+          <span>import matplotlib.pyplot as plt</span></p>
+          <p>
+          <span>import pandas as pd</span></p>
+          <p>
+          <br/>
+    
+          </p>
+          <p>
+          <span>dataset = pd.read_csv('Social_Network_Ads.csv')</span></p>
+          <p>
+          <span>X = dataset.iloc[:,[2,3]].values</span></p>
+          <p><span>y
+          = dataset.iloc[:,[4]].values</span></p>
+        </td>
+      </tr>
+    </table>
+    <p><img src="60340dff31f1e3cd3fe3078f40373d40_html_d6497c7d9b59df1a.png" name="Imagen 9" align="bottom" hspace="12" width="480" height="452" border="0"/>
+    </p>
+    <h4>Tratamiendo de NA’s</h4>
+    <p>Opcional.</p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          from sklearn.impute import SimpleImputer</p>
+          <p>
+          imputer = SimpleImputer(missing_values=np.nan, strategy='mean')</p>
+          <p>imputer
+          = imputer.fit(X[:,1:3]) # ajustando valoresX[:,1:3] =
+          imputer.transform(X[:,1:3])</p>
+        </td>
+      </tr>
+    </table>
+    <h4>Dividiendo el dataset en conjunto de
+    entrenamiento y testeo</h4>
+    <p>Al
+    tener 400 tuplas dividiremos el conjunto en 75% entrenamiento y 25%
+    testing y el <b>random_state</b> lo dejamos en 1 para que compares
+    dichos conjuntos con los de este ejemplo.</p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          <span>from sklearn.model_selection import
+          train_test_split</span></p>
+          <p><span>X_train,
+          X_test, y_train, y_test =
+          train_test_split(X,y,test_size=0.25,random_state=1)</span></p>
+        </td>
+      </tr>
+    </table>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <h4>Escalado de variables</h4>
+    <p>Escalamos
+    solo las variables dependientes.</p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          <span>from sklearn.preprocessing import
+          StandardScaler</span></p>
+          <p>
+          <br/>
+    
+          </p>
+          <p>
+          <span>sc_X = StandardScaler()</span></p>
+          <p>
+          <span>X_train = sc_X.fit_transform(X_train)</span></p>
+          <p><span>X_test
+          = sc_X.transform(X_test)</span></p>
+        </td>
+      </tr>
+    </table>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <h4>Creando y ajustando el modelo</h4>
+    <p>Importamos
+    la función de regresión logística. Dejamos el <b>random_state</b>
+    en 0 si quieres obtener los mismos resultados de este ejemplo.</p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          <span>from sklearn.linear_model import
+          LogisticRegression</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span>classifier = LogisticRegression(random_state=0)</span></p>
+          <p><span>classifier.fit(X_train,y_train)</span></p>
+        </td>
+      </tr>
+    </table>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <h4>Predicción del modelo</h4>
+    <p>Realizamos
+    la predicción.</p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          <span>y_pred=classifier.predict(X_test)</span></p>
+        </td>
+      </tr>
+    </table>
+    <p><span>Comparamos.</span></p>
+    <p><img src="60340dff31f1e3cd3fe3078f40373d40_html_341e451cc0e79de4.png" name="Imagen 8" align="bottom" width="286" height="480" border="0"/>
+    </p>
+    <h4>Matriz de confusión</h4>
+    <p>Comparar
+    las predicciones con los valores reales como en el paso anterior
+    suele ser muy complicado y fácil de perderse, para ello podemos
+    ayudarnos de la matriz de confusión. Python nos ofrece la función
+    la cual obtenemos una matriz de confusión, como paramentos indicamos
+    las variables dependientes del conjunto de test y de entrenamiento.</p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          <span>from sklearn.metrics import confusion_matrix</span></p>
+          <p>
+           
+          </p>
+          <p>
+          c_m=confusion_matrix(y_test, y_pred)</p>
+          <p>
+          <br/>
+    
+          </p>
+          <p>
+          # |------------------------|-----------------------|</p>
+          <p>
+          # | Los que si compraron   | Los que no compraron  |</p>
+          <p>
+          # | predijo correctamente  | pero predice que si   |</p>
+          <p>
+          # |------------------------|-----------------------|</p>
+          <p>
+          # | Los que si compraron   | Los que no compraron  |</p>
+          <p>
+          # |  pero predice que no   | predijo correctamente |</p>
+          <p>
+          <span>#
+          |------------------------|-----------------------|</span></p>
+          <p><br/>
+    
+          </p>
+        </td>
+      </tr>
+    </table>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <p><img src="60340dff31f1e3cd3fe3078f40373d40_html_50629d83856d1f28.png" name="Imagen 7" align="bottom" hspace="12" width="231" height="90" border="0"/>
+    </p>
+    <p>La
+    predicción del algoritmo roda el 89%</p>
+    <h4>Visualización de los resultados</h4>
+    <p>Mostraremos
+    como se comporta el modelo de predicción con una gráfica de
+    matplotlib.</p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          <span>from matplotlib.colors import ListedColormap</span></p>
+          <p>
+          <span>X_set, y_set=X_train, y_train</span></p>
+          <p>
+           
+          </p>
+          <p>
+          # Genera todos los punto del dominio posible (mallado de la
+          region)</p>
+          <p>
+          <span>X1,X2=np.meshgrid(np.arange(start=X_set[:,0].min()-1,stop=X_set[:,0].max()+1,step=0.01),</span></p>
+          <p>
+                           
+          <span>np.arange(start=X_set[:,1].min()-1,stop=X_set[:,1].max()+1,step=0.01))</span></p>
+          <p>
+          <span># pindando todo el plano </span>
+          </p>
+          <p>
+          <span>plt.contourf(X1,X2,classifier.predict(np.array([X1.ravel(),X2.ravel()]).T).reshape(X1.shape),</span></p>
+          <p>
+                       <span>alpha=0.75,cmap=ListedColormap(('red','green')))</span></p>
+          <p>
+          # division de la region del trabajo (Dominio)</p>
+          <p>
+          <span>plt.xlim(X1.min(),X1.max())</span></p>
+          <p>
+          <span>plt.ylim(X2.min(),X2.max())</span></p>
+          <p>
+           
+          </p>
+          <p>
+          # pintando los resultados categoricos en el grafico</p>
+          <p>
+          <span>for i, j in enumerate(np.unique(y_set)):</span></p>
+          <p>
+              <span>aux=(y_set == j).ravel()</span></p>
+          <p>
+              <span>plt.scatter(X_set[aux, 0], X_set[aux, 1],</span></p>
+          <p>
+                          <span>c = ListedColormap(('red',
+          'green'))(i), label = j)</span></p>
+          <p>
+           
+          </p>
+          <p>
+          plt.title('Classificador Regresion Logistico')</p>
+          <p>
+          plt.xlabel('algo en x')</p>
+          <p>
+          plt.ylabel('Si/No')</p>
+          <p>
+          plt.legend()</p>
+          <p><span>plt.show()</span></p>
+        </td>
+      </tr>
+    </table>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <p><img src="60340dff31f1e3cd3fe3078f40373d40_html_701bce8c3a5ff8e4.png" name="Image1" align="bottom" hspace="12" width="384" height="278" border="0"/>
+    </p>
+    <h3><span>R</span></h3>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <h4>Importación del dataset</h4>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          <span>dataset = read.csv('Social_Network_Ads.csv')</span></p>
+          <p><span>dataset
+          = dataset[,3:5]</span></p>
+        </td>
+      </tr>
+    </table>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <h4>Tratamiendo de NA’s</h4>
+    <p>Opcional.</p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          <br/>
+    
+          </p>
+        </td>
+      </tr>
+    </table>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Dividiendo el dataset en conjunto de
+    entrenamiento y testeo</h4>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          <span># install.packages(&quot;caTools&quot;) # solo
+          se necesita ejecutar una vez</span></p>
+          <p>
+          <span># library(caTools)</span></p>
+          <p>
+          <span># configurando semilla aleatoria para la
+          division de datos</span></p>
+          <p>
+          <span>set.seed(1)</span></p>
+          <p>
+          <span># se elige el porcentaje de los datos para el
+          training en %</span></p>
+          <p>
+          <span>split =
+          sample.split(dataset$Purchased,SplitRatio = 0.25)</span></p>
+          <p>
+          <span>print(split)</span></p>
+          <p>
+          <span># Dividiendo el conjunto , False para el test</span></p>
+          <p>
+          <span>training_set = subset(dataset,split == FALSE)</span></p>
+          <p>
+          <span># Dividiendo el conjunto , True para el
+          training</span></p>
+          <p><span>testing_set
+          = subset(dataset,split == TRUE)</span></p>
+        </td>
+      </tr>
+    </table>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <h4>Escalado de variables</h4>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          <span>training_set[,1:2] = scale(training_set[,1:2])</span></p>
+          <p><span>testing_set[,1:2]
+          = scale(testing_set[,1:2])</span></p>
+        </td>
+      </tr>
+    </table>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <h4>Creando y ajustando el modelo</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          classifier = glm(formula = Purchased ~ . ,</p>
+          <p>
+                           data = training_set,</p>
+          <p>    
+                      family = binomial)</p>
+        </td>
+      </tr>
+    </table>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Prediccion del modelo</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          prob_pred = predict(classifier,type = &quot;response&quot;,
+          newdata = testing_set[,-3])</p>
+          <p>
+          print(prob_pred)</p>
+          <p>
+           
+          </p>
+          <p>
+          y_pred = ifelse(prob_pred &gt; 0.5, 1, 0)</p>
+          <p>print(y_pred)</p>
+        </td>
+      </tr>
+    </table>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Matriz de confusion</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          cm = table(testing_set[,3],y_pred)</p>
+          <p>print(cm)</p>
+        </td>
+      </tr>
+    </table>
+    <p><img src="60340dff31f1e3cd3fe3078f40373d40_html_f6edbf7880804970.png" name="Image2" align="bottom" hspace="12" width="257" height="108" border="0"/>
+    </p>
+    <h4>Visualizacion de los resultados de entrenamiento</h4>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          <span>set = training_set</span></p>
+          <p>
+          <span>X1 = seq(min(set[,1]) -1, max(set[,1]) + 1, by
+          = 0.01)</span></p>
+          <p>
+          <span>X2 = seq(min(set[,2]) -1, max(set[,2]) + 1, by
+          = 0.01)</span></p>
+          <p>
+          <span>grid_set = expand.grid(X1,X2)</span></p>
+          <p>
+          <span>colnames(grid_set) = c('Age','EstimatedSalary')</span></p>
+          <p>
+          <span>prob_set=predict(classifier,type = 'response',
+          newdata = grid_set)</span></p>
+          <p>
+          <span>y_grid = ifelse(prob_set &gt; 0.5, 1, 0)</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span>plot(</span></p>
+          <p>
+              <span>set[,-3],</span></p>
+          <p>
+              <span>main = &quot;Clasificacion (Conjunto de
+          Entrenamiento)&quot;,</span></p>
+          <p>
+              <span>xlab = 'Edad',</span></p>
+          <p>
+              <span>ylab = 'Sueldo Estimado',</span></p>
+          <p>
+              <span>xlim = range(X1),</span></p>
+          <p>
+              <span>ylim = range(X2))</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span>contour(</span></p>
+          <p>
+              <span>X1,</span></p>
+          <p>
+              <span>X2,</span></p>
+          <p>
+              <span>matrix(as.numeric(y_grid), length(X1),
+          length(X2)),</span></p>
+          <p>
+              <span>add = TRUE)</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span>points(grid_set, pch = '.', col = ifelse(y_grid
+          == 1, 'springgreen3', 'tomato'))</span></p>
+          <p><span>points(set,
+          pch = 21, bg = ifelse(set[,3] == 1, 'green4', 'red3'))</span></p>
+        </td>
+      </tr>
+    </table>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <h4>Visualizacion de los resultados de testing</h4>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          <span>set = testing_set</span></p>
+          <p>
+          <span>X1 = seq(min(set[,1]) -1, max(set[,1]) + 1, by
+          = 0.01)</span></p>
+          <p>
+          <span>X2 = seq(min(set[,2]) -1, max(set[,2]) + 1, by
+          = 0.01)</span></p>
+          <p>
+          <span>grid_set = expand.grid(X1,X2)</span></p>
+          <p>
+          <span>colnames(grid_set) = c('Age','EstimatedSalary')</span></p>
+          <p>
+          <span>prob_set=predict(classifier, type = &quot;response&quot;,
+          newdata = grid_set)</span></p>
+          <p>
+          <span>y_grid = ifelse(prob_set &gt; 0.5, 1, 0)</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span>plot(</span></p>
+          <p>
+            <span>set[,-3],</span></p>
+          <p>
+            <span>main = &quot;Modelo de Regresion Logistica
+          (Testing)&quot;,</span></p>
+          <p>
+            <span>xlab = 'Edad',</span></p>
+          <p>
+            <span>ylab = 'Sueldo Estimado',</span></p>
+          <p>
+            <span>xlim = range(X1),</span></p>
+          <p>
+            <span>ylim = range(X2))</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span>contour(</span></p>
+          <p>
+            <span>X1,</span></p>
+          <p>
+            <span>X2,</span></p>
+          <p>
+            <span>matrix(as.numeric(y_grid), length(X1),
+          length(X2)),</span></p>
+          <p>
+            <span>add = TRUE)</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span>points(grid_set, pch = '.', col = ifelse(y_grid
+          == 1, 'springgreen3', 'tomato'))</span></p>
+          <p><span>points(set,
+          pch = 21, bg = ifelse(set[,3] == 1, 'green4', 'red3'))</span></p>
+        </td>
+      </tr>
+    </table>
+    <h2><br/>
+    
+    </h2>
+    <h2><span>KNN</span></h2>
+    <h3><span>Python</span></h3>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Creando y ajustando el modelo</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          from sklearn.neighbors import KNeighborsClassifier 
+          </p>
+          <p>
+           
+          </p>
+          <p>
+          classifier = KNeighborsClassifier(n_neighbors=5,
+          metric=&quot;minkowski&quot;, p=2)</p>
+          <p>classifier.fit(X_train,y_train)</p>
+        </td>
+      </tr>
+    </table>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Prediccion del modelo</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          y_pred=classifier.predict(X_test)</p>
+        </td>
+      </tr>
+    </table>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Matriz de confusion</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          from sklearn.metrics import confusion_matrix</p>
+          <p>
+           
+          </p>
+          <p>c_m=confusion_matrix(y_test,
+          y_pred)</p>
+        </td>
+      </tr>
+    </table>
+    <p><img src="60340dff31f1e3cd3fe3078f40373d40_html_26bc41601d3a6b8a.png" name="Image3" align="bottom" hspace="12" width="232" height="95" border="0"/>
+    </p>
+    <h4>Visualizacion de los resultados de entrenamiento</h4>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          <span>from matplotlib.colors import ListedColormap</span></p>
+          <p>
+          <span>X_set, y_set=X_train, y_train</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span># Genera todos los punto del dominio posible
+          (mallado de la region)</span></p>
+          <p>
+          <span>X1,X2=np.meshgrid(np.arange(start=X_set[:,0].min()-1,stop=X_set[:,0].max()+1,step=0.01),</span></p>
+          <p>
+                           
+          <span>np.arange(start=X_set[:,1].min()-1,stop=X_set[:,1].max()+1,step=0.01))</span></p>
+          <p>
+          <span># pindando todo el plano </span>
+          </p>
+          <p>
+          <span>plt.contourf(X1,X2,classifier.predict(np.array([X1.ravel(),X2.ravel()]).T).reshape(X1.shape),</span></p>
+          <p>
+                       <span>alpha=0.75,cmap=ListedColormap(('red','green')))</span></p>
+          <p>
+          <span># division de la region del trabajo (Dominio)</span></p>
+          <p>
+          <span>plt.xlim(X1.min(),X1.max())</span></p>
+          <p>
+          <span>plt.ylim(X2.min(),X2.max())</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span># pintando los resultados categoricos en el
+          grafico</span></p>
+          <p>
+          <span>for i, j in enumerate(np.unique(y_set)):</span></p>
+          <p>
+              <span>aux=(y_set == j).ravel()</span></p>
+          <p>
+              <span>plt.scatter(X_set[aux, 0], X_set[aux, 1],</span></p>
+          <p>
+                          <span>c = ListedColormap(('red',
+          'green'))(i), label = j)</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span>plt.title('Modelo K-NN entrenamiento')</span></p>
+          <p>
+          <span>plt.xlabel('algo en x')</span></p>
+          <p>
+          <span>plt.ylabel('Si/No')</span></p>
+          <p>
+          <span>plt.legend()</span></p>
+          <p><span>plt.show()</span></p>
+        </td>
+      </tr>
+    </table>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <p><img src="60340dff31f1e3cd3fe3078f40373d40_html_21fc287520f9f828.png" name="Image4" align="bottom" hspace="12" width="384" height="278" border="0"/>
+    </p>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <h4>Visualizacion de los resultados de testing</h4>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          <span>X_set, y_set=X_test, y_test</span></p>
+          <p>
+          <span># Genera todos los punto del dominio posible
+          (mallado de la region)</span></p>
+          <p>
+          <span>X1,X2=np.meshgrid(np.arange(start=X_set[:,0].min()-1,stop=X_set[:,0].max()+1,step=0.01),</span></p>
+          <p>
+                           
+          <span>np.arange(start=X_set[:,1].min()-1,stop=X_set[:,1].max()+1,step=0.01))</span></p>
+          <p>
+          <span># pindando todo el plano </span>
+          </p>
+          <p>
+          <span>plt.contourf(X1,X2,classifier.predict(np.array([X1.ravel(),X2.ravel()]).T).reshape(X1.shape),</span></p>
+          <p>
+                       <span>alpha=0.75,cmap=ListedColormap(('red','green')))</span></p>
+          <p>
+          <span># division de la region del trabajo (Dominio)</span></p>
+          <p>
+          <span>plt.xlim(X1.min(),X1.max())</span></p>
+          <p>
+          <span>plt.ylim(X2.min(),X2.max())</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span># pintando los resultados categoricos en el
+          grafico</span></p>
+          <p>
+          <span>for i, j in enumerate(np.unique(y_set)):</span></p>
+          <p>
+              <span>aux=(y_set == j).ravel()</span></p>
+          <p>
+              <span>plt.scatter(X_set[aux, 0], X_set[aux, 1],</span></p>
+          <p>
+                          <span>c = ListedColormap(('red',
+          'green'))(i), label = j)</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span>plt.title('Modelo K-NN testing')</span></p>
+          <p>
+          <span>plt.xlabel('algo en x')</span></p>
+          <p>
+          <span>plt.ylabel('Si/No')</span></p>
+          <p>
+          <span>plt.legend()</span></p>
+          <p><span>plt.show()</span></p>
+        </td>
+      </tr>
+    </table>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <p><img src="60340dff31f1e3cd3fe3078f40373d40_html_86447457d9869a4c.png" name="Image5" align="bottom" hspace="12" width="384" height="278" border="0"/>
+    </p>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h3>R</h3>
+    <h4>Creando y ajustando el modelo</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          # library(class)</p>
+          <p>
+          y_pred = knn(training_set[,-3],</p>
+          <p>
+                           testing_set[,-3],</p>
+          <p>
+                           cl = training_set[,3],</p>
+          <p>
+                           k = 5)</p>
+          <p>print(y_pred)</p>
+        </td>
+      </tr>
+    </table>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Prediccion del modelo</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          # obtenemos las probabilidades listadas</p>
+          <p>
+          # prob_pred = predict(classifier,type = &quot;response&quot;,
+          newdata = testing_set[,-3])</p>
+          <p>
+          # print(prob_pred)</p>
+          <p>
+          # # 
+          </p>
+          <p>
+          # 
+          </p>
+          <p>
+          # y_pred = ifelse(prob_pred &gt; 0.5, 1, 0)</p>
+          <p>#
+          print(y_pred)</p>
+        </td>
+      </tr>
+    </table>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Matriz de confusion</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          cm = table(testing_set[,3],y_pred)</p>
+          <p>print(cm)</p>
+        </td>
+      </tr>
+    </table>
+    <p><img src="60340dff31f1e3cd3fe3078f40373d40_html_d25a2ffa29f60631.png" name="Image6" align="bottom" hspace="12" width="219" height="58" border="0"/>
+    </p>
+    <h4>Visualizacion de los resultados de entrenamiento</h4>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          <span># install.packages(&quot;ElemStatLearn&quot;) #
+          solo se necesita ejecutar una vez</span></p>
+          <p>
+          <span># library(ElemStatLearn)</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span>set = training_set</span></p>
+          <p>
+          <span>X1 = seq(min(set[,1]) -1, max(set[,1]) + 1, by
+          = 0.01)</span></p>
+          <p>
+          <span>X2 = seq(min(set[,2]) -1, max(set[,2]) + 1, by
+          = 0.01)</span></p>
+          <p>
+          <span>grid_set = expand.grid(X1,X2)</span></p>
+          <p>
+          <span>colnames(grid_set) = c('Age','EstimatedSalary')</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span>y_grid = knn(training_set[,-3],</span></p>
+          <p>
+                       <span>grid_set,</span></p>
+          <p>
+                       <span>cl = training_set[,3],</span></p>
+          <p>
+                       <span>k = 5)</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span>plot(</span></p>
+          <p>
+            <span>set[,-3],</span></p>
+          <p>
+            <span>main = &quot;Clasificacion K-nn (Conjunto de
+          Entrenamiento)&quot;,</span></p>
+          <p>
+            <span>xlab = 'Edad',</span></p>
+          <p>
+            <span>ylab = 'Sueldo Estimado',</span></p>
+          <p>
+            <span>xlim = range(X1),</span></p>
+          <p>
+            <span>ylim = range(X2))</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span>contour(</span></p>
+          <p>
+            <span>X1,</span></p>
+          <p>
+            <span>X2,</span></p>
+          <p>
+            <span>matrix(as.numeric(y_grid), length(X1),
+          length(X2)),</span></p>
+          <p>
+            <span>add = TRUE)</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span>points(grid_set, pch = '.', col = ifelse(y_grid
+          == 1, 'springgreen3', 'tomato'))</span></p>
+          <p><span>points(set,
+          pch = 21, bg = ifelse(set[,3] == 1, 'green4', 'red3'))</span></p>
+        </td>
+      </tr>
+    </table>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <h4>Visualizacion de los resultados de testing</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          set = testing_set</p>
+          <p>
+          X1 = seq(min(set[,1]) -1, max(set[,1]) + 1, by = 0.01)</p>
+          <p>
+          X2 = seq(min(set[,2]) -1, max(set[,2]) + 1, by = 0.01)</p>
+          <p>
+          grid_set = expand.grid(X1,X2)</p>
+          <p>
+          colnames(grid_set) = c('Age','EstimatedSalary')</p>
+          <p>
+           
+          </p>
+          <p>
+          y_grid = knn(training_set[,-3],</p>
+          <p>
+                       grid_set,</p>
+          <p>
+                       cl = training_set[,3],</p>
+          <p>
+                       k = 5)</p>
+          <p>
+           
+          </p>
+          <p>
+          plot(</p>
+          <p>
+            set[,-3],</p>
+          <p>
+            main = &quot;Clasificacion K-nn (Conjunto de Testing)&quot;,</p>
+          <p>
+            xlab = 'Edad',</p>
+          <p>
+            ylab = 'Sueldo Estimado',</p>
+          <p>
+            xlim = range(X1),</p>
+          <p>
+            ylim = range(X2))</p>
+          <p>
+           
+          </p>
+          <p>
+          contour(</p>
+          <p>
+            X1,</p>
+          <p>
+            X2,</p>
+          <p>
+            matrix(as.numeric(y_grid), length(X1), length(X2)),</p>
+          <p>
+            add = TRUE)</p>
+          <p>
+           
+          </p>
+          <p>
+          points(grid_set, pch = '.', col = ifelse(y_grid == 1,
+          'springgreen3', 'tomato'))</p>
+          <p>points(set,
+          pch = 21, bg = ifelse(set[,3] == 1, 'green4', 'red3'))</p>
+        </td>
+      </tr>
+    </table>
+    <h2><br/>
+    
+    </h2>
+    <h2>Máquinas de Soporte Vectorial</h2>
+    <h3>Python</h3>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Creando y ajustando el modelo</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          from sklearn.svm import SVC 
+          </p>
+          <p>
+           
+          </p>
+          <p>
+          classifier = SVC(kernel=&quot;linear&quot;, random_state=1)</p>
+          <p>classifier.fit(X_train,y_train)</p>
+        </td>
+      </tr>
+    </table>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Prediccion del modelo</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          y_pred=classifier.predict(X_test)</p>
+        </td>
+      </tr>
+    </table>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Matriz de confusion</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          from sklearn.metrics import confusion_matrix</p>
+          <p>
+           
+          </p>
+          <p>c_m=confusion_matrix(y_test,
+          y_pred)</p>
+        </td>
+      </tr>
+    </table>
+    <p><img src="60340dff31f1e3cd3fe3078f40373d40_html_769fd96dbe903f00.png" name="Image7" align="bottom" hspace="12" width="232" height="95" border="0"/>
+    </p>
+    <h4>Visualizacion de los resultados de entrenamiento</h4>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          <span>from matplotlib.colors import ListedColormap</span></p>
+          <p>
+          <span>X_set, y_set=X_train, y_train</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span># Genera todos los punto del dominio posible
+          (mallado de la region)</span></p>
+          <p>
+          <span>X1,X2=np.meshgrid(np.arange(start=X_set[:,0].min()-1,stop=X_set[:,0].max()+1,step=0.01),</span></p>
+          <p>
+                           
+          <span>np.arange(start=X_set[:,1].min()-1,stop=X_set[:,1].max()+1,step=0.01))</span></p>
+          <p>
+          <span># pindando todo el plano </span>
+          </p>
+          <p>
+          <span>plt.contourf(X1,X2,classifier.predict(np.array([X1.ravel(),X2.ravel()]).T).reshape(X1.shape),</span></p>
+          <p>
+                       <span>alpha=0.75,cmap=ListedColormap(('red','green')))</span></p>
+          <p>
+          <span># division de la region del trabajo (Dominio)</span></p>
+          <p>
+          <span>plt.xlim(X1.min(),X1.max())</span></p>
+          <p>
+          <span>plt.ylim(X2.min(),X2.max())</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span># pintando los resultados categoricos en el
+          grafico</span></p>
+          <p>
+          <span>for i, j in enumerate(np.unique(y_set)):</span></p>
+          <p>
+              <span>aux=(y_set == j).ravel()</span></p>
+          <p>
+              <span>plt.scatter(X_set[aux, 0], X_set[aux, 1],</span></p>
+          <p>
+                          <span>c = ListedColormap(('red',
+          'green'))(i), label = j)</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span>plt.title('Modelo SVM Entrenamiento')</span></p>
+          <p>
+          <span>plt.xlabel('algo en x')</span></p>
+          <p>
+          <span>plt.ylabel('Si/No')</span></p>
+          <p>
+          <span>plt.legend()</span></p>
+          <p><span>plt.show()</span></p>
+        </td>
+      </tr>
+    </table>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <p><img src="60340dff31f1e3cd3fe3078f40373d40_html_1ce68557f6b53263.png" name="Image8" align="bottom" hspace="12" width="384" height="278" border="0"/>
+    </p>
+    <h4>Visualizacion de los resultados de testing</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          X_set, y_set=X_test, y_test</p>
+          <p>
+           
+          </p>
+          <p>
+          # Genera todos los punto del dominio posible (mallado de la
+          region)</p>
+          <p>
+          X1,X2=np.meshgrid(np.arange(start=X_set[:,0].min()-1,stop=X_set[:,0].max()+1,step=0.01),</p>
+          <p>
+                           
+          np.arange(start=X_set[:,1].min()-1,stop=X_set[:,1].max()+1,step=0.01))</p>
+          <p>
+          # pindando todo el plano 
+          </p>
+          <p>
+          plt.contourf(X1,X2,classifier.predict(np.array([X1.ravel(),X2.ravel()]).T).reshape(X1.shape),</p>
+          <p>
+                       alpha=0.75,cmap=ListedColormap(('red','green')))</p>
+          <p>
+          # division de la region del trabajo (Dominio)</p>
+          <p>
+          plt.xlim(X1.min(),X1.max())</p>
+          <p>
+          plt.ylim(X2.min(),X2.max())</p>
+          <p>
+           
+          </p>
+          <p>
+          # pintando los resultados categoricos en el grafico</p>
+          <p>
+          for i, j in enumerate(np.unique(y_set)):</p>
+          <p>
+              aux=(y_set == j).ravel()</p>
+          <p>
+              plt.scatter(X_set[aux, 0], X_set[aux, 1],</p>
+          <p>
+                          c = ListedColormap(('red', 'green'))(i), label =
+          j)</p>
+          <p>
+           
+          </p>
+          <p>
+          plt.title('Modelo SVM Testing')</p>
+          <p>
+          plt.xlabel('algo en x')</p>
+          <p>
+          plt.ylabel('Si/No')</p>
+          <p>
+          plt.legend()</p>
+          <p>plt.show()</p>
+        </td>
+      </tr>
+    </table>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <p><img src="60340dff31f1e3cd3fe3078f40373d40_html_20b354af946d1971.png" name="Image9" align="bottom" hspace="12" width="384" height="278" border="0"/>
+    </p>
+    <h3>R</h3>
+    <h4>Creando y ajustando el modelo</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          # library(e1071)</p>
+          <p>
+          classifier = svm(formula = Purchased ~ . ,</p>
+          <p>
+                           data = training_set,</p>
+          <p>
+                           kernel = &quot;linear&quot;,</p>
+          <p>    
+                      type = &quot;C-classification&quot;)</p>
+        </td>
+      </tr>
+    </table>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Prediccion del modelo</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          y_pred=predict(classifier, newdata =  testing_set[,-3])  
+          </p>
+          <p>
+           
+          </p>
+          <p>print(y_pred)</p>
+        </td>
+      </tr>
+    </table>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Matriz de confusion</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          cm = table(testing_set[,3],y_pred)</p>
+          <p>print(cm)</p>
+        </td>
+      </tr>
+    </table>
+    <p><img src="60340dff31f1e3cd3fe3078f40373d40_html_1ea22cbf33ac6121.png" name="Image10" align="bottom" hspace="12" width="254" height="75" border="0"/>
+    </p>
+    <h4>Visualizacion de los resultados de entrenamiento</h4>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          <span># install.packages(&quot;ElemStatLearn&quot;) #
+          solo se necesita ejecutar una vez</span></p>
+          <p>
+          <span># library(ElemStatLearn)</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span>set = training_set</span></p>
+          <p>
+          <span>X1 = seq(min(set[,1]) -1, max(set[,1]) + 1, by
+          = 0.01)</span></p>
+          <p>
+          <span>X2 = seq(min(set[,2]) -1, max(set[,2]) + 1, by
+          = 0.01)</span></p>
+          <p>
+          <span>grid_set = expand.grid(X1,X2)</span></p>
+          <p>
+          <span>colnames(grid_set) = c('Age','EstimatedSalary')</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span>y_grid = predict(classifier, newdata =
+          grid_set) </span>
+          </p>
+          <p>
+           
+          </p>
+          <p>
+          <span>plot(</span></p>
+          <p>
+            <span>set[,-3],</span></p>
+          <p>
+            <span>main = &quot;Clasificacion SVM (Conjunto de
+          Entrenamiento)&quot;,</span></p>
+          <p>
+            <span>xlab = 'Edad',</span></p>
+          <p>
+            <span>ylab = 'Sueldo Estimado',</span></p>
+          <p>
+            <span>xlim = range(X1),</span></p>
+          <p>
+            <span>ylim = range(X2))</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span>contour(</span></p>
+          <p>
+            <span>X1,</span></p>
+          <p>
+            <span>X2,</span></p>
+          <p>
+            <span>matrix(as.numeric(y_grid), length(X1),
+          length(X2)),</span></p>
+          <p>
+            <span>add = TRUE)</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span>points(grid_set, pch = '.', col = ifelse(y_grid
+          == 1, 'springgreen3', 'tomato'))</span></p>
+          <p><span>points(set,
+          pch = 21, bg = ifelse(set[,3] == 1, 'green4', 'red3'))</span></p>
+        </td>
+      </tr>
+    </table>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <h4>Visualizacion de los resultados de testing</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          set = testing_set</p>
+          <p>
+          X1 = seq(min(set[,1]) -1, max(set[,1]) + 1, by = 0.01)</p>
+          <p>
+          X2 = seq(min(set[,2]) -1, max(set[,2]) + 1, by = 0.01)</p>
+          <p>
+          grid_set = expand.grid(X1,X2)</p>
+          <p>
+          colnames(grid_set) = c('Age','EstimatedSalary')</p>
+          <p>
+           
+          </p>
+          <p>
+          y_grid = predict(classifier, newdata = grid_set) 
+          </p>
+          <p>
+           
+          </p>
+          <p>
+          plot(</p>
+          <p>
+            set[,-3],</p>
+          <p>
+            main = &quot;Clasificacion SVM (Conjunto de Testing)&quot;,</p>
+          <p>
+            xlab = 'Edad',</p>
+          <p>
+            ylab = 'Sueldo Estimado',</p>
+          <p>
+            xlim = range(X1),</p>
+          <p>
+            ylim = range(X2))</p>
+          <p>
+           
+          </p>
+          <p>
+          contour(</p>
+          <p>
+            X1,</p>
+          <p>
+            X2,</p>
+          <p>
+            matrix(as.numeric(y_grid), length(X1), length(X2)),</p>
+          <p>
+            add = TRUE)</p>
+          <p>
+           
+          </p>
+          <p>
+          points(grid_set, pch = '.', col = ifelse(y_grid == 1,
+          'springgreen3', 'tomato'))</p>
+          <p>points(set,
+          pch = 21, bg = ifelse(set[,3] == 1, 'green4', 'red3'))</p>
+        </td>
+      </tr>
+    </table>
+    <h2>Kernel SVM</h2>
+    <h3>Python</h3>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Creando y ajustando el modelo</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          from sklearn.svm import SVC</p>
+          <p>
+           
+          </p>
+          <p>
+          classifier = SVC(kernel=&quot;rbf&quot;, random_state = 1)</p>
+          <p>classifier.fit(X_train,y_train)</p>
+        </td>
+      </tr>
+    </table>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Prediccion del modelo</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          y_pred=classifier.predict(X_test)</p>
+        </td>
+      </tr>
+    </table>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Matriz de confusion</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          from sklearn.metrics import confusion_matrix</p>
+          <p>
+           
+          </p>
+          <p>c_m=confusion_matrix(y_test,
+          y_pred)</p>
+        </td>
+      </tr>
+    </table>
+    <p><img src="60340dff31f1e3cd3fe3078f40373d40_html_b9cfad0fba52fdf.png" name="Image11" align="bottom" hspace="12" width="232" height="95" border="0"/>
+    </p>
+    <h4>Visualizacion de los resultados de entrenamiento</h4>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          <span>from matplotlib.colors import ListedColormap</span></p>
+          <p>
+          <span>X_set, y_set=X_train, y_train</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span># Genera todos los punto del dominio posible
+          (mallado de la region)</span></p>
+          <p>
+          <span>X1,X2=np.meshgrid(np.arange(start=X_set[:,0].min()-1,stop=X_set[:,0].max()+1,step=0.01),</span></p>
+          <p>
+                           
+          <span>np.arange(start=X_set[:,1].min()-1,stop=X_set[:,1].max()+1,step=0.01))</span></p>
+          <p>
+          <span># pindando todo el plano </span>
+          </p>
+          <p>
+          <span>plt.contourf(X1,X2,classifier.predict(np.array([X1.ravel(),X2.ravel()]).T).reshape(X1.shape),</span></p>
+          <p>
+                       <span>alpha=0.75,cmap=ListedColormap(('red','green')))</span></p>
+          <p>
+          <span># division de la region del trabajo (Dominio)</span></p>
+          <p>
+          <span>plt.xlim(X1.min(),X1.max())</span></p>
+          <p>
+          <span>plt.ylim(X2.min(),X2.max())</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span># pintando los resultados categoricos en el
+          grafico</span></p>
+          <p>
+          <span>for i, j in enumerate(np.unique(y_set)):</span></p>
+          <p>
+              <span>aux=(y_set == j).ravel()</span></p>
+          <p>
+              <span>plt.scatter(X_set[aux, 0], X_set[aux, 1],</span></p>
+          <p>
+                          <span>c = ListedColormap(('red',
+          'green'))(i), label = j)</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span>plt.title('Modelo Kernel radial SVM
+          Entrenamiento')</span></p>
+          <p>
+          <span>plt.xlabel('algo en x')</span></p>
+          <p>
+          <span>plt.ylabel('Si/No')</span></p>
+          <p>
+          <span>plt.legend()</span></p>
+          <p><span>plt.show()</span></p>
+        </td>
+      </tr>
+    </table>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <p><img src="60340dff31f1e3cd3fe3078f40373d40_html_b92e6eddf60d8ae9.png" name="Image12" align="bottom" hspace="12" width="384" height="278" border="0"/>
+    </p>
+    <h4>Visualizacion de los resultados de testing</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          X_set, y_set=X_test, y_test</p>
+          <p>
+           
+          </p>
+          <p>
+          # Genera todos los punto del dominio posible (mallado de la
+          region)</p>
+          <p>
+          X1,X2=np.meshgrid(np.arange(start=X_set[:,0].min()-1,stop=X_set[:,0].max()+1,step=0.01),</p>
+          <p>
+                           
+          np.arange(start=X_set[:,1].min()-1,stop=X_set[:,1].max()+1,step=0.01))</p>
+          <p>
+          # pindando todo el plano 
+          </p>
+          <p>
+          plt.contourf(X1,X2,classifier.predict(np.array([X1.ravel(),X2.ravel()]).T).reshape(X1.shape),</p>
+          <p>
+                       alpha=0.75,cmap=ListedColormap(('red','green')))</p>
+          <p>
+          # division de la region del trabajo (Dominio)</p>
+          <p>
+          plt.xlim(X1.min(),X1.max())</p>
+          <p>
+          plt.ylim(X2.min(),X2.max())</p>
+          <p>
+           
+          </p>
+          <p>
+          # pintando los resultados categoricos en el grafico</p>
+          <p>
+          for i, j in enumerate(np.unique(y_set)):</p>
+          <p>
+              aux=(y_set == j).ravel()</p>
+          <p>
+              plt.scatter(X_set[aux, 0], X_set[aux, 1],</p>
+          <p>
+                          c = ListedColormap(('red', 'green'))(i), label =
+          j)</p>
+          <p>
+           
+          </p>
+          <p>
+          plt.title('Modelo Kernel radial SVM Testing')</p>
+          <p>
+          plt.xlabel('algo en x')</p>
+          <p>
+          plt.ylabel('Si/No')</p>
+          <p>
+          plt.legend()</p>
+          <p>plt.show()</p>
+        </td>
+      </tr>
+    </table>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <p><img src="60340dff31f1e3cd3fe3078f40373d40_html_ec9984790a06033f.png" name="Image13" align="bottom" hspace="12" width="384" height="278" border="0"/>
+    </p>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h3>R</h3>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Creando y ajustando el modelo</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          # install.packages(&quot;e1071&quot;) # solo se necesita ejecutar
+          una vez</p>
+          <p>
+          # library()</p>
+          <p>
+           
+          </p>
+          <p>
+          classifier = svm(formula = Purchased ~ . ,</p>
+          <p>
+                           data = training_set,</p>
+          <p>
+                           type = &quot;C-classification&quot;,</p>
+          <p>    
+                      kernel = &quot;radial&quot;)</p>
+        </td>
+      </tr>
+    </table>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Prediccion del modelo</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          y_pred = predict(classifier, newdata = testing_set[,-3])</p>
+          <p>print(y_pred)</p>
+        </td>
+      </tr>
+    </table>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Matriz de confusion</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          cm = table(testing_set[,3],y_pred)</p>
+          <p>print(cm)</p>
+        </td>
+      </tr>
+    </table>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Visualizacion de los resultados de entrenamiento</h4>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          <span># install.packages(&quot;ElemStatLearn&quot;) #
+          solo se necesita ejecutar una vez</span></p>
+          <p>
+          <span># library(ElemStatLearn)</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span>set = training_set</span></p>
+          <p>
+          <span>X1 = seq(min(set[,1]) -1, max(set[,1]) + 1, by
+          = 0.01)</span></p>
+          <p>
+          <span>X2 = seq(min(set[,2]) -1, max(set[,2]) + 1, by
+          = 0.01)</span></p>
+          <p>
+          <span>grid_set = expand.grid(X1,X2)</span></p>
+          <p>
+          <span>colnames(grid_set) = c('Age','EstimatedSalary')</span></p>
+          <p>
+          <span>y_grid=predict(classifier, newdata = grid_set)</span></p>
+          <p>
+          <span>plot(</span></p>
+          <p>
+            <span>set[,-3],</span></p>
+          <p>
+            <span>main = &quot;Clasificacion Kernel Radial
+          (Conjunto de Entrenamiento)&quot;,</span></p>
+          <p>
+            <span>xlab = 'Edad',</span></p>
+          <p>
+            <span>ylab = 'Sueldo Estimado',</span></p>
+          <p>
+            <span>xlim = range(X1),</span></p>
+          <p>
+            <span>ylim = range(X2))</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span>contour(</span></p>
+          <p>
+            <span>X1,</span></p>
+          <p>
+            <span>X2,</span></p>
+          <p>
+            <span>matrix(as.numeric(y_grid), length(X1),
+          length(X2)),</span></p>
+          <p>
+            <span>add = TRUE)</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span>points(grid_set, pch = '.', col = ifelse(y_grid
+          == 1, 'springgreen3', 'tomato'))</span></p>
+          <p><span>points(set,
+          pch = 21, bg = ifelse(set[,3] == 1, 'green4', 'red3'))</span></p>
+        </td>
+      </tr>
+    </table>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <h4>Visualizacion de los resultados de testing</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          set = testing_set</p>
+          <p>
+          X1 = seq(min(set[,1]) -1, max(set[,1]) + 1, by = 0.01)</p>
+          <p>
+          X2 = seq(min(set[,2]) -1, max(set[,2]) + 1, by = 0.01)</p>
+          <p>
+          grid_set = expand.grid(X1,X2)</p>
+          <p>
+          colnames(grid_set) = c('Age','EstimatedSalary')</p>
+          <p>
+          y_grid=predict(classifier, newdata = grid_set)</p>
+          <p>
+           
+          </p>
+          <p>
+          plot(</p>
+          <p>
+            set[,-3],</p>
+          <p>
+            main = &quot;Clasificacion Kernel Radial (Conjunto de Testing)&quot;,</p>
+          <p>
+            xlab = 'Edad',</p>
+          <p>
+            ylab = 'Sueldo Estimado',</p>
+          <p>
+            xlim = range(X1),</p>
+          <p>
+            ylim = range(X2))</p>
+          <p>
+           
+          </p>
+          <p>
+          contour(</p>
+          <p>
+            X1,</p>
+          <p>
+            X2,</p>
+          <p>
+            matrix(as.numeric(y_grid), length(X1), length(X2)),</p>
+          <p>
+            add = TRUE)</p>
+          <p>
+           
+          </p>
+          <p>
+          points(grid_set, pch = '.', col = ifelse(y_grid == 1,
+          'springgreen3', 'tomato'))</p>
+          <p>points(set,
+          pch = 21, bg = ifelse(set[,3] == 1, 'green4', 'red3'))</p>
+        </td>
+      </tr>
+    </table>
+    <h3><br/>
+    
+    </h3>
+    <h3> 
+    </h3>
+    <h2>Naitive Bayes</h2>
+    <h3>Python</h3>
+    <h4>Creando y ajustando el modelo</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          from sklearn.naive_bayes import GaussianNB 
+          </p>
+          <p>
+           
+          </p>
+          <p>
+          classifier = GaussianNB()</p>
+          <p>classifier.fit(X_train,y_train)</p>
+        </td>
+      </tr>
+    </table>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Prediccion del modelo</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          y_pred=classifier.predict(X_test)</p>
+        </td>
+      </tr>
+    </table>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Matriz de confusion</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          from sklearn.metrics import confusion_matrix</p>
+          <p>
+           
+          </p>
+          <p>c_m=confusion_matrix(y_test,
+          y_pred)</p>
+        </td>
+      </tr>
+    </table>
+    <p><img src="60340dff31f1e3cd3fe3078f40373d40_html_72489dbc4a7bfcfd.png" name="Image14" align="bottom" hspace="12" width="232" height="95" border="0"/>
+    </p>
+    <h4>Visualizacion de los resultados de entrenamiento</h4>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          <span>from matplotlib.colors import ListedColormap</span></p>
+          <p>
+          <span>X_set, y_set=X_train, y_train</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span># Genera todos los punto del dominio posible
+          (mallado de la region)</span></p>
+          <p>
+          <span>X1,X2=np.meshgrid(np.arange(start=X_set[:,0].min()-1,stop=X_set[:,0].max()+1,step=0.01),</span></p>
+          <p>
+                           
+          <span>np.arange(start=X_set[:,1].min()-1,stop=X_set[:,1].max()+1,step=0.01))</span></p>
+          <p>
+          <span># pindando todo el plano </span>
+          </p>
+          <p>
+          <span>plt.contourf(X1,X2,classifier.predict(np.array([X1.ravel(),X2.ravel()]).T).reshape(X1.shape),</span></p>
+          <p>
+                       <span>alpha=0.75,cmap=ListedColormap(('red','green')))</span></p>
+          <p>
+          <span># division de la region del trabajo (Dominio)</span></p>
+          <p>
+          <span>plt.xlim(X1.min(),X1.max())</span></p>
+          <p>
+          <span>plt.ylim(X2.min(),X2.max())</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span># pintando los resultados categoricos en el
+          grafico</span></p>
+          <p>
+          <span>for i, j in enumerate(np.unique(y_set)):</span></p>
+          <p>
+              <span>aux=(y_set == j).ravel()</span></p>
+          <p>
+              <span>plt.scatter(X_set[aux, 0], X_set[aux, 1],</span></p>
+          <p>
+                          <span>c = ListedColormap(('red',
+          'green'))(i), label = j)</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span>plt.title('Modelo Naive Bayes Entrenamiento')</span></p>
+          <p>
+          <span>plt.xlabel('algo en x')</span></p>
+          <p>
+          <span>plt.ylabel('Si/No')</span></p>
+          <p>
+          <span>plt.legend()</span></p>
+          <p>
+          <span>plt.show()</span></p>
+          <p><br/>
+    
+          </p>
+        </td>
+      </tr>
+    </table>
+    <p><img src="60340dff31f1e3cd3fe3078f40373d40_html_ca9279b59f3a3cf7.png" name="Image15" align="bottom" hspace="12" width="384" height="278" border="0"/>
+    </p>
+    <h4>Visualizacion de los resultados de testing</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          X_set, y_set=X_test, y_test</p>
+          <p>
+           
+          </p>
+          <p>
+          # Genera todos los punto del dominio posible (mallado de la
+          region)</p>
+          <p>
+          X1,X2=np.meshgrid(np.arange(start=X_set[:,0].min()-1,stop=X_set[:,0].max()+1,step=0.01),</p>
+          <p>
+                           
+          np.arange(start=X_set[:,1].min()-1,stop=X_set[:,1].max()+1,step=0.01))</p>
+          <p>
+          # pindando todo el plano 
+          </p>
+          <p>
+          plt.contourf(X1,X2,classifier.predict(np.array([X1.ravel(),X2.ravel()]).T).reshape(X1.shape),</p>
+          <p>
+                       alpha=0.75,cmap=ListedColormap(('red','green')))</p>
+          <p>
+          # division de la region del trabajo (Dominio)</p>
+          <p>
+          plt.xlim(X1.min(),X1.max())</p>
+          <p>
+          plt.ylim(X2.min(),X2.max())</p>
+          <p>
+           
+          </p>
+          <p>
+          # pintando los resultados categoricos en el grafico</p>
+          <p>
+          for i, j in enumerate(np.unique(y_set)):</p>
+          <p>
+              aux=(y_set == j).ravel()</p>
+          <p>
+              plt.scatter(X_set[aux, 0], X_set[aux, 1],</p>
+          <p>
+                          c = ListedColormap(('red', 'green'))(i), label =
+          j)</p>
+          <p>
+           
+          </p>
+          <p>
+          plt.title('Modelo Naive Bayes Testing')</p>
+          <p>
+          plt.xlabel('algo en x')</p>
+          <p>
+          plt.ylabel('Si/No')</p>
+          <p>
+          plt.legend()</p>
+          <p>plt.show()</p>
+        </td>
+      </tr>
+    </table>
+    <h3><br/>
+    
+    </h3>
+    <p><img src="60340dff31f1e3cd3fe3078f40373d40_html_f9f32d2929334f38.png" name="Image16" align="bottom" hspace="12" width="384" height="278" border="0"/>
+    </p>
+    <h3>R</h3>
+    <h4>Creando y ajustando el modelo</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          # install.packages(&quot;e1071&quot;) # solo se necesita ejecutar
+          una vez</p>
+          <p>
+          # library(e1071)</p>
+          <p>
+          classifier = naiveBayes(x = training_set[,-3],</p>
+          <p>    
+                             y = training_set$Purchased)</p>
+        </td>
+      </tr>
+    </table>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Prediccion del modelo</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          y_pred = predict(classifier, newdata = testing_set[,-3])</p>
+          <p>print(y_pred)</p>
+        </td>
+      </tr>
+    </table>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Matriz de confusion</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          cm = table(testing_set[,3],y_pred)</p>
+          <p>print(cm)</p>
+        </td>
+      </tr>
+    </table>
+    <p><img src="60340dff31f1e3cd3fe3078f40373d40_html_6599d6a0ff325e8.png" name="Image17" align="bottom" hspace="12" width="254" height="75" border="0"/>
+    </p>
+    <h4>Visualizacion de los resultados de entrenamiento</h4>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          <span># install.packages(&quot;ElemStatLearn&quot;) #
+          solo se necesita ejecutar una vez</span></p>
+          <p>
+          <span># library(ElemStatLearn)</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span>set = training_set</span></p>
+          <p>
+          <span>X1 = seq(min(set[,1]) -1, max(set[,1]) + 1, by
+          = 0.01)</span></p>
+          <p>
+          <span>X2 = seq(min(set[,2]) -1, max(set[,2]) + 1, by
+          = 0.01)</span></p>
+          <p>
+          <span>grid_set = expand.grid(X1,X2)</span></p>
+          <p>
+          <span>colnames(grid_set) = c('Age','EstimatedSalary')</span></p>
+          <p>
+          <span>y_grid=predict(classifier, newdata = grid_set)</span></p>
+          <p>
+           
+          </p>
+          <p>
+           
+          </p>
+          <p>
+          <span>plot(</span></p>
+          <p>
+            <span>set[,-3],</span></p>
+          <p>
+            <span>main = &quot;Clasificacion Naive Bayes
+          (Conjunto de Entrenamiento)&quot;,</span></p>
+          <p>
+            <span>xlab = 'Edad',</span></p>
+          <p>
+            <span>ylab = 'Sueldo Estimado',</span></p>
+          <p>
+            <span>xlim = range(X1),</span></p>
+          <p>
+            <span>ylim = range(X2))</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span>contour(</span></p>
+          <p>
+            <span>X1,</span></p>
+          <p>
+            <span>X2,</span></p>
+          <p>
+            <span>matrix(as.numeric(y_grid), length(X1),
+          length(X2)),</span></p>
+          <p>
+            <span>add = TRUE)</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span>points(grid_set, pch = '.', col = ifelse(y_grid
+          == 1, 'springgreen3', 'tomato'))</span></p>
+          <p><span>points(set,
+          pch = 21, bg = ifelse(set[,3] == 1, 'green4', 'red3'))</span></p>
+        </td>
+      </tr>
+    </table>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <h4>Visualizacion de los resultados de testing</h4>
+    <h4> 
+    </h4>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          set = testing_set</p>
+          <p>
+          X1 = seq(min(set[,1]) -1, max(set[,1]) + 1, by = 0.01)</p>
+          <p>
+          X2 = seq(min(set[,2]) -1, max(set[,2]) + 1, by = 0.01)</p>
+          <p>
+          grid_set = expand.grid(X1,X2)</p>
+          <p>
+          colnames(grid_set) = c('Age','EstimatedSalary')</p>
+          <p>
+          y_grid=predict(classifier, newdata = grid_set)</p>
+          <p>
+           
+          </p>
+          <p>
+          plot(</p>
+          <p>
+            set[,-3],</p>
+          <p>
+            main = &quot;Clasificacion NAive Bayes (Conjunto de Testing)&quot;,</p>
+          <p>
+            xlab = 'Edad',</p>
+          <p>
+            ylab = 'Sueldo Estimado',</p>
+          <p>
+            xlim = range(X1),</p>
+          <p>
+            ylim = range(X2))</p>
+          <p>
+           
+          </p>
+          <p>
+          contour(</p>
+          <p>
+            X1,</p>
+          <p>
+            X2,</p>
+          <p>
+            matrix(as.numeric(y_grid), length(X1), length(X2)),</p>
+          <p>
+            add = TRUE)</p>
+          <p>
+           
+          </p>
+          <p>
+          points(grid_set, pch = '.', col = ifelse(y_grid == 1,
+          'springgreen3', 'tomato'))</p>
+          <p>points(set,
+          pch = 21, bg = ifelse(set[,3] == 1, 'green4', 'red3'))</p>
+        </td>
+      </tr>
+    </table>
+    <h2>Arboles de Decisión</h2>
+    <h3>Python</h3>
+    <h4>Creando y ajustando el modelo</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          from sklearn.tree import DecisionTreeClassifier 
+          </p>
+          <p>
+           
+          </p>
+          <p>
+          classifier = DecisionTreeClassifier(
+          criterion='entropy',random_state=1)</p>
+          <p>classifier.fit(X_train,y_train)</p>
+        </td>
+      </tr>
+    </table>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Prediccion del modelo</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          y_pred=classifier.predict(X_test)</p>
+        </td>
+      </tr>
+    </table>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Matriz de confusion</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          from sklearn.metrics import confusion_matrix</p>
+          <p>
+           
+          </p>
+          <p>c_m=confusion_matrix(y_test,
+          y_pred)</p>
+        </td>
+      </tr>
+    </table>
+    <p><img src="60340dff31f1e3cd3fe3078f40373d40_html_55391df6f3273646.png" name="Image18" align="bottom" hspace="12" width="232" height="95" border="0"/>
+    </p>
+    <h4>Visualizacion de los resultados de entrenamiento</h4>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          <span>from matplotlib.colors import ListedColormap</span></p>
+          <p>
+          <span>X_set, y_set=X_train, y_train</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span># Genera todos los punto del dominio posible
+          (mallado de la region)</span></p>
+          <p>
+          <span>X1,X2=np.meshgrid(np.arange(start=X_set[:,0].min()-1,stop=X_set[:,0].max()+1,step=1),</span></p>
+          <p>
+                           
+          <span>np.arange(start=X_set[:,1].min()-1,stop=X_set[:,1].max()+1,step=500))</span></p>
+          <p>
+          <span># pindando todo el plano </span>
+          </p>
+          <p>
+          <span>plt.contourf(X1,X2,classifier.predict(np.array([X1.ravel(),X2.ravel()]).T).reshape(X1.shape),</span></p>
+          <p>
+                       <span>alpha=0.75,cmap=ListedColormap(('red','green')))</span></p>
+          <p>
+          <span># division de la region del trabajo (Dominio)</span></p>
+          <p>
+          <span>plt.xlim(X1.min(),X1.max())</span></p>
+          <p>
+          <span>plt.ylim(X2.min(),X2.max())</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span># pintando los resultados categoricos en el
+          grafico</span></p>
+          <p>
+          <span>for i, j in enumerate(np.unique(y_set)):</span></p>
+          <p>
+              <span>aux=(y_set == j).ravel()</span></p>
+          <p>
+              <span>plt.scatter(X_set[aux, 0], X_set[aux, 1],</span></p>
+          <p>
+                          <span>c = ListedColormap(('red',
+          'green'))(i), label = j)</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span>plt.title('Modelo Arbol de clasificacion
+          Entrenamiento')</span></p>
+          <p>
+          <span>plt.xlabel('algo en x')</span></p>
+          <p>
+          <span>plt.ylabel('Si/No')</span></p>
+          <p>
+          <span>plt.legend()</span></p>
+          <p><span>plt.show()</span></p>
+        </td>
+      </tr>
+    </table>
+    <p><img src="60340dff31f1e3cd3fe3078f40373d40_html_c42769fe07b55121.png" name="Image19" align="bottom" hspace="12" width="414" height="278" border="0"/>
+    </p>
+    <h4>Visualizacion de los resultados de testing</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          X_set, y_set=X_test, y_test</p>
+          <p>
+           
+          </p>
+          <p>
+          # Genera todos los punto del dominio posible (mallado de la
+          region)</p>
+          <p>
+          X1,X2=np.meshgrid(np.arange(start=X_set[:,0].min()-1,stop=X_set[:,0].max()+1,step=1),</p>
+          <p>
+                           
+          np.arange(start=X_set[:,1].min()-1,stop=X_set[:,1].max()+1,step=500))</p>
+          <p>
+          # pindando todo el plano 
+          </p>
+          <p>
+          plt.contourf(X1,X2,classifier.predict(np.array([X1.ravel(),X2.ravel()]).T).reshape(X1.shape),</p>
+          <p>
+                       alpha=0.75,cmap=ListedColormap(('red','green')))</p>
+          <p>
+          # division de la region del trabajo (Dominio)</p>
+          <p>
+          plt.xlim(X1.min(),X1.max())</p>
+          <p>
+          plt.ylim(X2.min(),X2.max())</p>
+          <p>
+           
+          </p>
+          <p>
+          # pintando los resultados categoricos en el grafico</p>
+          <p>
+          for i, j in enumerate(np.unique(y_set)):</p>
+          <p>
+              aux=(y_set == j).ravel()</p>
+          <p>
+              plt.scatter(X_set[aux, 0], X_set[aux, 1],</p>
+          <p>
+                          c = ListedColormap(('red', 'green'))(i), label =
+          j)</p>
+          <p>
+           
+          </p>
+          <p>
+          plt.title('Modelo Arbol de clasificacion Testing')</p>
+          <p>
+          plt.xlabel('algo en x')</p>
+          <p>
+          plt.ylabel('Si/No')</p>
+          <p>
+          plt.legend()</p>
+          <p>plt.show()</p>
+        </td>
+      </tr>
+    </table>
+    <p><img src="60340dff31f1e3cd3fe3078f40373d40_html_2879a5d9dac0c81f.png" name="Image20" align="bottom" hspace="12" width="414" height="278" border="0"/>
+    </p>
+    <h3><br/>
+    
+    </h3>
+    <h3>R</h3>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Creando y ajustando el modelo</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          <br/>
+    
+          </p>
+        </td>
+      </tr>
+    </table>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Prediccion del modelo</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          <br/>
+    
+          </p>
+        </td>
+      </tr>
+    </table>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Matriz de confusion</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          <br/>
+    
+          </p>
+        </td>
+      </tr>
+    </table>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Visualizacion de los resultados de entrenamiento</h4>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          <br/>
+    
+          </p>
+        </td>
+      </tr>
+    </table>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <h4>Visualizacion de los resultados de testing</h4>
+    <h3><br/>
+    
+    </h3>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          <br/>
+    
+          </p>
+        </td>
+      </tr>
+    </table>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h2>Bosques Aleatorios</h2>
+    <h3>Python</h3>
+    <h4>Creando y ajustando el modelo</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          from sklearn.ensemble import RandomForestClassifier 
+          </p>
+          <p>
+           
+          </p>
+          <p>
+          classifier = RandomForestClassifier( n_estimators=10,
+          criterion='entropy', random_state=1)</p>
+          <p>classifier.fit(X_train,y_train)</p>
+        </td>
+      </tr>
+    </table>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Prediccion del modelo</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          y_pred=classifier.predict(X_test)</p>
+        </td>
+      </tr>
+    </table>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Matriz de confusion</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          from sklearn.metrics import confusion_matrix</p>
+          <p>
+           
+          </p>
+          <p>c_m=confusion_matrix(y_test,
+          y_pred)</p>
+        </td>
+      </tr>
+    </table>
+    <p><img src="60340dff31f1e3cd3fe3078f40373d40_html_a87c56f4f1e38275.png" name="Image21" align="bottom" hspace="12" width="232" height="95" border="0"/>
+    </p>
+    <h4>Visualizacion de los resultados de entrenamiento</h4>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          <span>from matplotlib.colors import ListedColormap</span></p>
+          <p>
+          <span>X_set, y_set=X_train, y_train</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span># Genera todos los punto del dominio posible
+          (mallado de la region)</span></p>
+          <p>
+          <span>X1,X2=np.meshgrid(np.arange(start=X_set[:,0].min()-1,stop=X_set[:,0].max()+1,step=0.1),</span></p>
+          <p>
+                           
+          <span>np.arange(start=X_set[:,1].min()-1,stop=X_set[:,1].max()+1,step=500))</span></p>
+          <p>
+          <span># pindando todo el plano </span>
+          </p>
+          <p>
+          <span>plt.contourf(X1,X2,classifier.predict(np.array([X1.ravel(),X2.ravel()]).T).reshape(X1.shape),</span></p>
+          <p>
+                       <span>alpha=0.75,cmap=ListedColormap(('red','green')))</span></p>
+          <p>
+          <span># division de la region del trabajo (Dominio)</span></p>
+          <p>
+          <span>plt.xlim(X1.min(),X1.max())</span></p>
+          <p>
+          <span>plt.ylim(X2.min(),X2.max())</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span># pintando los resultados categoricos en el
+          grafico</span></p>
+          <p>
+          <span>for i, j in enumerate(np.unique(y_set)):</span></p>
+          <p>
+              <span>aux=(y_set == j).ravel()</span></p>
+          <p>
+              <span>plt.scatter(X_set[aux, 0], X_set[aux, 1],</span></p>
+          <p>
+                          <span>c = ListedColormap(('red',
+          'green'))(i), label = j)</span></p>
+          <p>
+           
+          </p>
+          <p>
+          <span>plt.title('Modelo de Bosques Aleatorios
+          Entrenamiento')</span></p>
+          <p>
+          <span>plt.xlabel('algo en x')</span></p>
+          <p>
+          <span>plt.ylabel('Si/No')</span></p>
+          <p>
+          <span>plt.legend()</span></p>
+          <p><span>plt.show()</span></p>
+        </td>
+      </tr>
+    </table>
+    <p><img src="60340dff31f1e3cd3fe3078f40373d40_html_44986ee70426470c.png" name="Image22" align="bottom" hspace="12" width="408" height="278" border="0"/>
+    </p>
+    <h4>Visualizacion de los resultados de testing</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          X_set, y_set=X_test, y_test</p>
+          <p>
+           
+          </p>
+          <p>
+          # Genera todos los punto del dominio posible (mallado de la
+          region)</p>
+          <p>
+          X1,X2=np.meshgrid(np.arange(start=X_set[:,0].min()-1,stop=X_set[:,0].max()+1,step=0.1),</p>
+          <p>
+                           
+          np.arange(start=X_set[:,1].min()-1,stop=X_set[:,1].max()+1,step=500))</p>
+          <p>
+          # pindando todo el plano 
+          </p>
+          <p>
+          plt.contourf(X1,X2,classifier.predict(np.array([X1.ravel(),X2.ravel()]).T).reshape(X1.shape),</p>
+          <p>
+                       alpha=0.75,cmap=ListedColormap(('red','green')))</p>
+          <p>
+          # division de la region del trabajo (Dominio)</p>
+          <p>
+          plt.xlim(X1.min(),X1.max())</p>
+          <p>
+          plt.ylim(X2.min(),X2.max())</p>
+          <p>
+           
+          </p>
+          <p>
+          # pintando los resultados categoricos en el grafico</p>
+          <p>
+          for i, j in enumerate(np.unique(y_set)):</p>
+          <p>
+              aux=(y_set == j).ravel()</p>
+          <p>
+              plt.scatter(X_set[aux, 0], X_set[aux, 1],</p>
+          <p>
+                          c = ListedColormap(('red', 'green'))(i), label =
+          j)</p>
+          <p>
+           
+          </p>
+          <p>
+          plt.title('Modelo de Bosques Aleatorios Testing')</p>
+          <p>
+          plt.xlabel('algo en x')</p>
+          <p>
+          plt.ylabel('Si/No')</p>
+          <p>
+          plt.legend()</p>
+          <p>plt.show()</p>
+        </td>
+      </tr>
+    </table>
+    <p><img src="60340dff31f1e3cd3fe3078f40373d40_html_293bc8e0901cf455.png" name="Image23" align="bottom" hspace="12" width="408" height="278" border="0"/>
+    </p>
+    <h3>R</h3>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Creando y ajustando el modelo</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          <br/>
+    
+          </p>
+        </td>
+      </tr>
+    </table>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Prediccion del modelo</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          <br/>
+    
+          </p>
+        </td>
+      </tr>
+    </table>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Matriz de confusion</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          <br/>
+    
+          </p>
+        </td>
+      </tr>
+    </table>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <h4>Visualizacion de los resultados de entrenamiento</h4>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          <br/>
+    
+          </p>
+        </td>
+      </tr>
+    </table>
+    <p>
+    <br/>
+    <br/>
+    
+    </p>
+    <h4>Visualizacion de los resultados de testing</h4>
+    <p><br/>
+    <br/>
+    
+    </p>
+    <table >
+      <col width="573"/>
+    
+      <tr>
+        <td ><p>
+          <br/>
+    
+          </p>
+        </td>
+      </tr>
+    </table>
+  
 </main>
 
 
