@@ -1,8 +1,53 @@
 <%- include ../layouts/cabecera.ejs %>
 
 <main>
-  <h2>Prepocesado de datos</h2>
-</main>
+  <div class="container-md">
+    <div class="card">
+      <div class="card-header">Plantilla de Preprocesado de datos</div>
 
+      <div class="card-body">
+        <p>
+          En esta sección se mostrara un ejemplo delos pasos que se deben de
+          seguir al leer un dataset desde Python usando pandas y R. El objetivo
+          es dejar una plantilla que reutilizaremos en todos los ejercicios.
+        </p>
+        <p>
+          El dataset de ejemolo contiene 10 tuplas las cuales serán suficientes
+          para empezar a practicar, no siempre es importante el número de
+          tuplas, pero si conocer e interpretar los atributos de los datos, en
+          este caso son 4:
+        </p>
+
+        <img
+          class="img-fluid rounded mx-auto d-block mb-2"
+          src="/images/12_Plantilla_Prep_Datos/image001.png"
+          name="Imagen 2102386247"
+          align="bottom"
+          width="425"
+          height="291"
+          border="0"
+        />
+
+        <p>
+          Descripción: Una base de datos de compradores, lo cual conocemos la
+          ciudad de origen, la edad, el salario y si compro o no un producto.
+        </p>
+        <p>
+          Objetivo: aún no se conoce, pero solo usaremos los datos para crear la
+          plantilla.
+        </p>
+      </div>
+      <div class="card-body">
+        <h3>Codigo en Python</h3>
+        <pre class="code"><code><%= Preprocesado_Python %></code></pre>
+        <h3>Codigo en R</h3>
+        <pre class="code"><code><%= Preprocesado_R %></code></pre>
+      </div>
+      <div class="card-footer text-center">
+        <iframe src="https://drive.google.com/file/d/1J-pl5Vl7rBiefuzBPDPSMRTwUFOwfhjC/preview" width="640" height="480" allow="autoplay"></iframe>
+      </div>
+    </div>
+  </div>
+</main>
 
 <%- include ../layouts/pie.ejs %>

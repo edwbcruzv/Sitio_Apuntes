@@ -1,7 +1,57 @@
 <%- include ../layouts/cabecera.ejs %>
 
 <main>
-  <h2>Clustering</h2>
+  <div class="container-md">
+
+    <div class="card">
+      <div class="card-header">Dataset</div>
+    
+      <div class="card-body">
+        <p>
+          <!-- Explicacion -->
+        </p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">K-Means</div>
+    
+      <div class="card-body">
+        <p>
+          <!-- Explicacion -->
+        </p>
+      </div>
+      <div class="card-body">
+        <h3>Codigo en Python</h3>
+        <pre class="code"><code><%= Cluster_KMeans_Py %></code></pre>
+        <h3>Codigo en R</h3>
+        <pre class="code"><code><%= Cluster_KMeans_R %></code></pre>
+      </div>
+      <div class="card-footer text-center">
+        <!-- insertar link embebido -->
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">Jerarquico</div>
+    
+      <div class="card-body">
+        <p>
+          <!-- Explicacion -->
+        </p>
+      </div>
+      <div class="card-body">
+        <h3>Codigo en Python</h3>
+        <pre class="code"><code><%= Cluster_HC_Py %></code></pre>
+        <h3>Codigo en R</h3>
+        <pre class="code"><code><%= Cluster_HC_R %></code></pre>
+      </div>
+      <div class="card-footer text-center">
+        <!-- insertar link embebido -->
+      </div>
+    </div>
+
+  </div>
 </main>
 
 

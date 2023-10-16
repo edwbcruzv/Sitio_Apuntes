@@ -1,313 +1,400 @@
 <%- include ../layouts/cabecera.ejs %>
 
-<main>
-  <div>
-    <p>Herramientas en Ubuntu&nbsp;</p>
-  </div>
-  <div>
-    <p>&nbsp;</p>
-  </div>
-  <div>
-    <p>Empezaremos por ir a la terminal e ingresamos&nbsp;</p>
-  </div>
-  <div>
-    <p>Sudo apt-get&nbsp;update&nbsp;</p>
-  </div>
-  <div>
-    <p>Sudo apt-get upgrade &ndash;y&nbsp;&nbsp;</p>
-  </div>
-  <div>
-    <p>Python&nbsp;</p>
+<div class="container-md">
+  <h1>Herramientas en Ubuntu</h1>
+  <div class="card">
+    <div class="card-body">
+      <p>Empezaremos por ir a la terminal e ingresamos</p>
+    </div>
+    <div class="card-footer">
+      <pre><code>
+    sudo apt update
+    sudo apt upgrade -y 
+  </code></pre>
+    </div>
   </div>
 
-  <div class="container border border-primary border-3 rounded-3">
-    <p >
-      En la terminal
-      ingresamos:&nbsp;&ldquo;sudo&nbsp;apt-get&nbsp;install&nbsp;python3.10&rdquo;&nbsp;y
-      esperamos a que se termine de instalar.&nbsp;
-    </p>
-    <p>
-      Ahora
-      instalaremos&nbsp;virtualenv:&nbsp;&ldquo;pip3&nbsp;install&nbsp;virtualenv&rdquo;&nbsp;
-    </p>
-    <p>
-      Creamos una carpeta&nbsp;(Env_ML_DL)&nbsp;donde guardaremos el entorno
-      virtual y creamos el entorno virtual e instalaremos con el siguiente
-      comando los siguientes&nbsp;m&oacute;dulos.&nbsp;
-    </p>
+  <h2>Python</h2>
+
+  <div class="card">
+    <div class="card-body">
+      <p>
+        En la terminal ingresamos:
+        <code>sudo apt-get install python3.10</code> y esperamos a que se
+        termine de instalar.
+      </p>
+      <p>Ahora instalaremos virtualenv: <code>pip3 install virtualenv</code></p>
+      <p>
+        Creamos una carpeta (Env_ML_DL) donde guardaremos el entorno virtual y
+        creamos el entorno virtual e instalaremos con el siguiente comando los
+        siguientes módulos.
+      </p>
+    </div>
+    <div class="card-footer">
+      <pre><code>
+          pip install matplotlib
+          pandas numpy scikit-learn tensorflow keras
+        </code></pre>
+    </div>
   </div>
-  <div class="container border border-primary border-3 rounded-3 bg-dark">
-    <code class="text-light">
-      pip&nbsp;install matplotlib
-      pandas&nbsp;numpy&nbsp;scikit-learn&nbsp;tensorflow&nbsp;keras&rdquo;
-    </code>
+
+  <img
+    src="/images/0_Req_Ubuntu/image001.png"
+    class="img-fluid rounded mx-auto d-block mb-2"
+    alt="Descripción de la imagen"
+  />
+
+  <div class="card">
+    <div class="card-body">
+      <p>
+        Al terminar y sin haber problema alguno recomiendo apagar y volver a
+        encender la computadora y actualizamos el sistema con update y upgrade.
+        Con eso terminamos esta parte.
+      </p>
+    </div>
   </div>
-  <img src="/images/0_Req_Ubuntu/image001.png" alt="image001.png" />
-  <div class="container border border-primary border-3 rounded-3">
-    <p>
-      Al terminar y sin haber problema alguno recomiendo apagar y volver a
-      encender la computadora y actualizamos el sistema
-      con&nbsp;update&nbsp;y&nbsp;upgrade. Con eso terminamos esta parte.&nbsp;
-    </p>
+
+  <h2>Anaconda Navigator</h2>
+
+  <div class="card">
+    <div class="card-body">
+      <p>
+        En el caso de Windows en mas siemple instalar Spyder, pero en Ubuntu
+        tenemos que instalar Anaconda Navigator, aunque solo usemos Spyder, hay
+        eu hay problemas en descargar Spyder por sí solo, ya que aun depende de
+        anaconda.
+      </p>
+
+      <p>
+        Así que nos dirigimos al sitio web oficial de anaconda navigator en la
+        instalación en linux
+        <a
+          href="https://docs.anaconda.com/anaconda/install/linux/"
+          target="_blank"
+          rel="noreferrer noopener"
+          >https://docs.anaconda.com/anaconda/install/linux/</a
+        >
+      </p>
+      <p>
+        Te aparecerá las siguientes instrucciones, puede que cambien las
+        instrucciones, así que sugiero seguir las que te salgan.
+      </p>
+    </div>
   </div>
-  <div>
-    <p>Anaconda&nbsp;Navigator&nbsp;</p>
+
+  <img
+    src="/images/0_Req_Ubuntu/image002.png"
+    class="img-fluid rounded mx-auto d-block mb-2"
+    alt="Descripción de la imagen"
+  />
+
+  <div class="card">
+    <div class="card-body">
+      <p>En mi caso realizare los pasos 1 y 5 .</p>
+    </div>
   </div>
-  <div class="container border border-primary border-3 rounded-3">
-    <p>
-      En el caso de&nbsp;Windows&nbsp;en
-      mas&nbsp;siemple&nbsp;instalar&nbsp;Spyder,&nbsp;pero en Ubuntu tenemos
-      que instalar Anaconda&nbsp;Navigator, aunque solo usemos
-      Spyder,&nbsp;hay&nbsp;eu&nbsp;hay problemas en descargar Spyder
-      por&nbsp;s&iacute;&nbsp;solo, ya que aun depende de anaconda.&nbsp;
-    </p>
+
+  <img
+    src="/images/0_Req_Ubuntu/image003.png"
+    class="img-fluid rounded mx-auto d-block mb-2"
+    alt="Descripción de la imagen"
+  />
+
+  <div class="card">
+    <div class="card-body">
+      <p>
+        Con el siguiente comando ejecuto el script para iniciar la instalación:
+        <code>sudo bash Anaconda3-2023.03-Linux-x86_64.sh</code>
+      </p>
+      <p>Aceptamos los términos, los cual sería el paso 5 y 6.</p>
+    </div>
   </div>
-  <div class="container border border-primary border-3 rounded-3">
-    <p>
-      As&iacute;&nbsp;que nos dirigimos al sitio web oficial de
-      anaconda&nbsp;navigator&nbsp;en
-      la&nbsp;instalaci&oacute;n&nbsp;en&nbsp;linux&nbsp;<a
-        href="https://docs.anaconda.com/anaconda/install/linux/"
-        target="_blank"
-        rel="noreferrer noopener"
-        >https://docs.anaconda.com/anaconda/install/linux/</a
-      >
-      &nbsp;
-    </p>
-    <p>
-      Te&nbsp;aparecer&aacute;&nbsp;las siguientes instrucciones,&nbsp;puede que
-      cambien las instrucciones,&nbsp;as&iacute;&nbsp;que sugiero seguir las que
-      te salgan.&nbsp;
-    </p>
+
+  <img
+    src="/images/0_Req_Ubuntu/image004.png"
+    class="img-fluid rounded mx-auto d-block mb-2"
+    alt="Descripción de la imagen"
+  />
+
+  <div class="card">
+    <div class="card-body">
+      <p>
+        Dejamos la ruta por defecto presionando ENTER, lo cual seria el paso 7.
+      </p>
+    </div>
   </div>
- <img src="/images/0_Req_Ubuntu/image002.png" alt="image002.png" />
-  <div class="container border border-primary border-3 rounded-3">
-    <p>En mi caso realizare&nbsp;los pasos&nbsp;1&nbsp;y&nbsp;5&nbsp;.&nbsp;</p>
+
+  <img
+    src="/images/0_Req_Ubuntu/image005.png"
+    class="img-fluid rounded mx-auto d-block mb-2"
+    alt="Descripción de la imagen"
+  />
+
+  <div class="card">
+    <div class="card-body">
+      <p>
+        En esta parte debemos escribir <code>si</code>, en caso contrario
+        tendremos que entrar a la carpeta de anaconda para activar los entornos
+        de anaconda, paso 8.
+      </p>
+    </div>
   </div>
-  <img src="/images/0_Req_Ubuntu/image003.png" alt="image003.png" />
-  <div class="container border border-primary border-3 rounded-3">
-    <p>
-      Con el siguiente comando ejecuto el script para iniciar
-      la&nbsp;instalaci&oacute;n:
-      &ldquo;sudo&nbsp;bash&nbsp;Anaconda3-2023.03-Linux-x86_64.sh&rdquo;&nbsp;
-    </p>
-    <p>
-      Aceptamos los&nbsp;t&eacute;rminos, los cual&nbsp;ser&iacute;a&nbsp;el
-      paso 5 y 6.&nbsp;
-    </p>
+
+  <img
+    src="/images/0_Req_Ubuntu/image006.png"
+    class="img-fluid rounded mx-auto d-block mb-2"
+    <img
+    src="/images/0_Req_Ubuntu/image007.png"
+    class="img-fluid rounded mx-auto d-block mb-2"
+    alt="Descripción de la imagen"
+  />
+
+  <div class="card">
+    <div class="card-body">
+      <p>
+        En caso de que no puedas activar el entorno virtual tendrás que ir a la
+        carpeta de anaconda e ir a los archivos binario y activarla desde ahí.
+      </p>
+
+      <p>
+        Solo activaremos el entorno de anaconda para poder entrar a anaconda
+        navigator, pero usaremos el entorno que creamos anteriormente y que
+        tiene los módulos que usaremos.
+      </p>
+
+      <p>Para entrar a anaconda navigator ingresamos lo siguiente:</p>
+    </div>
   </div>
-  <img src="/images/0_Req_Ubuntu/image004.png" alt="image004.png" />
-  <div class="container border border-primary border-3 rounded-3">
-    <p>
-      Dejamos la ruta por defecto&nbsp;presionando&nbsp;ENTER, lo
-      cual&nbsp;seria&nbsp;el paso 7.&nbsp;
-    </p>
+
+  <img
+    src="/images/0_Req_Ubuntu/image008.png"
+    class="img-fluid rounded mx-auto d-block mb-2"
+    alt="Descripción de la imagen"
+  />
+  <div class="card">
+    <div class="card-body">
+      <p>
+        No hay de que preocuparse de las advertencias que salgan. Hemos
+        terminado.
+      </p>
+    </div>
   </div>
-  <img src="/images/0_Req_Ubuntu/image005.png" alt="image005.png" />
-  <div class="container border border-primary border-3 rounded-3">
-    <p>
-      En esta parte debemos escribir &ldquo;si&rdquo;, en caso contrario
-      tendremos que entrar a la carpeta de anaconda para activar los entornos de
-      anaconda, paso 8.&nbsp;
-    </p>
+
+  <img
+    src="/images/0_Req_Ubuntu/image009.png"
+    class="img-fluid rounded mx-auto d-block mb-2"
+    alt="Descripción de la imagen"
+  />
+
+  <h2>Spyder</h2>
+
+  <p></p>
+
+  <div class="card">
+    <div class="card-body">
+      <p>Abrimos anaconda navigator y abrimos spyder.</p>
+      <p>Este será la pantalla que recibimos</p>
+    </div>
   </div>
-  <img src="/images/0_Req_Ubuntu/image006.png" alt="image006.png" />
-  <img src="/images/0_Req_Ubuntu/image007.png" alt="image007.png" />
-  <div>
-    <p>
-      En caso de que no puedas activar el entorno
-      virtual&nbsp;tendr&aacute;s&nbsp;que ir a la carpeta de anaconda e ir a
-      los archivos binario y activarla desde ah&iacute;.&nbsp;
-    </p>
+
+  <img
+    src="/images/0_Req_Ubuntu/image010.png"
+    class="img-fluid rounded mx-auto d-block mb-2"
+    alt="Descripción de la imagen"
+  />
+  <div class="card">
+    <div class="card-body">
+      <p>
+        En este momento la consola de spyder usa el entorno de anaconda, pero
+        nosotros la cambiaremos al entorno que creamos con virtualenv.
+      </p>
+      <p>
+        Así que vamos a la pestaña de <b>Tools</b>, luego <b>Preferences</b> y
+        saldrá la siguiente ventana.
+      </p>
+    </div>
   </div>
-  <div>
-    <p>
-      Solo activaremos el entorno de anaconda para poder entrar a
-      anaconda&nbsp;navigator,&nbsp;pero usaremos el entorno que creamos
-      anteriormente&nbsp;y que tiene los&nbsp;m&oacute;dulos&nbsp;que
-      usaremos.&nbsp;
-    </p>
+
+  <img
+    src="/images/0_Req_Ubuntu/image011.png"
+    class="img-fluid rounded mx-auto d-block mb-2"
+    alt="Descripción de la imagen"
+  />
+  <div class="card">
+    <div class="card-body">
+      <p>
+        Seleccionamos Python Interpreter, daremos clic en
+        <b> Use the follow Python interpreter</b>.
+      </p>
+
+      <p>
+        Se abrirá un cuadro y buscaremos la carpeta donde creamos el entrono
+        virtual, entraremos a <b> venv/bin/</b>, buscamos el archivo python3.10
+      </p>
+    </div>
   </div>
-  <div>
-    <p>
-      Para entrar a anaconda&nbsp;navigator&nbsp;ingresamos&nbsp;lo
-      siguiente:&nbsp;
-    </p>
+  <img
+    src="/images/0_Req_Ubuntu/image012.png"
+    class="img-fluid rounded mx-auto d-block mb-2"
+    alt="Descripción de la imagen"
+  />
+  <div class="card">
+    <div class="card-body">
+      <p>Ahora solo queda darle Ok y listo.</p>
+
+      <p>Queda cerrar y volver abrir Spyder.</p>
+
+      <p>Saldrá el siguiente error en la consola.</p>
+    </div>
   </div>
- <img src="/images/0_Req_Ubuntu/image008.png" alt="image008.png" />
-  <div>
-    <p>
-      No hay de que preocuparse de las&nbsp;advertencias&nbsp;que salgan&nbsp;
-    </p>
+  <img
+    src="/images/0_Req_Ubuntu/image013.png"
+    class="img-fluid rounded mx-auto d-block mb-2"
+    alt="Descripción de la imagen"
+  />
+  <div class="card">
+    <div class="card-body">
+      <p>
+        Eso es porque el entorno que creamos no tiene los módulos que necesita
+        spyder para trabajar sobre nuestro entorno. Podemos verificar el entorno
+        que usa en la parte de abajo cerca de la consola
+        <b>custom (Python3.10.6)</b>
+      </p>
+
+      <p>En el entorno virtual instalamos el modulo faltante con:</p>
+
+      <p><code>pip install spyder-kernels==2.4.*</code></p>
+    </div>
   </div>
-  <img src="/images/0_Req_Ubuntu/image009.png" alt="image009.png" />
-  <div>
-    <p>La&nbsp;instalaci&oacute;n&nbsp;fue todo un &eacute;xito.&nbsp;</p>
+
+  <img
+    src="/images/0_Req_Ubuntu/image014.png"
+    class="img-fluid rounded mx-auto d-block mb-2"
+    alt="Descripción de la imagen"
+  />
+  <div class="card">
+    <div class="card-body">
+      <p>
+        Verificamos la instalación con
+        <code>pip list</code>.
+      </p>
+
+      <p>Cerramos y volvemos abrir spyder.</p>
+    </div>
   </div>
-  <div>
-    <p>&nbsp;</p>
+  <img
+    src="/images/0_Req_Ubuntu/image015.png"
+    class="img-fluid rounded mx-auto d-block mb-2"
+    alt="Descripción de la imagen"
+  />
+  <div class="card">
+    <div class="card-body">
+      <p>
+        Ya no sale el error en consola y hasta abajo sigue diciendo
+        <b>custom (Python3.10.6)</b>, significa que ya podemos empezar a
+        trabajar sin ning&uacute;n problema.
+      </p>
+    </div>
   </div>
-  <div>
-    <p>Spyder&nbsp;</p>
+  <h2>RStudio</h2>
+  <div class="card">
+    <div class="card-body">
+      <p>
+        Nos dirigimos a la página oficial de Rstudio en
+        <a
+          href="https://posit.co/download/rstudio-desktop/"
+          target="_blank"
+          rel="noreferrer noopener"
+          >https://posit.co/download/rstudio-desktop/</a
+        >
+      </p>
+
+      <p>
+        Pero antes tenemos que descargar R, así que damos clic en
+        <b>Dowload and install R</b>
+      </p>
+    </div>
   </div>
-  <div>
-    <p>&nbsp;</p>
+
+  <img
+    src="/images/0_Req_Ubuntu/image016.png"
+    class="img-fluid rounded mx-auto d-block mb-2"
+    alt="Descripción de la imagen"
+  />
+  <div class="card">
+    <div class="card-body">
+      <p>Nos llevara al siguiente sitio y seleccionamos descargar en Ubuntu.</p>
+    </div>
   </div>
-  <div>
-    <p>Abrimos anaconda&nbsp;navigator&nbsp;y abrimos&nbsp;spyder.&nbsp;</p>
+  <img
+    src="/images/0_Req_Ubuntu/image017.png"
+    class="img-fluid rounded mx-auto d-block mb-2"
+    alt="Descripción de la imagen"
+  />
+  <div class="card">
+    <div class="card-body">
+      <p>
+        Saldrán las siguientes isntrucciones, los debes de seguir, al menos
+        hasta donde abarca la captura de pantalla. Tal vez pueden cambiar al
+        momento que estes leyendo eso, así que sigue las que te salgan a ti.
+      </p>
+    </div>
   </div>
-  <div>
-    <p>Este&nbsp;ser&aacute;&nbsp;la pantalla que recibimos&nbsp;</p>
+
+  <img
+    src="/images/0_Req_Ubuntu/image018.png"
+    class="img-fluid rounded mx-auto d-block mb-2"
+    alt="Descripción de la imagen"
+  />
+  <div class="card">
+    <div class="card-body">
+      <p>
+        Una vez seguiste las instrucciones sin ningun problema, regresas a la
+        página
+        <a
+          href="https://posit.co/download/rstudio-desktop/"
+          target="_blank"
+          rel="noreferrer noopener"
+          >https://posit.co/download/rstudio-desktop/</a
+        >
+        de RStudio y buscas las descargas.
+      </p>
+    </div>
   </div>
-  <img src="/images/0_Req_Ubuntu/image010.png" alt="image010.png" />
-  <div>
-    <p>
-      En este momento la consola de&nbsp;spyder&nbsp;usa el&nbsp;entorno&nbsp;de
-      anaconda, pero&nbsp;nosotros&nbsp;la cambiaremos al entorno que creamos
-      con&nbsp;virtualenv.&nbsp;
-    </p>
+
+  <img
+    src="/images/0_Req_Ubuntu/image019.png"
+    class="img-fluid rounded mx-auto d-block mb-2"
+    alt="Descripción de la imagen"
+  />
+  <div class="card">
+    <div class="card-body">
+      <p>En mi caso debo de descargar el de Ubuntu 22.</p>
+
+      <p>
+        Instalamos con el siguiente comando:
+        <code>sudo dpkg -i rstudio-2023.03.0-386-amd64.deb</code> y esperamos.
+      </p>
+    </div>
   </div>
-  <div>
-    <p>
-      As&iacute;&nbsp;que vamos a la pesta&ntilde;a de &ldquo;Tools&rdquo;,
-      luego &ldquo;Preferences&rdquo; y&nbsp;saldr&aacute;&nbsp;la siguiente
-      ventana.&nbsp;
-    </p>
+  <img
+    src="/images/0_Req_Ubuntu/image020.png"
+    class="img-fluid rounded mx-auto d-block mb-2"
+    alt="Descripción de la imagen"
+  />
+  <div class="card">
+    <div class="card-body">
+      <p>
+        Ahora buscamos Rstudio en el men&uacute; y lo abrimos. Hemos terminado
+      </p>
+    </div>
   </div>
-  <img src="/images/0_Req_Ubuntu/image011.png" alt="image011.png" />
-  <div>
-    <p>
-      Seleccionamos Python&nbsp;Interpreter, daremos clic en
-      Use&nbsp;the&nbsp;follow&nbsp;Python&nbsp;interpreter.&nbsp;
-    </p>
-  </div>
-  <div>
-    <p>
-      Se&nbsp;abrir&aacute;&nbsp;un cuadro y buscaremos la carpeta donde creamos
-      el entrono virtual, entraremos a&nbsp;venv/bin/, buscamos el
-      archivo&nbsp;python3.10&nbsp;
-    </p>
-  </div>
-  <img src="/images/0_Req_Ubuntu/image012.png" alt="image012.png" />
-  <div>
-    <p>Ahora solo queda darle Ok y listo.&nbsp;</p>
-  </div>
-  <div>
-    <p>Queda cerrar y volver abrir Spyder.&nbsp;&nbsp;</p>
-  </div>
-  <div>
-    <p>Saldr&aacute;&nbsp;el siguiente error en la consola.&nbsp;</p>
-  </div>
-  <img src="/images/0_Req_Ubuntu/image013.png" alt="image013.png" />
-  <div>
-    <p>&nbsp;</p>
-  </div>
-  <div>
-    <p>
-      Eso es porque el entorno que creamos no tiene
-      los&nbsp;m&oacute;dulos&nbsp;que necesita&nbsp;spyder&nbsp;para trabajar
-      sobre nuestro entorno.&nbsp;Podemos verificar el entorno que usa en la
-      parte de abajo cerca de la consola
-      &ldquo;custom&nbsp;(Python3.10.6)&rdquo;&nbsp;
-    </p>
-  </div>
-  <div>
-    <p>
-      En el entorno virtual instalamos el&nbsp;modulo&nbsp;faltante
-      con:&nbsp;&nbsp;
-    </p>
-  </div>
-  <div>
-    <p>&ldquo;pip&nbsp;install&nbsp;spyder-kernels==2.4.*&rdquo;&nbsp;</p>
-  </div>
-  <img src="/images/0_Req_Ubuntu/image014.png" alt="image014.png" />
-  <div>
-    <p>
-      Verificamos la&nbsp;instalaci&oacute;n&nbsp;con
-      &ldquo;pip&nbsp;list&rdquo;.&nbsp;
-    </p>
-  </div>
-  <div>
-    <p>Cerramos y volvemos abrir&nbsp;spyder.&nbsp;</p>
-  </div>
-  <img src="/images/0_Req_Ubuntu/image015.png" alt="image015.png" />
-  <div>
-    <p>
-      Ya no sale el error en consola y hasta abajo sigue diciendo
-      &ldquo;custom&nbsp;(Python3.10.6)&rdquo;, significa que ya podemos empezar
-      a trabajar sin&nbsp;ning&uacute;n&nbsp;problema.&nbsp;
-    </p>
-  </div>
-  <div>
-    <p>RStudio&nbsp;</p>
-  </div>
-  <div>
-    <p>
-      Nos&nbsp;dirigimos&nbsp;a la&nbsp;p&aacute;gina&nbsp;oficial
-      de&nbsp;Rstudio&nbsp;en&nbsp;<a
-        href="https://posit.co/download/rstudio-desktop/"
-        target="_blank"
-        rel="noreferrer noopener"
-        >https://posit.co/download/rstudio-desktop/</a
-      >
-      &nbsp;
-    </p>
-  </div>
-  <div>
-    <p>
-      Pero antes tenemos que descargar R,&nbsp;as&iacute;&nbsp;que damos clic en
-      &ldquo;Dowload&nbsp;and&nbsp;install&nbsp;R&rdquo;&nbsp;
-    </p>
-  </div>
-  <img src="/images/0_Req_Ubuntu/image016.png" alt="image016.png" />
-  <div>
-    <p>
-      Nos llevara al siguiente sitio y seleccionamos descargar en Ubuntu.&nbsp;
-    </p>
-  </div>
-  <img src="/images/0_Req_Ubuntu/image017.png" alt="image017.png" />
-  <div>
-    <p>
-      Saldr&aacute;n&nbsp;las siguientes&nbsp;isntrucciones, los debes de
-      seguir, al menos hasta donde abarca la captura de pantalla. Tal vez pueden
-      cambiar al momento que estes leyendo eso,&nbsp;as&iacute;&nbsp;que sigue
-      las que te salgan a ti.&nbsp;
-    </p>
-  </div>
-  <img src="/images/0_Req_Ubuntu/image018.png" alt="image018.png" />
-  <div>
-    <p>
-      Una vez seguiste
-      las&nbsp;instrucciones&nbsp;sin&nbsp;ningun&nbsp;problema, regresas a
-      la&nbsp;p&aacute;gina&nbsp;<a
-        href="https://posit.co/download/rstudio-desktop/"
-        target="_blank"
-        rel="noreferrer noopener"
-        >https://posit.co/download/rstudio-desktop/</a
-      >&nbsp; de&nbsp;RStudio&nbsp;y buscas las descargas.&nbsp;
-    </p>
-  </div>
-  <img src="/images/0_Req_Ubuntu/image019.png" alt="image019.png" />
-  <div>
-    <p>En mi caso debo de descargar el de&nbsp;Ubuntu&nbsp;22.&nbsp;</p>
-  </div>
-  <div>
-    <p>
-      Instalamos con el siguiente comando: &ldquo;sudo&nbsp;dpkg&nbsp;-i
-      rstudio-2023.03.0-386-amd64.deb&rdquo;&nbsp;y esperamos.&nbsp;
-    </p>
-  </div>
-  <img src="/images/0_Req_Ubuntu/image020.png" alt="image020.png" />
-  <div>
-    <p>
-      Ahora buscamos&nbsp;Rstudio&nbsp;en el&nbsp;men&uacute;&nbsp;y lo
-      abrimos.&nbsp;
-    </p>
-  </div>
-  <img src="/images/0_Req_Ubuntu/image021.png" alt="image021.png" />
-  <div>
-    <p>Hemos terminado&nbsp;</p>
-  </div>
-</main>
+
+  <img
+    src="/images/0_Req_Ubuntu/image021.png"
+    class="img-fluid rounded mx-auto d-block mb-2"
+    alt="Descripción de la imagen"
+  />
+</div>
 
 <%- include ../layouts/pie.ejs %>

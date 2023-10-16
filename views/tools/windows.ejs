@@ -1,337 +1,321 @@
 <%- include ../layouts/cabecera.ejs %>
 
 <main>
+  <div class="container-md">
+    <h1>Iniciando en el Deep Learning y Machine Learning.</h1>
 
-  <div>
-    <div>
+    <div class="card">
+      <div class="card-header">Requisitos:</div>
+      <div class="card-body">
+        <ul>
+          <li>Fundamentos en programación y algoritmia.</li>
+          <li>Estructura de datos.</li>
+          <li>Nivel avanzado en Python y de entornos virtuales.</li>
+          <li>Ubuntu o Windows 10 u 11.</li>
+          <li>
+            Recomendado tener Git Bash para la activación del entorno
+            virtual.
+          </li>
+        </ul>
+      </div>
+      <div class="card-footer">
+        
+      <li>Versiones de Python usado al momento de escribir estos tutoriales:
+          3.10.8.</li>
+          <li>Versión de Ubuntu: 22.04.2 LTS.</li>
+        
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-body">
       <p>
-        Iniciando&nbsp;en el Deep&nbsp;Learning&nbsp;y
-        Machine&nbsp;Learning.&nbsp;
+        Ir al sitio oficial en
+        <a
+          href="https://www.python.org/"
+          target="_blank"
+          rel="noreferrer noopener"
+          >https://www.python.org</a
+        >
+        y buscar la versión más estable, si quieres usar la
+        versión 3.10.8 deberás escribir la versión en el
+        buscador del sitio y descargar el instalador.
       </p>
-    </div>
-    <div>
-      <p>&nbsp;</p>
-    </div>
-    <div>
-      <p>&nbsp;</p>
-    </div>
-    <div>
-      <p>Requisitos:&nbsp;</p>
-    </div>
-    <div>
-      <ul>
-        <li>
-          <p>Fundamentos&nbsp;en programaci&oacute;n y algoritmia.&nbsp;</p>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div>
-    <div>
-      <ul>
-        <li>
-          <p>Estructura de datos.&nbsp;</p>
-        </li>
-        <li>
-          <p>
-            Nivel&nbsp;avanzado&nbsp;en Python y de entornos virtuales.&nbsp;
-          </p>
-        </li>
-        <li>
-          <p>Ubuntu o&nbsp;Windows&nbsp;10 u 11.&nbsp;</p>
-        </li>
-        <li>
-          <p>
-            Recomendado tener Git&nbsp;Bash&nbsp;para
-            la&nbsp;activaci&oacute;n&nbsp;del entorno virtual.&nbsp;
-          </p>
-        </li>
-      </ul>
-    </div>
-    <div>
       <p>
-        Versiones de Python&nbsp;usado al momento de escribir estos tutoriales:
-        3.10.8.&nbsp;
+        Al ejecutar el instalador con permisos de administrador te saldrá
+        la siguiente ventana y seleccionar las casillas <b>use admin
+        privileges when installing py.exe</b> y <b>Add python.exe to PATH
+        </b> para las variables de entorno. Por último, dar clic en
+        <b>Install Now</b>.
       </p>
     </div>
   </div>
-  <div>
-    <p>Versi&oacute;n&nbsp;de Ubuntu 22.04.2 LTS&nbsp;</p>
+    
+      <img class="img-fluid rounded mx-auto d-block mb-2" src="/images/0_Req_Windows/image001.jpg" alt="image001.jpg" />
+    
+    <div class="card">
+      <div class="card-body">
+      <p>
+        Esperamos a que termine el proceso de instalación y saldrá
+        una ventana como la siguiente, y habrá terminado la
+        instalación y cierras.
+      </p>
+    </div>
   </div>
-  <div>
-    <p>Herramientas&nbsp;en&nbsp;Windows&nbsp;</p>
+    <img class="img-fluid rounded mx-auto d-block mb-2" src="/images/0_Req_Windows/image002.jpg" alt="image002.jpg" />
+    <div class="card">
+      <div class="card-body">
+      <p>
+        Para ver si se instaló correctamente abrimos la consola con CMD y
+        escribimos Python. Si sale una respuesta similar a la imagen se
+        instaló correctamente.
+      </p>
+    </div>
   </div>
-  <div>
-    <p>Descarga&nbsp;e instalaci&oacute;n de Python&nbsp;&nbsp;</p>
+    <img class="img-fluid rounded mx-auto d-block mb-2" src="/images/0_Req_Windows/image003.jpg" alt="image003.jpg" />
+    
+      <h2>Descarga e instalacion de Git</h2>
+    
+      <div class="card">
+        <div class="card-body">
+      <p>
+        Ir al sitio oficial de Git
+        <a
+          href="https://git-scm.com/download/win"
+          target="_blank"
+          rel="noreferrer noopener"
+          >https://git-scm.com/download/win</a
+        >
+        y descargas la versión de Windows setup de 64-bit.
+      </p>
+    </div>
   </div>
-  <div>
-    <p>&nbsp;</p>
+    <img class="img-fluid rounded mx-auto d-block mb-2" src="/images/0_Req_Windows/image004.png" alt="image004.jpg" />
+    <div class="card">
+      <div class="card-body">
+      <p>
+        No se va a profundizar mucho, ya que para la instalación se
+        tendrán que aceptar permisos de administrados, aceptar permisos
+        de la licencia y puro <b>next</b> y tendremos instalado git bash.
+      </p>
+      <p>
+        Para comprobar la instalación de git solo damos clic derecho en
+        el escritorio, <b>mostrar más opciones</b> y daremos clic
+        en <b>Git Bash</b> para acceder a una consola.
+      </p>
+    </div>
   </div>
-  <div>
-    <p>
-      Ir al sitio oficial en&nbsp;<a
-        href="https://www.python.org/"
-        target="_blank"
-        rel="noreferrer noopener"
-        >https://www.python.org</a
-      >
-      y buscar la versi&oacute;n&nbsp;m&aacute;s&nbsp;estable, si
-      quieres&nbsp;usar&nbsp;la versi&oacute;n
-      3.10.8&nbsp;deber&aacute;s&nbsp;escribir la versi&oacute;n en el buscador
-      del sitio y descargar el instalador.&nbsp;
-    </p>
+    
+    <img class="img-fluid rounded mx-auto d-block mb-2" src="/images/0_Req_Windows/image005.jpg" alt="image005.jpg" />
+    
+      <h2>Entorno virtual</h2>
+    
+    <div class="card">
+      <div class="card-body">
+      <p>
+        Instalaremos <b> virtualenv </b> usando pip con el siguiente comando <code>pip install
+        virtualenv </code> 
+      </p>
+    </div>
   </div>
-  <div>
-    <p>
-      Al ejecutar el instalador&nbsp;con permisos de administrador&nbsp;te
-      saldr&aacute; la siguiente ventana&nbsp;y seleccionar&nbsp;las
-      casillas&nbsp;&ldquo;use&nbsp;admin&nbsp;privileges&nbsp;when&nbsp;installing&nbsp;py.exe&rdquo;&nbsp;y
-      &ldquo;Add&nbsp;python.exe&nbsp;to&nbsp;PATH &rdquo;&nbsp;para las
-      variables de entorno. Por&nbsp;&uacute;ltimo,&nbsp;dar clic en
-      &ldquo;Install&nbsp;Now&rdquo;.&nbsp;
-    </p>
+    <img class="img-fluid rounded mx-auto d-block mb-2" src="/images/0_Req_Windows/image006.jpg" alt="image006.jpg" />
+    <div class="card">
+      <div class="card-body">
+      <p>
+        Crearemos una carpeta dedicada a las actividades a realizar, aquí
+        lo llamamos <b>Material_ML_DP</b>.
+      </p>
+      <p>
+        Creamos el entorno virtual con el siguiente comando <code> virtualenv venv</code> 
+      </p>
+    </div>
   </div>
-  <div>
-    <img src="/images/0_Req_Windows/image001.jpg" alt="image001.jpg" />
+    <img class="img-fluid rounded mx-auto d-block mb-2" src="/images/0_Req_Windows/image007.jpg" alt="image007.jpg" />
+    <div class="card">
+      <div class="card-body">
+      <p>
+        Se crea una carpeta llamada venv, ahora activamos ele entorno con el
+        comando<code>  source venv/Scripts/activate </code> 
+      </p>
+    </div>
   </div>
-  <div>
-    <p>
-      Esperamos&nbsp;a que termine el proceso de instalaci&oacute;n y
-      saldr&aacute; una ventana como la siguiente, y
-      habr&aacute;&nbsp;terminado&nbsp;la instalaci&oacute;n y cierras.&nbsp;
-    </p>
+    
+    <img class="img-fluid rounded mx-auto d-block mb-2" src="/images/0_Req_Windows/image008.jpg" alt="image008.jpg" />
+    <div class="card">
+      <div class="card-body">
+      <p>Si estas en Linux la ruta del activador puede cambiar.</p>
+    
+      <p>
+        Si te algún error o no reconoce <code>source</code>, la
+        solución más inmediata seria usar Git bash, por lo cual se
+        recomienda no usar símbolo del sistema o PowerShell.
+      </p>
+    </div>
   </div>
-  <img src="/images/0_Req_Windows/image002.jpg" alt="image002.jpg" />
-  <div>
-    <p>
-      Para ver si se&nbsp;instal&oacute;&nbsp;correctamente abrimos
-      la&nbsp;consola con&nbsp;CMD&nbsp;y&nbsp;escribimos&nbsp;Python. Si sale
-      una respuesta similar a la
-      imagen&nbsp;se&nbsp;instal&oacute;&nbsp;correctamente.&nbsp;
-    </p>
+    <img class="img-fluid rounded mx-auto d-block mb-2" src="/images/0_Req_Windows/image009.jpg" alt="image009.jpg" />
+    <div class="card">
+      <div class="card-body">
+      <p>
+        Para ver los módulos instalados en ese entorno virtual usamos
+      <code> pip list</code> 
+      </p>
+    
+      <p>
+        Tenemos un entorno limpio y listo para instalar los módulos que
+        comúnmente se usan para ML y DP y algunos módulos que
+        necesitamos para Spyder.
+      </p>
+    </div>
   </div>
-  <img src="/images/0_Req_Windows/image003.jpg" alt="image003.jpg" />
-  <div>
-    <p>Descarga e instalacion de&nbsp;Git&nbsp;</p>
-  </div>
-  <div>
-    <p>
-      Ir al sitio oficial de Git&nbsp;<a
-        href="https://git-scm.com/download/win"
-        target="_blank"
-        rel="noreferrer noopener"
-        >https://git-scm.com/download/win</a
-      >
-      y descargas la&nbsp;versi&oacute;n&nbsp;de
-      Windows&nbsp;setup&nbsp;de&nbsp;64-bit.&nbsp;
-    </p>
-  </div>
-  <img src="/images/0_Req_Windows/image004.jpg" alt="image004.jpg" />
-  <div>
-    <p>
-      No se va&nbsp;a profundizar&nbsp;mucho, ya que para la instalaci&oacute;n
-      se tendr&aacute;n que aceptar permisos de administrados, aceptar permisos
-      de la licencia y puro &ldquo;next&rdquo;&nbsp;y tendremos
-      instalado&nbsp;git&nbsp;bash.&nbsp;
-    </p>
-  </div>
-  <div>
-    <p>
-      Para comprobar la instalaci&oacute;n de&nbsp;git&nbsp;solo damos clic
-      derecho en el
-      escritorio,&nbsp;&ldquo;mostrar&nbsp;m&aacute;s&nbsp;opciones&rdquo;&nbsp;y&nbsp;daremos
-      clic en&nbsp;&ldquo;Git&nbsp;Bash&rdquo;&nbsp;para acceder a una
-      consola.&nbsp;
-    </p>
-  </div>
-  <div>
-    <p>&nbsp;</p>
-  </div>
-  <img src="/images/0_Req_Windows/image005.jpg" alt="image005.jpg" />
-  <div>
-    <p>Entorno&nbsp;virtual&nbsp;</p>
-  </div>
-  <div>
-    <p>
-      Instalaremos&nbsp;virtualenv&nbsp;usando&nbsp;pip&nbsp;con el
-      siguiente&nbsp;comando:&nbsp;pip&nbsp;install&nbsp;virtualenv&nbsp;
-    </p>
-  </div>
-  <img src="/images/0_Req_Windows/image006.jpg" alt="image006.jpg" />
-  <div>
-    <p>
-      Crearemos una carpeta dedicada a las actividades a realizar, aqu&iacute;
-      lo llamamos &ldquo;Material_ML_DP&rdquo;.&nbsp;
-    </p>
-  </div>
-  <div>
-    <p>
-      Creamos el entorno virtual con el siguiente
-      comando:&nbsp;virtualenv&nbsp;venv&nbsp;
-    </p>
-  </div>
-  <img src="/images/0_Req_Windows/image007.jpg" alt="image007.jpg" />
-  <div>
-    <p>
-      Se crea una carpeta llamada&nbsp;venv, ahora activamos ele
-      entorno&nbsp;con&nbsp;el&nbsp;comando:&nbsp;source&nbsp;venv/Scripts/act&iacute;vate.&nbsp;&nbsp;
-    </p>
-  </div>
-  <img src="/images/0_Req_Windows/image008.jpg" alt="image008.jpg" />
-  <div>
-    <p>Si estas en Linux la ruta del activador puede cambiar.&nbsp;</p>
-  </div>
-  <div>
-    <p>
-      Si te alg&uacute;n error&nbsp;o no reconoce&nbsp;&ldquo;source&rdquo;, la
-      soluci&oacute;n&nbsp;m&aacute;s&nbsp;inmediata seria usar Git&nbsp;bash,
-      por lo cual se recomienda no usar&nbsp;s&iacute;mbolo del sistema
-      o&nbsp;PowerShell.&nbsp;
-    </p>
-  </div>
-  <img src="/images/0_Req_Windows/image009.jpg" alt="image009.jpg" />
-  <div>
-    <p>&nbsp;</p>
-  </div>
-  <div>
-    <p>
-      Para ver los m&oacute;dulos instalados en ese entorno virtual
-      usamos:&nbsp;pip&nbsp;list&nbsp;
-    </p>
-  </div>
-  <div>
-    <p>
-      Tenemos un entorno limpio y listo para instalar los m&oacute;dulos que
-      com&uacute;nmente se usan para ML y DP y algunos m&oacute;dulos que
-      necesitamos para Spyder.&nbsp;
-    </p>
-  </div>
-  <img src="/images/0_Req_Windows/image010.jpg" alt="image010.jpg" />
-  <div>
-    <p>Spyder&nbsp;</p>
-  </div>
-  <div>
-    <p>
-      Podemos hacer uso de Anaconda&nbsp;Navigator,&nbsp;pero para evitar
-      problemas con Windows 10 u 11, con los entornos virtuales&nbsp;y al
-      solamente usar&nbsp;Spyder&nbsp;de todas las herramientas que ofrece
-      Anaconda&nbsp;Navigator&nbsp;nos dirigimos al
-      siguiente&nbsp;https://www.spyder-ide.org/&nbsp;link y descargamos para
-      usar en Windows.&nbsp;
-    </p>
-  </div>
-  <img src="/images/0_Req_Windows/image011.jpg" alt="image011.jpg" />
-  <div>
-    <p>Descargamos e instalador para 64-bit.&nbsp;</p>
-  </div>
-  <img src="/images/0_Req_Windows/image012.jpg" alt="image012.jpg" />
-  <div>
-    <p>
-      Una&nbsp;vez&nbsp;descargado&nbsp;procedemos a
-      instalarlo,&nbsp;clic&nbsp;en &ldquo;next&rdquo;.&nbsp;
-    </p>
-  </div>
-  <img src="/images/0_Req_Windows/image013.jpg" alt="image013.jpg" />
-  <div>
-    <p>Aceptas permisos.&nbsp;</p>
-  </div>
-  <img src="/images/0_Req_Windows/image014.jpg" alt="image014.jpg" />
-  <div>
-    <p>
-      Aqu&iacute; se puede instalar en otras&nbsp;cuantas,&nbsp;de usuario de tu
-      PC, puedes elegir el que quieras.&nbsp;
-    </p>
-  </div>
-  <img src="/images/0_Req_Windows/image015.jpg" alt="image015.jpg" />
-  <div>
-    <p>Damos en finalizar y se abrir&aacute; Spyder.&nbsp;</p>
-  </div>
-  <img src="/images/0_Req_Windows/image016.jpg" alt="image016.jpg" />
 
-  <div>
-    <p>Configurar&nbsp;Sypder&nbsp;con el entorno virtual&nbsp;</p>
-  </div>
-  <div>
-    <p>
-      Al abrir por primera vez el IDE nos&nbsp;dar&aacute;&nbsp;un
-      peque&ntilde;o recorrido por algunas de las opciones,
-      la&nbsp;cual&nbsp;puede omitir.&nbsp;En la parte de la
-      consola&nbsp;podr&aacute;&nbsp;salirte o no&nbsp;el error del&nbsp;kernel,
-      hace falta unos&nbsp;m&oacute;dulos&nbsp;que necesita Spyder para
-      funcionar y muestra
-      los&nbsp;comandos&nbsp;para&nbsp;agregar&nbsp;dichos&nbsp;m&oacute;dulos,&nbsp;usaremos
-      el
-      comando&nbsp;&ldquo;pip&nbsp;install&nbsp;spyder-kernels==2.4.*&rdquo;&nbsp;mas&nbsp;adelante.&nbsp;
-    </p>
-  </div>
-  <img src="/images/0_Req_Windows/image017.jpg" alt="image017.jpg" />
-  <div>
-    <p>
-      Para la&nbsp;configuraci&oacute;n&nbsp;el entorno virtual
-      nos&nbsp;dirigimos&nbsp;a la pesta&ntilde;a &ldquo;Tools&rdquo;,
-      luego&nbsp;Preferences&nbsp;y se&nbsp;abrir&aacute;&nbsp;la siguiente
-      ventana.&nbsp;
-    </p>
-  </div>
-  <img src="/images/0_Req_Windows/image016.jpg" alt="image016.jpg" />
-
-  <div>
-    <p>
-      Nos&nbsp;dirigimos&nbsp;a &ldquo;Python&nbsp;Interpreter&rdquo;,
-      seleccionamos
-      &ldquo;Use&nbsp;the&nbsp;follow&nbsp;Python&nbsp;interpreter&rdquo;, y
-      buscamos el archivo.&nbsp;
-    </p>
-  </div>
-  <img src="/images/0_Req_Windows/image019.jpg" alt="image019.jpg" />
-  <div>
-    <p>
-      Al abrirse la siguiente ventana nos&nbsp;dirigimos&nbsp;a la carpeta donde
-      se encuentra el entorno virtual que creamos&nbsp;en
-      la&nbsp;secci&oacute;n&nbsp;Entorno virtual,&nbsp;entramos a la
-      carpeta&nbsp;venv/Scripts buscamos python.exe&nbsp;
-    </p>
-  </div>
-  <img src="/images/0_Req_Windows/image020.jpg" alt="image020.jpg" />
-  <div>
-    <p>Le damos en Ok.&nbsp;</p>
-  </div>
-  <img src="/images/0_Req_Windows/image021.jpg" alt="image021.jpg" />
-  <div>
-    <p>
-      Ahora cerramos y volvemos a abrir Spyder, puede o no volver a aparecer el
-      error&nbsp;en la consola&nbsp;y volvemos a cerrar Spyder.&nbsp;&nbsp;
-    </p>
-  </div>
-  <img src="/images/0_Req_Windows/image022.jpg" alt="image022.jpg" />
-  <div>
-    <p>
-      Ahora instalamos los&nbsp;m&oacute;dulos&nbsp;de&nbsp;spyder&nbsp;en el
-      entorno virtual, activamos el entorno virtual y ejecutamos el siguiente
-      comando:
-      &ldquo;pip&nbsp;install&nbsp;spyder-kernels==2.4.*&rdquo;&rdquo;&nbsp;
-    </p>
-  </div>
-  <img src="/images/0_Req_Windows/image023.jpg" alt="image023.jpg" />
-  <div>
-    <p>
-      Esperamos que termine de instalar&nbsp;el&nbsp;modulo&nbsp;y con el
-      comando &ldquo;pip&nbsp;list&rdquo; listamos
-      los&nbsp;m&oacute;dulos&nbsp;instalados y&nbsp;asi&nbsp;verificaremos que
-      este instalado el&nbsp;modulo.&nbsp;
-    </p>
-  </div>
-  <img src="/images/0_Req_Windows/image024.jpg" alt="image024.jpg" />
-  <div>
-    <p>
-      Cerramos la consola y volvemos abrir Spyder, el error ya
-      no&nbsp;deber&iacute;a&nbsp;de aparecer y estaremos listos para trabajar
-      en Spyder.&nbsp;
-    </p>
-  </div>
-  <img src="/images/0_Req_Windows/image025.png" alt="image025.png" />
-
+    <img class="img-fluid rounded mx-auto d-block mb-2" src="/images/0_Req_Windows/image010.jpg" alt="image010.jpg" />
   
+      <h2>Spyder</h2>
+      <div class="card">
+        <div class="card-body">
+      <p>
+        Podemos hacer uso de Anaconda Navigator, pero para evitar problemas con
+        Windows 10 u 11, con los entornos virtuales y al solamente usar Spyder
+        de todas las herramientas que ofrece Anaconda Navigator nos dirigimos al
+        siguiente link <a
+        href="https://www.spyder-ide.org/"
+        target="_blank"
+        rel="noreferrer noopener"
+        >https://www.spyder-ide.org/ </a
+      >
+      y descargamos para usar en
+        Windows.
+      </p>
+    </div>
+  </div>
+    <img class="img-fluid rounded mx-auto d-block mb-2" src="/images/0_Req_Windows/image011.jpg" alt="image011.jpg" />
+    <div class="card">
+      <div class="card-body">
+      <p>Descargamos e instalador para 64-bit.</p>
+    </div>
+  </div>
+    <img class="img-fluid rounded mx-auto d-block mb-2" src="/images/0_Req_Windows/image012.jpg" alt="image012.jpg" />
+    <div class="card">
+      <div class="card-body">
+      <p>
+        Una vez descargado procedemos a instalarlo, clic en <b>next</b>.
+      </p>
+    </div>
+  </div>
+    <img class="img-fluid rounded mx-auto d-block mb-2" src="/images/0_Req_Windows/image013.jpg" alt="image013.jpg" />
+    <div class="card">
+      <div class="card-body">
+      <p>Aceptas permisos.</p>
+    </div>
+  </div>
+    <img class="img-fluid rounded mx-auto d-block mb-2" src="/images/0_Req_Windows/image014.jpg" alt="image014.jpg" />
+    <div class="card">
+      <div class="card-body">
+      <p>
+        Aquí se puede instalar en otras cuantas, de usuario de tu PC,
+        puedes elegir el que quieras.
+      </p>
+    </div>
+  </div>
+    <img class="img-fluid rounded mx-auto d-block mb-2" src="/images/0_Req_Windows/image015.jpg" alt="image015.jpg" />
+    <div class="card">
+      <div class="card-body">
+      <p>Damos en finalizar y se abrirá Spyder.</p>
+    </div>
+  </div>
+    <img class="img-fluid rounded mx-auto d-block mb-2" src="/images/0_Req_Windows/image016.jpg" alt="image016.jpg" />
+
+    
+      <h2>Configurar Sypder con el entorno virtual</h2>
+
+    <div class="card">
+      <div class="card-body">
+      <p>
+        Al abrir por primera vez el IDE nos dará un pequeño
+        recorrido por algunas de las opciones, la cual puede omitir. En la parte
+        de la consola podrá salirte o no el error del kernel, hace falta
+        unos módulos que necesita Spyder para funcionar y muestra los
+        comandos para agregar dichos módulos, usaremos el comando
+        <code>pip install spyder-kernels==2.4.*</code> mas adelante.
+      </p>
+    </div>
+  </div>
+    <img class="img-fluid rounded mx-auto d-block mb-2" src="/images/0_Req_Windows/image017.jpg" alt="image017.jpg" />
+    <div class="card">
+      <div class="card-body">
+      <p>
+        Para la configuración el entorno virtual nos dirigimos a la
+        pestaña <b>Tools</b>, luego Preferences y se abrirá
+        la siguiente ventana.
+      </p>
+    </div>
+  </div>
+    <img class="img-fluid rounded mx-auto d-block mb-2" src="/images/0_Req_Windows/image016.jpg" alt="image016.jpg" />
+
+    <div class="card">
+      <div class="card-body">
+      <p>
+        Nos dirigimos a <b>Python Interpreter</b>, seleccionamos
+        <b>Use the follow Python interpreter</b>, y buscamos el archivo.
+      </p>
+    </div>
+  </div>
+    <img class="img-fluid rounded mx-auto d-block mb-2" src="/images/0_Req_Windows/image019.jpg" alt="image019.jpg" />
+    <div class="card">
+      <div class="card-body">
+      <p>
+        Al abrirse la siguiente ventana nos dirigimos a la carpeta donde se
+        encuentra el entorno virtual que creamos en la sección Entorno
+        virtual, entramos a la carpeta <b>venv/Scripts</b> buscamos <b>python.exe</b>
+      </p>
+    </div>
+  </div>
+    <img class="img-fluid rounded mx-auto d-block mb-2" src="/images/0_Req_Windows/image020.jpg" alt="image020.jpg" />
+    <div class="card">
+      <div class="card-body">
+      <p>Le damos en Ok.</p>
+    </div>
+  </div>
+    <img class="img-fluid rounded mx-auto d-block mb-2" src="/images/0_Req_Windows/image021.jpg" alt="image021.jpg" />
+    <div class="card">
+      <div class="card-body">
+      <p>
+        Ahora cerramos y volvemos a abrir Spyder, puede o no volver a aparecer
+        el error en la consola y volvemos a cerrar Spyder.
+      </p>
+    </div>
+  </div>
+    <img class="img-fluid rounded mx-auto d-block mb-2" src="/images/0_Req_Windows/image022.jpg" alt="image022.jpg" />
+    <div class="card">
+      <div class="card-body">
+      <p>
+        Ahora instalamos los módulos de spyder en el entorno virtual,
+        activamos el entorno virtual y ejecutamos el siguiente comando
+        <code>pip install spyder-kernels==2.4.*</code></code>
+      </p>
+    </div>
+  </div>
+    <img class="img-fluid rounded mx-auto d-block mb-2" src="/images/0_Req_Windows/image023.jpg" alt="image023.jpg" />
+    <div class="card">
+      <div class="card-body">
+      <p>
+        Esperamos que termine de instalar el modulo y con el comando <code>pip
+        list</code> listamos los módulos instalados y asi verificaremos
+        que este instalado el modulo.
+      </p>
+    </div>
+  </div>
+    <img class="img-fluid rounded mx-auto d-block mb-2" src="/images/0_Req_Windows/image024.jpg" alt="image024.jpg" />
+    <div class="card">
+      <div class="card-body">
+      <p>
+        Cerramos la consola y volvemos abrir Spyder, el error ya no
+        debería de aparecer y estaremos listos para trabajar en Spyder.
+      </p>
+    </div>
+  </div>
+    <img class="img-fluid rounded mx-auto d-block mb-2" src="/images/0_Req_Windows/image025.png" alt="image025.png" />
+  </div>
 </main>
 
 <%- include ../layouts/pie.ejs %>

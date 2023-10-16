@@ -4,22 +4,34 @@
 :root{
     --first-color : rgb(217,0,98);
     --first-alpha-color : rgba(217,0,98,0.75);
+
     --second-color : rgb(20,25,45);
     --second-alpha-color : rgba(20,25,45,0.75);
+
     --third-color : rgb(80,20,100);
     --third-alpha-color : rgba(80,20,100,0.75);
 
     --link-color:rgb(80,158,227);
     --link-alpha-color:rgba(80,158,227,0.75);
 
+    --text-color:rgb(80,158,227);
+    --text-alpha-color:rgba(80,158,227,0.75);
+
     --bg-color:rgb(245,245,245);
     --bg-alpha-color:rgba(245,245,245,0.75);
 
 }
 
+.card{
+    background-color:rgba(255, 255, 255, 0.651);
+    border-color:rgba(72, 72, 87, 0.212);
+}
+
 .border-primary{
     
 }
+
+
 
 /* ======================= Reset Styles ==============================*/
 body{
@@ -27,6 +39,14 @@ body{
 }
 /* ======================= Bootstrap Styles ==============================*/
 /* ======================= My Styles ==============================*/
+.console-code {
+    background-color: #282c34; /* Color de fondo del bloque */
+    color: #61dafb; /* Color del texto */
+    font-family: 'Courier New', monospace; /* Fuente monoespaciada para código */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    overflow-x: auto; /* Barra de desplazamiento horizontal si es necesario */
+  }
 /* ===================================================== */
 
 /* // X-Small devices (portrait phones, less than 576px)
