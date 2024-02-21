@@ -74,6 +74,7 @@ router.get("/clasificacion", function (req, res, next) {
     Clasificacion_Arboles_R:GetCode("public/codes/3-Classification/6-Decision_Tree_Classification/decision_tree_classification.R"),
     Clasificacion_Bosques_Py:GetCode("public/codes/3-Classification/7-Random_Forest_Classification/random_forest_classification.py"),
     Clasificacion_Bosques_R:GetCode("public/codes/3-Classification/7-Random_Forest_Classification/random_forest_classification.R"),
+    Clasificacion_ANN_Py:GetCode("public/codes/3-Classification/8-ANN/ann.py"),
 
   });
 });

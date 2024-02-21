@@ -14,9 +14,9 @@ router.get('/busqueda', function (req, res, next) {
     res.render('ia/busqueda');
 });
 
-router.get('/logica', function (req, res, next) {
-    res.render('ia/logica');
-});
+// router.get('/logica', function (req, res, next) {
+//     res.render('ia/logica');
+// });
 
 
 module.exports = router;

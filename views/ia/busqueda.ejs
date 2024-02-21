@@ -1,14 +1,15 @@
 <%- include ../layouts/cabecera.ejs %>
 
   <main>
+    <div class="container-md">
 
-    <font face="Bahnschrift, serif">
-      <font size="5" style="font-size: 18pt">Inteligencia
-        Artificial</font>
-    </font>
-    </p>
-    <p>Búsqueda</p>
-    <h1>Agentes resolventes de problemas</h1>
+    
+    <div class="card">
+      <div class="card-header"><h1>Agentes resolventes de problemas</h1></div>
+    
+      <div class="card-body">
+      
+          
     <p>Un agente
       resolvente de problemas es un tipo de agente basado en objetivos que
       usa representaciones atómicas. Los que usan estructuras más
@@ -55,87 +56,112 @@
     <p><b>Lazo Abierto:
       </b>Estos agentes realizan planes a ojos cerrados porque ignoran las
       percepciones rompiendo el lazo entre el agente y el entorno.</p>
-    <p><br />
-      <br />
+    
+        
+      </div>
+      
+      <div class="card-footer text-center">
+        <!-- insertar link embebido -->
+        <iframe src="https://drive.google.com/file/d/1XNnNBLbONdld-JDVzBndlfxeO80R4QA8/preview" width="640" height="480" allow="autoplay"></iframe>
 
-    </p>
-    <h1>Problemas y soluciones bien definidas</h1>
-    <p>Un problema puede
-      definirse por 4 componentes:</p>
-    <ol>
-      <li>
-        <p><b>Estado
-            inicial:</b> es en donde empieza el agente.</p>
-      <li>
-        <p><b>Función
-            sucesora: </b>Una descripción de las posibles acciones disponibles
-          para el agente.</p>
-    </ol>
-    <p style="line-height: 108%; margin-left: 0.5in; margin-bottom: 0.11in">
-      <b>SUCESOR-FN(x)={&lt;acción, sucesor&gt;,…},</b> Donde:
-    </p>
-    <ul>
-      <li>
-        <p><b>SUCESOR-FN(x):
-          </b>devuelve un conjunto de pares ordenados &lt;acción, sucesor&gt;.</p>
-      <li>
-        <p><b>Sucesor:</b>
-          es un estado que se puede alcanzar desde x.</p>
-      <li>
-        <p><b>Acción:</b>
-          es una de las acciones legales en el estado x.</p>
-      <li>
-        <p>Ejemplo:
-          {<i>Ir</i>(<i>Sibiu</i>)<i>, En</i>(<i>Sibiu</i>)<i>, Ir</i>(<i>Timisoara</i>)<i>,
-            En</i>(<i>Timisoara</i>)<i>, Ir</i>(<i>Zerind</i>)<i>, En</i>(<i>Zerind</i>)}</p>
-    </ul>
-    <ol>
+      </div>
+    </div>
+  
+
+
+    <div class="card">
+    <div class="card-header"><h1>Problemas y soluciones bien definidas</h1></div>
+  
+    <div class="card-body">
+      <p>Un problema puede
+        definirse por 4 componentes:</p>
+      <ol>
+        <li>
+          <p><b>Estado
+              inicial:</b> es en donde empieza el agente.</p>
+        <li>
+          <p><b>Función
+              sucesora: </b>Una descripción de las posibles acciones disponibles
+            para el agente.</p>
+      </ol>
+      <p style="line-height: 108%; margin-left: 0.5in; margin-bottom: 0.11in">
+        <b>SUCESOR-FN(x)={&lt;acción, sucesor&gt;,…},</b> Donde:
+      </p>
       <ul>
         <li>
-          <p><b>Espacio
-              de estados</b>: forma un grafo en el cual los nodos son estados y
-            los arcos entre los nodos las acciones. Implícitamente el estado
-            inicial y la función sucesor definen el espacio de estados del
-            problema.</p>
+          <p><b>SUCESOR-FN(x):
+            </b>devuelve un conjunto de pares ordenados &lt;acción, sucesor&gt;.</p>
         <li>
-          <p>Un <b>camino</b>
-            es el espacio de estados en una secuencia de estados conectados por
-            una secuencia de acciones.</p>
+          <p><b>Sucesor:</b>
+            es un estado que se puede alcanzar desde x.</p>
+        <li>
+          <p><b>Acción:</b>
+            es una de las acciones legales en el estado x.</p>
+        <li>
+          <p>Ejemplo:
+            {<i>Ir</i>(<i>Sibiu</i>)<i>, En</i>(<i>Sibiu</i>)<i>, Ir</i>(<i>Timisoara</i>)<i>,
+              En</i>(<i>Timisoara</i>)<i>, Ir</i>(<i>Zerind</i>)<i>, En</i>(<i>Zerind</i>)}</p>
       </ul>
-      <li>
-        <p><b>Test
-            objetivo:</b> determina si un estado es el estado objetivo. A veces
-          el conjunto esta explicito, pero el test es simplemente prueba si el
-          estado es uno de ellos.</p>
-      <li>
-        <p><b>Costo del
-            camino:</b> g(n) es una función que asigna un coste numérico a
-          cada camino en el grafo. El agente resolvente de problemas elige la
-          función que refleje nuestra medida de rendimiento. Puede
-          describirse como la suma de los costos de las acciones individuales
-          a lo largo del camino.</p>
-      <li>
-        <p>El costro
-          individual de una acción <i>a </i>que va desde un estado <i>x</i>
-          al estado <i>y</i> se denota como <i>c(x,a,y).</i></p>
-    </ol>
-    <p><br />
-      <br />
+      <ol>
+        <ul>
+          <li>
+            <p><b>Espacio
+                de estados</b>: forma un grafo en el cual los nodos son estados y
+              los arcos entre los nodos las acciones. Implícitamente el estado
+              inicial y la función sucesor definen el espacio de estados del
+              problema.</p>
+          <li>
+            <p>Un <b>camino</b>
+              es el espacio de estados en una secuencia de estados conectados por
+              una secuencia de acciones.</p>
+        </ul>
+        <li>
+          <p><b>Test
+              objetivo:</b> determina si un estado es el estado objetivo. A veces
+            el conjunto esta explicito, pero el test es simplemente prueba si el
+            estado es uno de ellos.</p>
+        <li>
+          <p><b>Costo del
+              camino:</b> g(n) es una función que asigna un coste numérico a
+            cada camino en el grafo. El agente resolvente de problemas elige la
+            función que refleje nuestra medida de rendimiento. Puede
+            describirse como la suma de los costos de las acciones individuales
+            a lo largo del camino.</p>
+        <li>
+          <p>El costro
+            individual de una acción <i>a </i>que va desde un estado <i>x</i>
+            al estado <i>y</i> se denota como <i>c(x,a,y).</i></p>
+      </ol>
+      <p><br />
+        <br />
+  
+      </p>
+      <p>Los elementos
+        anteriores definen un problema y pueden unirse a una estructura de
+        datos que se dará como entrada al algoritmo resolvente de problema.</p>
+      <p>La <b>solución
+        </b>de un problema es un camino desde el estado inicial a un estado
+        objetivo.</p>
+      <p>La <b>solución
+          óptima </b>tiene el costo más pequeño del camino entre todas las
+        soluciones.</p>
+      <p>La <b>Frontera </b>es
+        la colección de nodos que se han generado pero que todavía no se
+        han expandido.</p>
+      <p >
+    </div>
+   ¿
+    <div class="card-footer text-center">
+      <!-- insertar link embebido -->
+      <iframe src="https://drive.google.com/file/d/1SILMX5sPVqC8yYckogLh8CjHEkoQW9jW/preview" width="640" height="480" allow="autoplay"></iframe>
+    </div>
+  </div>
+    
 
-    </p>
-    <p>Los elementos
-      anteriores definen un problema y pueden unirse a una estructura de
-      datos que se dará como entrada al algoritmo resolvente de problema.</p>
-    <p>La <b>solución
-      </b>de un problema es un camino desde el estado inicial a un estado
-      objetivo.</p>
-    <p>La <b>solución
-        óptima </b>tiene el costo más pequeño del camino entre todas las
-      soluciones.</p>
-    <p>La <b>Frontera </b>es
-      la colección de nodos que se han generado pero que todavía no se
-      han expandido.</p>
-    <p >
+  <div class="card">
+    <div class="card-header"><h1>8-puzle</h1></div>
+  
+    <div class="card-body">
       <font>8-puzle</font>
     </p>
     <p>Consiste en un
@@ -164,50 +190,65 @@
     <p><img src="/images/2_Busqueda/image002.png" name="Imagen 1"
         align="bottom" width="589" height="194" border="0" />
     </p>
-    <p><br />
-      <br />
 
-    </p>
-    <p >
-      <font>8-reinas</font>
-    </p>
-    <p>Consiste en
-      colocar las 8 reinas en un tablero de ajedrez de manera que cada
-      reina no ataque a ninguna otra. Una reina ataca alguna otra pieza si
-      está en la misma fila, columna o diagonal.</p>
-    <p><img src="/images/2_Busqueda/image003.png" name="Imagen 2"
-        align="bottom" width="589" height="305" border="0" />
-    </p>
-    <p>2 principales
-      formulaciones:</p>
-    <ul>
-      <li>
-        <p><b>Incremental:
-          </b>operadores que incrementen el estado, empezando desde el vacío
-          y agregando a cada estado una reina.</p>
-        <ul>
-          <li>
-            <p><b>Estados:</b>
-              cualquier combinación de 0 a 8 reinas en el tablero es un estado.</p>
-          <li>
-            <p><b>Estado
-                inicial: </b>ninguna reina sobre el tablero.</p>
-          <li>
-            <p><b>Función
-                sucesora:</b> añadir una reina a cualquier cuadrado vacío.</p>
-          <li>
-            <p><b>Test
-                objetivo:</b> 8 reinas sobre el tablero, ninguna atacándose.</p>
-        </ul>
-      <li>
-        <p><b>Completa:</b>
-          comienza con las 8 reinas en el tablero y solo se irán moviendo.</p>
-    </ul>
-    <p><br />
-      <br />
+    <div class="card-footer text-center">
+      <!-- insertar link embebido -->
+      <!-- <iframe src="" width="640" height="480" allow="autoplay"></iframe> -->
+    </div>
+  </div>
+    
 
-    </p>
-    <h1>Búsqueda de soluciones</h1>
+  <div class="card">
+    <div class="card-header"><h1>8-reinas</h1></div>
+  
+    <div class="card-body">
+      
+      <p>Consiste en
+        colocar las 8 reinas en un tablero de ajedrez de manera que cada
+        reina no ataque a ninguna otra. Una reina ataca alguna otra pieza si
+        está en la misma fila, columna o diagonal.</p>
+      <p><img src="/images/2_Busqueda/image003.png" name="Imagen 2"
+          align="bottom" width="589" height="305" border="0" />
+      </p>
+      <p>2 principales
+        formulaciones:</p>
+      <ul>
+        <li>
+          <p><b>Incremental:
+            </b>operadores que incrementen el estado, empezando desde el vacío
+            y agregando a cada estado una reina.</p>
+          <ul>
+            <li>
+              <p><b>Estados:</b>
+                cualquier combinación de 0 a 8 reinas en el tablero es un estado.</p>
+            <li>
+              <p><b>Estado
+                  inicial: </b>ninguna reina sobre el tablero.</p>
+            <li>
+              <p><b>Función
+                  sucesora:</b> añadir una reina a cualquier cuadrado vacío.</p>
+            <li>
+              <p><b>Test
+                  objetivo:</b> 8 reinas sobre el tablero, ninguna atacándose.</p>
+          </ul>
+        <li>
+          <p><b>Completa:</b>
+            comienza con las 8 reinas en el tablero y solo se irán moviendo.</p>
+      </ul>
+      
+    </div>
+    
+    <div class="card-footer text-center">
+      <!-- insertar link embebido -->
+      <!-- <iframe src="" width="640" height="480" allow="autoplay"></iframe> -->
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><h1>Búsqueda de soluciones</h1></div>
+  
+    <div class="card-body">
+      
     <p>La resolución
       automática de problemas utilizando búsqueda es el tema central en
       IA. Para la gran variedad de situaciones, la resolución de un
@@ -222,10 +263,7 @@
         espacio de estados. </b>La raíz del árbol es el <b>nodo de búsqueda</b>
       que corresponde al <b>estado inicial</b>.
     </p>
-    <p><br />
-      <br />
-
-    </p>
+    
     <p >
       <font>Nodo</font>
     </p>
@@ -285,17 +323,13 @@
     <p><b>Nodo hoja: </b>
       es el nodo que es parte de la frontera o también un nodo sin sucesor
       en el árbol.</p>
-    <p><br />
-      <br />
-
-    </p>
+    
     <p><img src="/images/2_Busqueda/image004.png" name="Imagen 5" align="left" hspace="12"
         width="275" height="144">
       <br clear="left" />
       </img>
     </p>
-    <p >
-      <font>Estrategia de búsqueda </font>
+    <font>Estrategia de búsqueda </font>
     </p>
     <p>Es la una función
       que seleccione de este conjunto el siguiente nodo a expandir, pero
@@ -360,14 +394,7 @@
         osto
         total: </b>Combinación del Costo de la búsqueda y el costo del
       camino de la solución.</p>
-    <p><br />
-      <br />
-
-    </p>
-    <p><br />
-      <br />
-
-    </p>
+  
     <p>El factor de
       ramificación <b>b</b> y <b>m</b> a profundidad de la meta.</p>
     <p><br />
@@ -621,7 +648,23 @@
         </td>
       </tr>
     </table>
-    <h1>Búsqueda No Informada (Ciego)</h1>
+
+
+    </div>
+    
+    <div class="card-footer text-center">
+      <!-- insertar link embebido -->
+      <iframe src="https://drive.google.com/file/d/1SILMX5sPVqC8yYckogLh8CjHEkoQW9jW/preview" width="640" height="480" allow="autoplay"></iframe>
+
+    </div>
+    
+  </div>
+
+  <div class="card">
+    <div class="card-header"><h1>Búsqueda No Informada (Ciego)</h1></div>
+  
+    <div class="card-body">
+      
     <p>Mantienen una
       frontera y luego eligen a ciegas un nodo de la frontera, algunos
       métodos son:</p>
@@ -650,8 +693,25 @@
     <p>Todas las
       estrategias se distinguen por el orden de expansión de los nodos.</p>
     <p >
-      <font>Búsqueda primero en anchura (Breadth-First
-        Search)</font>
+    </div>
+    
+    <div class="card-footer text-center">
+      <!-- insertar link embebido -->
+      <iframe src="https://drive.google.com/file/d/1gT6raRVHM5CxZJtTNe7A01WTkiie7g3Q/preview" width="640" height="480" allow="autoplay"></iframe>
+      <iframe src="https://drive.google.com/file/d/1kX5bFvrG3xjlI6t01FPrxE0IBMSiJ-8o/preview" width="640" height="480" allow="autoplay"></iframe>
+      <iframe src="https://drive.google.com/file/d/1sLffh8jBnAiR88-TWSylYf9J9LcerGhs/preview" width="640" height="480" allow="autoplay"></iframe>
+      <iframe src="https://drive.google.com/file/d/1By4Kxx0StlGQRM6kw2RWPsAyEYL4ekAS/preview" width="640" height="480" allow="autoplay"></iframe>
+      <iframe src="https://drive.google.com/file/d/1OwQzhyfBwZ1BQ8ztCX6sX-CiEFL1ULfW/preview" width="640" height="480" allow="autoplay"></iframe>
+
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><h1>Búsqueda primero en anchura (Breadth-First
+      Search)</h1></div>
+  
+    <div class="card-body">
+      
     </p>
     <p>Es una de las
       estrategias más sencillas en la que se expande primero el nodo raíz,
@@ -879,8 +939,19 @@
       Expande muchos nodos inútiles, Orden exponencial en espacio. Costo
       constante y no negativo. Solo para problemas muy simples.</p>
     <p >
-      <font>Búsqueda de costo uniforme (Uniform-Cost
-        Search)</font>
+    </div>
+    
+    <div class="card-footer text-center">
+      <!-- insertar link embebido -->
+      </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><h1>Búsqueda de costo uniforme (Uniform-Cost
+      Search)</h1></div>
+  
+    <div class="card-body">
+      
     </p>
     <p>La búsqueda
       primero en anchura es óptimo cuando todos los costos son iguales
@@ -1040,8 +1111,20 @@
       Orden exponencial en espacio. Costos no negativos. Solo para
       problemas muy simples.</p>
     <p >
-      <font>Búsqueda primero en profundidad (Dipth-Fisrt
-        Search)</font>
+    </div>
+    
+    <div class="card-footer text-center">
+      <!-- insertar link embebido -->
+      <!-- <iframe src="" width="640" height="480" allow="autoplay"></iframe> -->
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><h1>Búsqueda primero en profundidad (Dipth-Fisrt
+      Search)</h1></div>
+  
+    <div class="card-body">
+      
     </p>
     <p>Consiste en
       siempre expandir el nodo más profundo en la frontera actual del
@@ -1351,8 +1434,20 @@
       quedar atrapado en bucles infinitos. Costo constante y no negativo.
       Solo para problemas simples.</p>
     <p >
-      <font>Búsqueda Primero en Profundidad Limitada
-        (Limited-Depth-First Search)</font>
+    </div>
+   
+    <div class="card-footer text-center">
+      <!-- insertar link embebido -->
+      <!-- <iframe src="" width="640" height="480" allow="autoplay"></iframe> -->
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><h1>Búsqueda Primero en Profundidad Limitada
+      (Limited-Depth-First Search)</h1></div>
+  
+    <div class="card-body">
+      
     </p>
     <ul>
       <li>
@@ -1502,179 +1597,190 @@
     <p>Desventajas: no
       es completa ni optima, puede probar muchos caminos inútiles, coste
       constante y no negativo, solo para problemas simples.</p>
-    <p><br />
-      <br />
+    </div>
+    
+    <div class="card-footer text-center">
+      <!-- insertar link embebido -->
+      <!-- <iframe src="" width="640" height="480" allow="autoplay"></iframe> -->
+    </div>
+  </div>
 
-    </p>
-    <p >
-      <br />
-      <br />
+  <div class="card">
+    <div class="card-header"><h1>Búsqueda en profundidad iterativa
+      (Depth-Iterative Search)</h1></div>
+  
+    <div class="card-body">
+      <ul>
+        <li>
+          <p>Ampliación
+            de Profundidad Limitada.</p>
+        <li>
+          <p>De forma
+            gradual, se va ampliando el límite máximo de p.</p>
+      </ul>
+      <p>Se va ampliando
+        el límite hasta alcanzar una solución, que además será la óptima.</p>
+      <table width="589" cellpadding="7" cellspacing="0">
+        <col width="181" />
+  
+        <col width="182" />
+  
+        <col width="181" />
+  
+        <tr valign="top">
+          <td width="181" height="5" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p align="left" style="orphans: 2; widows: 2">
+              <br />
+  
+            </p>
+          </td>
+          <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p align="left" style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt"><b>si</b></font>
+              </font>
+            </p>
+          </td>
+          <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p align="left" style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt"><b>no</b></font>
+              </font>
+            </p>
+          </td>
+        </tr>
+        <tr valign="top">
+          <td width="181" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p align="left" style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt"><b>Completo</b></font>
+              </font>
+            </p>
+          </td>
+          <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p align="left" style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">Si,
+                  si hay solución, la encuentra.</font>
+              </font>
+            </p>
+          </td>
+          <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p align="left" style="orphans: 2; widows: 2">
+              <br />
+  
+            </p>
+          </td>
+        </tr>
+        <tr valign="top">
+          <td width="181" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p align="left" style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt"><b>Optimo</b></font>
+              </font>
+            </p>
+          </td>
+          <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p align="left" style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">Si,
+                  porque cuando encuentra una solución, es la más superficial</font>
+              </font>
+            </p>
+          </td>
+          <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p align="left" style="orphans: 2; widows: 2">
+              <br />
+  
+            </p>
+          </td>
+        </tr>
+        <tr valign="top">
+          <td width="181" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p align="left" style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt"><b>Complejidad</b></font>
+              </font>
+            </p>
+          </td>
+          <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p align="left" style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt"><b>Tiempo</b></font>
+              </font>
+            </p>
+          </td>
+          <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p align="left" style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt"><b>Espacio</b></font>
+              </font>
+            </p>
+          </td>
+        </tr>
+        <tr valign="top">
+          <td width="181" height="5" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p align="left" style="orphans: 2; widows: 2">
+              <br />
+  
+            </p>
+          </td>
+          <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p align="left" style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">Exp
+                  O(b^d)</font>
+              </font>
+            </p>
+          </td>
+          <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
+            <p align="left" style="orphans: 2; widows: 2">
+              <font face="Calibri, serif">
+                <font size="2" style="font-size: 11pt">Lineal
+                  O(d), O(b*d), O(1)</font>
+              </font>
+            </p>
+          </td>
+        </tr>
+      </table>
+      <p><br />
+        <br />
+  
+      </p>
+      <p><b>Ventajas:</b>
+        ocupa muy poco espacio, no cae en bucles infinitos, es completo y
+        optimo.</p>
+      <p><b>Desventajas:</b>
+        puede probar muchos caminos inútiles, visita muchas veces los nodos
+        superficiales, conto constante y no negativo.</p>
+      <p>Es el mejor
+        algoritmo de búsqueda no informada, sobre todo si el espacio de
+        búsqueda es muy grande y no se conoce a que profundidad esta la
+        solución.</p>
+      <p>Mejora: usar
+        primero en anchura hasta agotar la memoria y luego usar búsqueda a
+        profundidad iterativa desde cada uno de los nodos frontera (evita
+        visitar los nodos superficiales de nuevo)</p>
+      <p><img src="/images/2_Busqueda/image011.png" name="Imagen 14" align="bottom" width="589"
+          height="123" border="0" />
+      </p>
+      <p><img src="/images/2_Busqueda/image012.png" name="Imagen 15" align="bottom" width="578"
+          height="556" border="0" />
+      </p>
+    </div>
+    
+    <div class="card-footer text-center">
+      <!-- insertar link embebido -->
+      <!-- <iframe src="" width="640" height="480" allow="autoplay"></iframe> -->
+    </div>
+  </div>
 
-    </p>
-    <p >
-      <font>Búsqueda en profundidad iterativa
-        (Depth-Iterative Search)</font>
-    </p>
-    <ul>
-      <li>
-        <p>Ampliación
-          de Profundidad Limitada.</p>
-      <li>
-        <p>De forma
-          gradual, se va ampliando el límite máximo de p.</p>
-    </ul>
-    <p>Se va ampliando
-      el límite hasta alcanzar una solución, que además será la óptima.</p>
-    <table width="589" cellpadding="7" cellspacing="0">
-      <col width="181" />
-
-      <col width="182" />
-
-      <col width="181" />
-
-      <tr valign="top">
-        <td width="181" height="5" style="border: 1px solid #000000; padding: 0in 0.08in">
-          <p align="left" style="orphans: 2; widows: 2">
-            <br />
-
-          </p>
-        </td>
-        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
-          <p align="left" style="orphans: 2; widows: 2">
-            <font face="Calibri, serif">
-              <font size="2" style="font-size: 11pt"><b>si</b></font>
-            </font>
-          </p>
-        </td>
-        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
-          <p align="left" style="orphans: 2; widows: 2">
-            <font face="Calibri, serif">
-              <font size="2" style="font-size: 11pt"><b>no</b></font>
-            </font>
-          </p>
-        </td>
-      </tr>
-      <tr valign="top">
-        <td width="181" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
-          <p align="left" style="orphans: 2; widows: 2">
-            <font face="Calibri, serif">
-              <font size="2" style="font-size: 11pt"><b>Completo</b></font>
-            </font>
-          </p>
-        </td>
-        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
-          <p align="left" style="orphans: 2; widows: 2">
-            <font face="Calibri, serif">
-              <font size="2" style="font-size: 11pt">Si,
-                si hay solución, la encuentra.</font>
-            </font>
-          </p>
-        </td>
-        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
-          <p align="left" style="orphans: 2; widows: 2">
-            <br />
-
-          </p>
-        </td>
-      </tr>
-      <tr valign="top">
-        <td width="181" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
-          <p align="left" style="orphans: 2; widows: 2">
-            <font face="Calibri, serif">
-              <font size="2" style="font-size: 11pt"><b>Optimo</b></font>
-            </font>
-          </p>
-        </td>
-        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
-          <p align="left" style="orphans: 2; widows: 2">
-            <font face="Calibri, serif">
-              <font size="2" style="font-size: 11pt">Si,
-                porque cuando encuentra una solución, es la más superficial</font>
-            </font>
-          </p>
-        </td>
-        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
-          <p align="left" style="orphans: 2; widows: 2">
-            <br />
-
-          </p>
-        </td>
-      </tr>
-      <tr valign="top">
-        <td width="181" height="6" style="border: 1px solid #000000; padding: 0in 0.08in">
-          <p align="left" style="orphans: 2; widows: 2">
-            <font face="Calibri, serif">
-              <font size="2" style="font-size: 11pt"><b>Complejidad</b></font>
-            </font>
-          </p>
-        </td>
-        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
-          <p align="left" style="orphans: 2; widows: 2">
-            <font face="Calibri, serif">
-              <font size="2" style="font-size: 11pt"><b>Tiempo</b></font>
-            </font>
-          </p>
-        </td>
-        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
-          <p align="left" style="orphans: 2; widows: 2">
-            <font face="Calibri, serif">
-              <font size="2" style="font-size: 11pt"><b>Espacio</b></font>
-            </font>
-          </p>
-        </td>
-      </tr>
-      <tr valign="top">
-        <td width="181" height="5" style="border: 1px solid #000000; padding: 0in 0.08in">
-          <p align="left" style="orphans: 2; widows: 2">
-            <br />
-
-          </p>
-        </td>
-        <td width="182" style="border: 1px solid #000000; padding: 0in 0.08in">
-          <p align="left" style="orphans: 2; widows: 2">
-            <font face="Calibri, serif">
-              <font size="2" style="font-size: 11pt">Exp
-                O(b^d)</font>
-            </font>
-          </p>
-        </td>
-        <td width="181" style="border: 1px solid #000000; padding: 0in 0.08in">
-          <p align="left" style="orphans: 2; widows: 2">
-            <font face="Calibri, serif">
-              <font size="2" style="font-size: 11pt">Lineal
-                O(d), O(b*d), O(1)</font>
-            </font>
-          </p>
-        </td>
-      </tr>
-    </table>
-    <p><br />
-      <br />
-
-    </p>
-    <p><b>Ventajas:</b>
-      ocupa muy poco espacio, no cae en bucles infinitos, es completo y
-      optimo.</p>
-    <p><b>Desventajas:</b>
-      puede probar muchos caminos inútiles, visita muchas veces los nodos
-      superficiales, conto constante y no negativo.</p>
-    <p>Es el mejor
-      algoritmo de búsqueda no informada, sobre todo si el espacio de
-      búsqueda es muy grande y no se conoce a que profundidad esta la
-      solución.</p>
-    <p>Mejora: usar
-      primero en anchura hasta agotar la memoria y luego usar búsqueda a
-      profundidad iterativa desde cada uno de los nodos frontera (evita
-      visitar los nodos superficiales de nuevo)</p>
-    <p><img src="/images/2_Busqueda/image011.png" name="Imagen 14" align="bottom" width="589"
-        height="123" border="0" />
-    </p>
-    <p><img src="/images/2_Busqueda/image012.png" name="Imagen 15" align="bottom" width="578"
-        height="556" border="0" />
-    </p>
-    <p >
-      <font>Búsqueda Costo Iterativo</font>
-    </p>
+  <div class="card">
+    <div class="card-header"><h1>Búsqueda Costo Iterativo</h1></div>
+  
+    <div class="card-body">
+      
+    
     <p>Si los costos de
       las acciones son variables (pero no negativos).</p>
     <p>Ventajas: ocupa
@@ -1844,17 +1950,19 @@
       optima. Requiere que se Conozca la solución. Requiere de acciones
       reversibles.
     </p>
-    <p >
-      <font>Búsqueda en grafo</font>
-    </p>
-    <p><img src="/images/2_Busqueda/image014.png" name="Imagen 17" align="bottom" width="589"
-        height="234" border="0" />
-    </p>
-    <p><br />
-      <br />
+    </div>
+    
+    <div class="card-footer text-center">
+      <!-- insertar link embebido -->
+      <!-- <iframe src="" width="640" height="480" allow="autoplay"></iframe> -->
+    </div>
+  </div>
 
-    </p>
-    <h1>Búsqueda Informada (Heurísticas)</h1>
+  <div class="card">
+    <div class="card-header"><h1>Búsqueda Informada (Heurísticas)</h1></div>
+  
+    <div class="card-body">
+      
     <p>Mantienen una
       frontera y luego eligen en base a una heurística el nodo más
       promisorio de la frontera, algunos métodos son:</p>
@@ -1873,13 +1981,20 @@
       definición del problema en sí mismo. Puede llegar a encontrar
       soluciones de una manera más eficiente que una estrategia no
       informada.</p>
-    <p><br />
-      <br />
+    </div>
+    
+    <div class="card-footer text-center">
+      <!-- insertar link embebido -->
+      <!-- <iframe src="" width="640" height="480" allow="autoplay"></iframe> -->
+    </div>
+  </div>
 
-    </p>
-    <p >
-      <font>Búsqueda primero el mejor (Best-First Search)</font>
-    </p>
+  <div class="card">
+    <div class="card-header"><h1>Búsqueda primero el mejor (Best-First Search)</h1></div>
+  
+    <div class="card-body">
+      
+    
     <p>Selecciona un
       nodo para la expansión basada en una<b> función de evaluación</b>
       <i>f(n)</i>. normalmente se selecciona el nodo con la evaluación más
@@ -2138,9 +2253,20 @@
       heurística. Evita demasiados caminos inútiles.</p>
     <p> Desventajas: No
       es completo ni optimo. No tiene en cuenta costos de acciones.</p>
-    <p >
-      <font>Búsqueda A*</font>
-    </p>
+    </div>
+    
+    <div class="card-footer text-center">
+      <!-- insertar link embebido -->
+      <!-- <iframe src="" width="640" height="480" allow="autoplay"></iframe> -->
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><h1>Búsqueda A*</h1></div>
+  
+    <div class="card-body">
+      
+    
     <p>Consta en
       minimizar el costo estimado total de la solución.</p>
     <p>Evalúa los nodos
@@ -2312,7 +2438,20 @@
       eficiente.</p>
     <p>Desventajas: Aun
       pueden darse complejidades exponenciales, sobre todo en espacio.</p>
-    <h1>Juegos (Búsqueda Adversaria)</h1>
+    </div>
+   
+    <div class="card-footer text-center">
+      <!-- insertar link embebido -->
+      <!-- <iframe src="" width="640" height="480" allow="autoplay"></iframe> -->
+    </div>
+  </div>
+     
+
+  <div class="card">
+    <div class="card-header"><h1>Juegos (Búsqueda Adversaria)</h1></div>
+  
+    <div class="card-body">
+      
     <p>¿Qué hay en
       común en el Ajedrez, Gato y Otelo?</p>
     <ul>
@@ -2899,74 +3038,16 @@
     <p>Una <b>solución</b>
       al <b>problema de búsqueda adversaria</b> es determinar cuál nodo
       sucesor a la inicial corresponde a la mejor movida para el jugador.</p>
-    <p><br />
-      <br />
+    </div>
+    
+    <div class="card-footer text-center">
+      <!-- insertar link embebido -->
+      <!-- <iframe src="" width="640" height="480" allow="autoplay"></iframe> -->
+    </div>
+  </div>
+    
 
-    </p>
-    <p >
-      <font>Algoritmo minimax</font>
-    </p>
-    <p>El algoritmo
-      minimax está diseñado para determinar cuál es la elección óptima
-      para el agente Max. Las premisas fundamentales son:</p>
-    <ul>
-      <li>
-        <p>Max va a
-          realizar siempre su mejor jugada.</p>
-      <li>
-        <p>Min también
-          va a realizar siempre su mejor jugada que será la peor jugada para
-          Max.</p>
-      <li>
-        <p>Primero
-          juega Max.</p>
-    </ul>
-    <p>A los agentes
-      adversarios se les llama <b>Max</b> y <b>Min</b>, ya que el agente
-      que busca la mejor movida (Max) busca maximizar su beneficio en cada
-      jugada y su oponente (Min) busca minimizar el beneficio de Max, ya
-      que se asume que Min juega de la mejor manera posible para su
-      beneficio.</p>
-    <p>El algoritmo
-      propagara información de la utilidad desde las hojas hasta la raíz.
-      La recursión avanza hacia las hojas del árbol y entonces los
-      valores minimax retroceden por el árbol de la recursión cuando se
-      va deshaciendo.</p>
-    <p><br />
-      <br />
-
-    </p>
-    <p>El algoritmo
-      minimax realiza una exploración primero en profundidad completa del
-      árbol de juegos.</p>
-    <p><br />
-      <br />
-
-    </p>
-    <p >
-      <font>Poda alfa-beta</font>
-    </p>
-    <p><br />
-      <br />
-
-    </p>
-    <p><img src="/images/2_Busqueda/image017.png" name="Imagen 20" align="bottom" width="352"
-        height="331" border="0" />
-    </p>
-    <p><br />
-      <br />
-
-    </p>
-    <p><br />
-      <br />
-
-    </p>
-    <p><br />
-      <br />
-
-    </p>
-    <p>Búsqueda local,
-      simulated annealing, ascenso de la colina</p>
+    </div>
   </main>
 
 

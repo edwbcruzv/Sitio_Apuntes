@@ -40,7 +40,7 @@ plot(dendrogram,
 # ----------Aplicando el metodo Kmeans para segmentar el dataset---------
 # =============================================================================
 # Con ayuda de la grafica anterior sabemos el el k = 5 es el optimo
-k_means=kmeans(X,5,iter.max = 300, nstart = 10)
+# k_means=kmeans(X,5,iter.max = 300, nstart = 10)
 
 # =============================================================================
 # ----Ajustando el clustering jerarquico a los datos----
